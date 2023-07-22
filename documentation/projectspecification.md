@@ -1,13 +1,13 @@
-# Requirements Specification
+# Project Requirements Specification
 
 ### Study program
-Tietojenkäsittelytieteen kandidaatti (TKT)
+Bachelor’s in computer science (CS)/Tietojenkäsittelytieteen kandidaatti (TKT)
 
 ### Project language
 Python.
 
 ### Documentation and code language
-English.
+English. I can do peer review in finnish as well.
 
 ### Algorithms and data structures
 Minimax algorithm. Alpha-beta-pruning.
