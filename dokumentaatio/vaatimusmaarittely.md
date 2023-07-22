@@ -1,10 +1,25 @@
 # Määrittely
 
 ### Opinto-ohjelma
-Tietojenkäsittelytiede
+Tietojenkäsittelytieteen kandidaatti (TKT)
 
 ### Projektin kieli
 Python
 
-### Algoritmit
-Minimax algoritmi.
+### Dokumentaatiossa ja koodissa käytetty kieli
+Suomi
+
+### Algoritmit ja tietorakenteet
+Minimax algoritmi. Alpha-beta-karsinta.
+
+### Ratkaistava ongelma
+-
+
+### Ohjelman syötteet
+-
+
+### Tila- ja aikavaativuus
+-
+
+### Lähteet
+-
