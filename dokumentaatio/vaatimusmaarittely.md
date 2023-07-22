@@ -4,16 +4,16 @@
 Tietojenkäsittelytieteen kandidaatti (TKT)
 
 ### Projektin kieli
-Python
+Python.
 
 ### Dokumentaatiossa ja koodissa käytetty kieli
-Suomi
+Suomi.
 
 ### Algoritmit ja tietorakenteet
 Minimax algoritmi. Alpha-beta-karsinta.
 
 ### Ratkaistava ongelma
--
+Connect Four.
 
 ### Ohjelman syötteet
 -
