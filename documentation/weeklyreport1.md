@@ -4,8 +4,8 @@
 | **day** | **time** | **what I did** 
 | --------- | -------- | ------------- 
 | 17.7 | 1 h | deciding the subject and research into it, creating the repository and synchronizing it with the local repository, creating the README file and other documentation
-| 22.7 | 2 h | writing the requirements specification document and weekly report 1, registered to the course on labtool
+| 22.7 | 2 h | writing the project specification document and weekly report 1, registered to the course on labtool, research
 | total | 3 h
 
 ### Progress
-The project and its repository are created. Files of the documentation are created and the requirements specification document is done. Issues are allowed. Registration for the course on labtool is done.
+The project and its repository are created. Files of the documentation are created and the project specification document is done. Issues are allowed. Registration for the course on labtool is done.
