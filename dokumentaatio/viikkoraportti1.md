@@ -6,3 +6,6 @@
 | 17.7 | 1 h | repositorion luonti ja synkronointi paikallisen repositorion kanssa, README tiedoston ja muun dokumentaation luonti
 | 22.7 | x h | x
 | yht. | x
+
+### Edistys
+Projekti ja sen repositorio on luotu. Dokumentaation tiedostot on luotu ja määrittelydokumentti on valmis.
