@@ -1,7 +1,7 @@
 # Weekly report 1
 
 ### Hour Reporting
-| **day** | **time** | **what I did** 
+| **date** | **time** | **what I did** 
 | --------- | -------- | ------------- 
 | 17.7 | 1 h | deciding the subject and research into it, creating the repository and synchronizing it with the local repository, creating the README file and other documentation
 | 22.7 | 2 h | writing the project specification document and weekly report 1, registered to the course on labtool, research
