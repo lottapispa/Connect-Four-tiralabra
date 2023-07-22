@@ -22,4 +22,4 @@ Minimax algoritmi. Alpha-beta-karsinta.
 Tavoitteena on saavuttaa worst-case vaatimus $O(b^d)$ ja best-case vaatimus ${\displaystyle O\left({\sqrt {b^{d}}}\right)}$ alpha-beta-karsinnalla.
 
 ### Lähteet
-- "Alpha-beta-pruning". 2023, Wikipedia, katsottu 22 Heinäkuu 2023 (https://en.wikipedia.org/wiki/Alpha%E2%80%93beta_pruning)
+- "Alpha-beta-pruning" 2023, Wikipedia, wiki artikkeli, katsottu 22 Heinäkuu 2023, https://en.wikipedia.org/wiki/Alpha%E2%80%93beta_pruning
