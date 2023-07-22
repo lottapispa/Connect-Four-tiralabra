@@ -4,7 +4,7 @@
 | **päivä** | **aika** | **mitä tein** 
 | --------- | -------- | ------------- 
 | 17.7 | 1 h | repositorion luonti ja synkronointi paikallisen repositorion kanssa, README tiedoston ja muun dokumentaation luonti
-| 22.7 | x h | x
+| 22.7 | x h | määrittelydokumentin kirjoitus
 | yht. | x
 
 ### Edistys
