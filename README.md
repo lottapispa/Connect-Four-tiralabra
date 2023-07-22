@@ -1,7 +1,7 @@
 # Connect Four Game
 
 ### Documentation
-- [Project Specification (vaatimusmäärittely)](https://github.com/lottapispa/connect-four-tiralabra/blob/master/documentation/requirementsspecification.md)
+- [Project Specification (vaatimusmäärittely)](https://github.com/lottapispa/connect-four-tiralabra/blob/master/documentation/projectspecification.md)
 - (files below are still empty)
 - [Implementation document (toteutusdokumentti)](https://github.com/lottapispa/connect-four-tiralabra/blob/master/documentation/implementation.md)
 - [User guide](https://github.com/lottapispa/connect-four-tiralabra/blob/master/documentation/userguide.md)
