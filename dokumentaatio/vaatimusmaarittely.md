@@ -1,6 +1,9 @@
 # Määrittely
 
-### Kieli
+### Opinto-ohjelma
+Tietojenkäsittelytiede
+
+### Projektin kieli
 Python
 
 ### Algoritmit
