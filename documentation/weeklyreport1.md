@@ -2,7 +2,7 @@
 
 ### Hour Reporting
 | **date** | **time (h)** | **what I did** 
-| --------- | ----------- | ------------ 
+| --------- | ----------- | ---------- 
 | 17.7 | 1 | deciding the subject and research into it, creating the repository and synchronizing it with the local repository, creating the README file and other documentation
 | 22.7 | 2 | writing the project specification document and weekly report 1, registered to the course on labtool, research
 | 23.7 | 0.5 | improving the project specification document
