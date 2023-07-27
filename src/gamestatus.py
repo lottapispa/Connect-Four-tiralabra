@@ -11,19 +11,15 @@ class GameStatus:
     def insert_piece(self, row, column, color):
         """Inserts a piece to the rack."""
         if color != "blue" or color != "red":
-            # error message
-            pass
+            raise ValueError("Wrong input, color needs to be blue or red!")
         # if row is 1 the index is 0, and column 1's index is 0
         if not 1 <= row <= 7:
-            # error message
-            pass
+            raise ValueError("Wrong input, rows are 1-7!")
         if not 1 <= column <= 6:
-            # error message
-            pass
+            raise ValueError("Wrong input, columns are 1-6!")
         # if there is already a piece in the index, you can't change it
         if self.rack[row-1][column-1] != 0:
-            # error message
-            pass
+            raise ValueError("Wrong input, that spot already has a piece!")
         else:
             self.rack[row-1][column-1] = color
 
