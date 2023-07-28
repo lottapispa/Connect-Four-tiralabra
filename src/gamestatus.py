@@ -21,8 +21,7 @@ class GameStatus:
         if self.rack[row-1][column-1] != 0:
             raise ValueError("Wrong input, that spot already has a piece!")
         else:
-            #self.rack[row-1][column-1] = color
-            self.rack[row-1].insert(column-1, color)
+            self.rack[row-1][column-1] = color
 
     def game_over(self):
         """Stops game if rack is full or a player connects four."""
