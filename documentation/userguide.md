@@ -1,11 +1,14 @@
 # User guide
-### Installation
-#### Installing dependencies
+## Commands
+### Installing dependencies
 `poetry install`
-#### Initialization with command:
+### Initialization with command:
 `poetry run invoke build`
-### Starting game
-#### Starting with command:
+### Starting game with command:
 `poetry run invoke start`
-### Instructions for playing:
+### Testing
+`poetry run invoke test`
+### Test coverage report
+`poetry run invoke coverage-report`
+## Instructions for playing:
 -
