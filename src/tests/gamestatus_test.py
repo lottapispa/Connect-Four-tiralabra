@@ -75,7 +75,7 @@ class TestGameStatus(unittest.TestCase):
 
     def test_is_game_over_true(self):
         self.gamestatus = GameStatus()
-        # self.rack = self.gamestatus.rack
+        self.rack = self.gamestatus.rack
         self.over = self.gamestatus.over
         self.gamestatus.rack = [["yellow", "red", "yellow", "red", "yellow", "red", "yellow"], ["red", "yellow", "red", "yellow", "red", "yellow", "red"], ["red", "yellow", "red", "yellow", "red", "yellow", "red"], [
             "yellow", "red", "yellow", "red", "yellow", "red", "yellow"], ["yellow", "red", "yellow", "red", "yellow", "red", "yellow"], ["red", "yellow", "red", "yellow", "red", "yellow", "red"]]
