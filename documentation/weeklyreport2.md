@@ -9,7 +9,7 @@
 | total: | 9
 
 ### Progress
-The code  and testing has been started. No functionality yet. Docstring is used. Pylint has been added.
+The code and testing of class gamestatus has been started. Other classes have been made but their code is unfinished. No real functionality yet. Docstring has been used. Pylint has been added, although perfecting the code is not a priority yet.
 
 ### Questions
 I'm wondering how to decide which player gets to make the first move, or should the AI always go second?
