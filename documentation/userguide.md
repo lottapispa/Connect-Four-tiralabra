@@ -10,5 +10,7 @@
 `poetry run invoke test`
 #### Test coverage report
 `poetry run invoke coverage-report`
+#### Pylint code review
+`poetry run invoke lint`
 ### Instructions for playing:
 -
