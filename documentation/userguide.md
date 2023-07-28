@@ -2,9 +2,9 @@
 ## Commands
 ### Installing dependencies
 `poetry install`
-### Initialization with command:
+### Initialization:
 `poetry run invoke build`
-### Starting game with command:
+### Starting game:
 `poetry run invoke start`
 ### Testing
 `poetry run invoke test`
