@@ -16,7 +16,7 @@ class Minimax:
         self.depth = 6
 
     def algorithm(self, gamestatus, depth, a, b, maximizing_player):
-        if depth == 0 or gamestatus.game_over() == True:
+        if depth == 0 or gamestatus.game_over() is True:
             return  # heuristinen arvo
 
     def main(self):
