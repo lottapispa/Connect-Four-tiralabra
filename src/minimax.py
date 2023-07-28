@@ -15,13 +15,15 @@ class Minimax:
         self.commands = COMMANDS
         self.depth = 6
 
-    def algorithm(self, gamestatus, depth, a, b, maximizing_player):
-        if depth == 0 or gamestatus.game_over() is True:
+    def minimax(self, gamestatus, depth, a, b, maximizing_player: bool):
+        if depth == 0 or gamestatus.is_game_over() is True:
             return  # heuristinen arvo
+        
+    def choose_move(self):
+        pass
 
     def main(self):
-        self.algorithm(self.gamestatus, self.depth, self.maximizer)
-
+        self.minimax()
 
 # for testing
 if __name__ == "__main__":

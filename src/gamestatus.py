@@ -9,6 +9,7 @@ class GameStatus:
         # The rack is an empty matrix. Each list within the main list is a row.
         self.rack = [[0, 0, 0, 0, 0, 0, 0] for i in range(self.rows)]
         self.over = False
+        self.previous_move = None
 
     def insert_piece(self, row: int, column: int, color: str):
         """Inserts a piece to the rack."""
@@ -23,8 +24,9 @@ class GameStatus:
         if self.rack[row-1][column-1] != 0:
             raise ValueError("Wrong input, that spot already has a piece!")
         self.rack[row-1][column-1] = color
+        self.previous_move = [row, column, color]
 
-    def game_over(self):
+    def is_game_over(self):
         """If rack is full or a player connects four, variable over is True.
         Returns: boolean self.over."""
         zeros = any(0 in i for i in self.rack)
@@ -35,7 +37,6 @@ class GameStatus:
             self.over = True
         return self.over
 
-
 # for testing
 if __name__ == "__main__":
     x = GameStatus()
@@ -43,4 +44,4 @@ if __name__ == "__main__":
     x.rack = [["yellow", "red", "yellow", "red", "yellow", "red", "yellow"], ["red", "yellow", "red", "yellow", "red", "yellow", "red"], ["red", "yellow", "red", "yellow", "red", "yellow", "red"], [
         "yellow", "red", "yellow", "red", "yellow", "red", "yellow"], ["yellow", "red", "yellow", "red", "yellow", "red", "yellow"], ["red", "yellow", "red", "yellow", "red", "yellow", "red"]]
     print(x.rack)
-    x.game_over()
+    x.is_game_over()
