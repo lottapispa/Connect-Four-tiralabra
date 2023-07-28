@@ -2,8 +2,10 @@ import keyboard
 
 COMMANDS = {"0": "start the game"}
 
+
 class Commands():
     """Class that handles key commands."""
+
     def __init__(self):
         pass
 

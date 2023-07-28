@@ -1,6 +1,7 @@
 
 class GameStatus:
     """Class that creates the gamerack and keeps track of the score."""
+
     def __init__(self):
         """Class constructor, creates variables."""
         self.rows = 6
@@ -34,10 +35,12 @@ class GameStatus:
             self.over = True
         return self.over
 
+
 # for testing
 if __name__ == "__main__":
     x = GameStatus()
     print(x.rack)
-    x.rack = [["yellow", "red", "yellow", "red", "yellow", "red", "yellow"], ["red", "yellow", "red", "yellow", "red", "yellow", "red"], ["red", "yellow", "red", "yellow", "red", "yellow", "red"], ["yellow", "red", "yellow", "red", "yellow", "red", "yellow"], ["yellow", "red", "yellow", "red", "yellow", "red", "yellow"], ["red", "yellow", "red", "yellow", "red", "yellow", "red"]]
+    x.rack = [["yellow", "red", "yellow", "red", "yellow", "red", "yellow"], ["red", "yellow", "red", "yellow", "red", "yellow", "red"], ["red", "yellow", "red", "yellow", "red", "yellow", "red"], [
+        "yellow", "red", "yellow", "red", "yellow", "red", "yellow"], ["yellow", "red", "yellow", "red", "yellow", "red", "yellow"], ["red", "yellow", "red", "yellow", "red", "yellow", "red"]]
     print(x.rack)
     x.game_over()
