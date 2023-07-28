@@ -4,7 +4,7 @@
 `poetry install`
 #### Initialization:
 `poetry run invoke build`
-#### Starting game:
+#### Starting game: (doesn't work yet, as code is not functional)
 `poetry run invoke start`
 #### Testing
 `poetry run invoke test`
