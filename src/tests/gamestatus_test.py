@@ -23,30 +23,42 @@ class TestGameStatus(unittest.TestCase):
         """Tests if function raises value error for wrong input row and that the rack doesn't change."""
         self.gamestatus = GameStatus()
         self.rack = self.gamestatus.rack
-        self.assertRaises(ValueError, self.gamestatus.insert_piece, 7, 3, "blue")
+        self.assertRaises(ValueError, self.gamestatus.insert_piece, 7, 3, "red")
         self.assertEqual(self.rack, [[0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0]])
 
     def test_insert_piece_wrong_input_column(self):
         """Tests if function raises value error for wrong input column and that the rack doesn't change."""
         self.gamestatus = GameStatus()
         self.rack = self.gamestatus.rack
-        self.assertRaises(ValueError, self.gamestatus.insert_piece, 5, 0, "blue")
+        self.assertRaises(ValueError, self.gamestatus.insert_piece, 5, 0, "red")
         self.assertEqual(self.rack, [[0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0]])
 
     def test_insert_piece(self):
         """Tests if the rack changes correctly."""
         self.gamestatus = GameStatus()
         self.rack = self.gamestatus.rack
-        self.gamestatus.insert_piece(2, 3, "blue")
-        self.assertEqual(self.rack, [[0, 0, 0, 0, 0, 0, 0], [0, 0, "blue", 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0]])
+        self.gamestatus.insert_piece(2, 3, "red")
+        self.assertEqual(self.rack, [[0, 0, 0, 0, 0, 0, 0], [0, 0, "red", 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0]])
 
     def test_insert_piece_wrong_input_spot_taken(self):
         """Tests if function raises value error for wrong input (spot already taken) and that the rack doesn't change."""
         self.gamestatus = GameStatus()
         self.rack = self.gamestatus.rack
-        self.gamestatus.insert_piece(1, 2, "blue")
-        self.assertRaises(ValueError, self.gamestatus.insert_piece, 1, 2, "red")
-        self.assertEqual(self.rack, [[0, "blue", 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0]])
+        self.gamestatus.insert_piece(1, 2, "red")
+        self.assertRaises(ValueError, self.gamestatus.insert_piece, 1, 2, "yellow")
+        self.assertEqual(self.rack, [[0, "red", 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0]])
 
-    def game_over(self):
-        pass
+    def test_game_over_false(self):
+        self.gamestatus = GameStatus()
+        self.rack = self.gamestatus.rack
+        self.over = self.gamestatus.over
+        self.gamestatus.game_over()
+        self.assertFalse(self.over)
+
+    def test_game_over_true(self):
+        self.gamestatus = GameStatus()
+        #self.rack = self.gamestatus.rack
+        self.over = self.gamestatus.over
+        self.gamestatus.rack = [["yellow", "red", "yellow", "red", "yellow", "red", "yellow"], ["red", "yellow", "red", "yellow", "red", "yellow", "red"], ["red", "yellow", "red", "yellow", "red", "yellow", "red"], ["yellow", "red", "yellow", "red", "yellow", "red", "yellow"], ["yellow", "red", "yellow", "red", "yellow", "red", "yellow"], ["red", "yellow", "red", "yellow", "red", "yellow", "red"]]
+        self.gamestatus.game_over()
+        self.assertTrue(self.over)

@@ -7,11 +7,12 @@ class GameStatus:
         self.columns = 7
         # The rack is an empty matrix. Each list within the main list is a row.
         self.rack = [[0, 0, 0, 0, 0, 0, 0] for i in range(self.rows)]
+        self.over = False
 
     def insert_piece(self, row: int, column: int, color: str):
         """Inserts a piece to the rack."""
-        if color != "blue" and color != "red":
-            raise ValueError("Wrong input, color needs to be blue or red!")
+        if color != "red" and color != "yellow":
+            raise ValueError("Wrong input, color needs to be red or yellow!")
         if not 1 <= row <= 6:
             raise ValueError("Wrong input, rows are 1-7!")
         if not 1 <= column <= 7:
@@ -24,17 +25,19 @@ class GameStatus:
             self.rack[row-1][column-1] = color
 
     def game_over(self):
-        """Stops game if rack is full or a player connects four."""
+        """If rack is full or a player connects four, variable over is True. Returns: boolean self.over."""
         zeros = any(0 in i for i in self.rack)
-        # for testing
+        # print for testing
         if zeros is True:
-            print("not full")
+            self.over = False
         else:
-            print("full")
+            self.over = True
+        return self.over
 
 # for testing
 if __name__ == "__main__":
     x = GameStatus()
     print(x.rack)
-    x.insert_piece(1, 2, "blue")
+    x.rack = [["yellow", "red", "yellow", "red", "yellow", "red", "yellow"], ["red", "yellow", "red", "yellow", "red", "yellow", "red"], ["red", "yellow", "red", "yellow", "red", "yellow", "red"], ["yellow", "red", "yellow", "red", "yellow", "red", "yellow"], ["yellow", "red", "yellow", "red", "yellow", "red", "yellow"], ["red", "yellow", "red", "yellow", "red", "yellow", "red"]]
     print(x.rack)
+    x.game_over()
