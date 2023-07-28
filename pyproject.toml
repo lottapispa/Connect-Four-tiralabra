@@ -9,6 +9,7 @@ packages = [{include = "connect_four_tiralabra"}]
 [tool.poetry.dependencies]
 python = "^3.8"
 cowsay = "^5.0"
+invoke = "^2.2.0"
 
 
 [tool.poetry.group.dev.dependencies]
