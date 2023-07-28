@@ -2,7 +2,7 @@
 
 ### Documentation
 - [Project Specification (vaatimusmäärittely)](https://github.com/lottapispa/connect-four-tiralabra/blob/master/documentation/projectspecification.md)
-- (files below are still empty)
+- (implementation and testing documents are still empty)
 - [Implementation document (toteutusdokumentti)](https://github.com/lottapispa/connect-four-tiralabra/blob/master/documentation/implementation.md)
 - [User guide](https://github.com/lottapispa/connect-four-tiralabra/blob/master/documentation/userguide.md)
 - [Testing document](https://github.com/lottapispa/connect-four-tiralabra/blob/master/documentation/testing.md)
