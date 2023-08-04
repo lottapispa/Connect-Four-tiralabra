@@ -8,22 +8,25 @@ class GameLoop:
         """Class constructor, creates variables."""
         self.gamestatus = GameStatus()
         self.minimax = Minimax()
+        self.who_starts = None
+        self.players_color = None
+        self.ai_color = None
         self.turn = None # true for player's turn, false for ai's turn
 
     def main(self):
         """Loop takes inputs from the user, starts the game and switches turns."""
-        who_starts = input("Do you want the first move? Type 'yes' or 'no'. ")
-        if who_starts == "yes":
+        self.who_starts = input("Do you want the first move? Type 'yes' or 'no'. ")
+        if self.who_starts == "yes":
             self.turn = True
-        elif who_starts == "no":
+        elif self.who_starts == "no":
             self.turn = False
         else:
             raise ValueError("Wrong input, answer needs to be yes or no!")
-        players_color = input("Choose color: 'red' or 'yellow'. ")
-        if players_color == "red":
-            ai_color = "yellow"
-        elif players_color == "yellow":
-            ai_color = "red"
+        self.players_color = input("Choose color: 'red' or 'yellow'. ")
+        if self.players_color == "red":
+            self.ai_color = "yellow"
+        elif self.players_color == "yellow":
+            self.ai_color = "red"
         else:
             raise ValueError("Wrong input, color needs to be red or yellow!")
         while self.gamestatus.is_game_over() is False:
@@ -31,7 +34,7 @@ class GameLoop:
                 print("Player make your move: ")
                 row = int(input("First choose row (1-6): "))
                 column = int(input("and then choose column (1-7): "))
-                self.gamestatus.insert_piece(row, column, players_color)
+                self.gamestatus.insert_piece(row, column, self.players_color)
                 status = self.gamestatus.is_game_over()
                 if self.gamestatus.tie == True:
                     print("It's a tie!")
@@ -43,7 +46,7 @@ class GameLoop:
             if self.turn == False:
                 # call minimax
                 row, column = None
-                self.gamestatus.insert_piece(row, column, ai_color)
+                self.gamestatus.insert_piece(row, column, self.ai_color)
                 status = self.gamestatus.is_game_over()
                 if self.gamestatus.tie == True:
                     print("It's a tie!")

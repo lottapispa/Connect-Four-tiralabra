@@ -5,22 +5,38 @@ class TestGameLoop(unittest.TestCase):
     """Tests class gameloop."""
 
     def setUp(self):
-        self.turn = GameLoop().turn
+        pass
 
-    def test_main_value_error(self):
+    def test_main_yes(self):
+        self.game = GameLoop()
+        self.game.who_starts = "yes"
+        self.assertEqual(self.game.who_starts, "yes")
+
+    def test_main_no(self):
+        self.game = GameLoop()
+        self.game.who_starts = "no"
+        self.assertEqual(self.game.who_starts, "no")
+
+    def test_main_who_value_error(self):
         """Tests if function raises value error for wrong input word."""
-        self.gameloop = GameLoop()
-        who_starts = self.who_starts
-        who_starts = "n"
-        self.assertEqual(who_starts, "n")
-        self.assertRaises(ValueError, who_starts = "n")
+        self.game = GameLoop()
+        self.game.who_starts = "n"
+        self.assertRaises(ValueError, self.game.main())
 
-    def test_main_value_error_color(self):
+    def test_main_red(self):
+        self.game = GameLoop()
+        self.game.players_color = "red"
+        self.assertEqual(self.game.players_color, "red")
+
+    def test_main_red(self):
+        self.game = GameLoop()
+        self.game.players_color = "yellow"
+        self.assertEqual(self.game.players_color, "yellow")
+
+    def test_main_color_value_error(self):
         """Tests if function raises value error for wrong input color."""
-        self.gameloop = GameLoop()
-        who_starts = self.who_starts
-        who_starts = "r"
-        self.assertEqual(who_starts, "r")
-        self.assertRaises(ValueError, players_color = "r")
+        self.game = GameLoop()
+        self.game.players_color = "5"
+        self.assertRaises(ValueError, self.game.players_color)
 
     
