@@ -1,7 +1,7 @@
 
 class GameStatus:
-    """Class that creates the gamerack and keeps track of the score."""
-
+    """Class that creates the gamerack and keeps track of the status of the game."""
+    
     def __init__(self):
         """Class constructor, creates variables."""
         self.rows = 6
@@ -9,6 +9,7 @@ class GameStatus:
         # The rack is an empty matrix. Each list within the main list is a row.
         self.rack = [[0, 0, 0, 0, 0, 0, 0] for i in range(self.rows)]
         self.over = False
+        self.tie = False
         self.previous_move = None
 
     def insert_piece(self, row: int, column: int, color: str):
@@ -29,7 +30,10 @@ class GameStatus:
     def is_game_over(self):
         """If rack is full or a player connects four, variable over is True.
         Returns: boolean self.over."""
-        zeros = any(0 in i for i in self.rack)
+        zeros = 0 # any(0 in i for i in self.rack)
+        for row in self.rack:
+            z = row.count(0)
+            zeros += z
         horizontal = self.check_for_win_hor()
         vertical = self.check_for_win_ver()
         diagonal = self.check_for_win_dia()
@@ -37,13 +41,14 @@ class GameStatus:
             self.over = True
             return self.over
         # if there's no zeros or connect fours on the rack, the rack is full and it's a tie
-        if self.over is False and zeros is False:
+        if self.over is False and zeros == 0:
             self.over = True
+            self.tie = True
             return self.over
     
     def check_for_win_hor(self):
         """Checks for a connect four horizontally. Returns: True for there is a win, False for no win."""
-        counter = 0
+        counter = 1
         previous = None
         for row in self.rack:
             for i in row:
@@ -51,6 +56,8 @@ class GameStatus:
                     continue
                 if previous == i:
                     counter += 1
+                else:
+                    counter = 1
                 if counter >= 4:
                     return True
                 previous = i
@@ -58,23 +65,37 @@ class GameStatus:
         
     def check_for_win_ver(self):
         """Checks for a connect four vertically. Returns: True for there is a win, False for no win."""
-        counter = 0
+        counter = 1
         previous = None
-        for i in range(1, self.columns):
+        for column in range(1, self.columns):
             for row in self.rack:
-                if row[i] == 0:
+                if row[column] == 0:
                     continue
-                if previous == row[i]:
+                if previous == row[column]:
                     counter += 1
+                else:
+                    counter = 1
                 if counter >= 4:
                     return True
-                previous = row[i]
+                previous = row[column]
         return False
     
     def check_for_win_dia(self):
         """Checks for a connect four diagonally. Returns: True for there is a win, False for no win."""
-        counter = 0
-        previous = None
+        counter = 1
+        for column in range(self.columns-3):
+            for row in range(self.rows-3):
+                if self.rack[row][column] == "red" and self.rack[row+1][column+1] == "red" and self.rack[row+2][column+2] == "red" and self.rack[row+3][column+3] == "red":
+                    return True
+                elif self.rack[row][column] == "yellow" and self.rack[row+1][column+1] == "yellow" and self.rack[row+2][column+2] == "yellow" and self.rack[row+3][column+3] == "yellow":
+                    return True
+        for column in range(self.columns-3):
+            for row in range(3, self.rows):
+                if self.rack[row][column] == "red" and self.rack[row-1][column+1] == "red" and self.rack[row-2][column+2] == "red" and self.rack[row-3][column+3] == "red":
+                    return True
+                elif self.rack[row][column] == "yellow" and self.rack[row-1][column+1] == "yellow" and self.rack[row-2][column+2] == "yellow" and self.rack[row-3][column+3] == "yellow":
+                    return True
+        return False
 
 # for testing
 if __name__ == "__main__":

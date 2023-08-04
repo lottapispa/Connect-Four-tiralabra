@@ -3,6 +3,7 @@ from minimax import Minimax
 
 class GameLoop:
     """Class that creates the main loop of the game."""
+
     def __init__(self):
         """Class constructor, creates variables."""
         self.gamestatus = GameStatus()
@@ -31,11 +32,25 @@ class GameLoop:
                 row = int(input("First choose row (1-6): "))
                 column = int(input("and then choose column (1-7): "))
                 self.gamestatus.insert_piece(row, column, players_color)
+                status = self.gamestatus.is_game_over()
+                if self.gamestatus.tie == True:
+                    print("It's a tie!")
+                    break
+                elif status == True:
+                    print("You win!")
+                    break
                 self.turn = False
             if self.turn == False:
                 # call minimax
                 row, column = None
                 self.gamestatus.insert_piece(row, column, ai_color)
+                status = self.gamestatus.is_game_over()
+                if self.gamestatus.tie == True:
+                    print("It's a tie!")
+                    break
+                elif status == True:
+                    print("You lose!")
+                    break
                 self.turn = True
             else:
                 raise ValueError("Variable self.turn doesn't work right!")
