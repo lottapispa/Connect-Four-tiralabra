@@ -30,18 +30,57 @@ class GameStatus:
         """If rack is full or a player connects four, variable over is True.
         Returns: boolean self.over."""
         zeros = any(0 in i for i in self.rack)
-        # print for testing
-        if zeros is True:
-            self.over = False
-        else:
+        horizontal = self.check_for_win_hor()
+        vertical = self.check_for_win_ver()
+        diagonal = self.check_for_win_dia()
+        if True in [horizontal, vertical, diagonal]:
             self.over = True
-        return self.over
+            return self.over
+        # if there's no zeros or connect fours on the rack, the rack is full and it's a tie
+        if self.over is False and zeros is False:
+            self.over = True
+            return self.over
+    
+    def check_for_win_hor(self):
+        """Checks for a connect four horizontally. Returns: True for there is a win, False for no win."""
+        counter = 0
+        previous = None
+        for row in self.rack:
+            for i in row:
+                if i == 0:
+                    continue
+                if previous == i:
+                    counter += 1
+                if counter >= 4:
+                    return True
+                previous = i
+        return False
+        
+    def check_for_win_ver(self):
+        """Checks for a connect four vertically. Returns: True for there is a win, False for no win."""
+        counter = 0
+        previous = None
+        for i in range(1, self.columns):
+            for row in self.rack:
+                if row[i] == 0:
+                    continue
+                if previous == row[i]:
+                    counter += 1
+                if counter >= 4:
+                    return True
+                previous = row[i]
+        return False
+    
+    def check_for_win_dia(self):
+        """Checks for a connect four diagonally. Returns: True for there is a win, False for no win."""
+        counter = 0
+        previous = None
 
 # for testing
 if __name__ == "__main__":
-    x = GameStatus()
-    print(x.rack)
-    x.rack = [["yellow", "red", "yellow", "red", "yellow", "red", "yellow"], ["red", "yellow", "red", "yellow", "red", "yellow", "red"], ["red", "yellow", "red", "yellow", "red", "yellow", "red"], [
+    game = GameStatus()
+    print(game.rack)
+    game.rack = [["yellow", "red", "yellow", "red", "yellow", "red", "yellow"], ["red", "yellow", "red", "yellow", "red", "yellow", "red"], ["red", "yellow", "red", "yellow", "red", "yellow", "red"], [
         "yellow", "red", "yellow", "red", "yellow", "red", "yellow"], ["yellow", "red", "yellow", "red", "yellow", "red", "yellow"], ["red", "yellow", "red", "yellow", "red", "yellow", "red"]]
-    print(x.rack)
-    x.is_game_over()
+    print(game.rack)
+    game.is_game_over()
