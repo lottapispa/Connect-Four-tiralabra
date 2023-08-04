@@ -3,7 +3,7 @@
 ### Hour Reporting
 | **date** | **time (h)** | **what I did** 
 | --------- | ----------- | --------- 
-| 4.8 | 6 | Started coding and testing class gameloop, added checks for wins and tests for them in class gamestatus, started minimax, making testing document
+| 4.8 | 6.25 | Started coding and testing class gameloop, added checks for wins and tests for them in class gamestatus, started minimax, making testing document
 | x | x | 
 | total: | x
 
