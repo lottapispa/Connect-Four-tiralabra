@@ -3,7 +3,7 @@
 ### Hour Reporting
 | **date** | **time (h)** | **what I did** 
 | --------- | ----------- | --------- 
-| 4.8 | x | 
+| 4.8 | x | Started coding and testing class gameloop, added checks for wins and tests for them in class gamestatus
 | total: | x
 
 ### Progress
