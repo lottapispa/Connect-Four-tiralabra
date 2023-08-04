@@ -1,7 +1,7 @@
 
 class GameStatus:
     """Class that creates the gamerack and keeps track of the status of the game."""
-    
+
     def __init__(self):
         """Class constructor, creates variables."""
         self.rows = 6
