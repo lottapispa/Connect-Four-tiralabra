@@ -110,10 +110,8 @@ class GameStatus:
                 if place != 0:
                     #spot is already taken
                     pass
-                if row == 0:
 
 # for testing
 if __name__ == "__main__":
     game = GameStatus()
-    game.rack, [[0, 0, "red", "yellow", "yellow", 0, 0], [0, 0, "red", "red", 0, 0, 0], [0, 0, "yellow", 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0]]
-    pass
+    #game.rack, [[0, 0, "red", "yellow", "yellow", 0, 0], [0, 0, "red", "red", 0, 0, 0], [0, 0, "yellow", 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0]]
