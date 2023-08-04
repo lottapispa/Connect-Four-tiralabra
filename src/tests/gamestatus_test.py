@@ -85,11 +85,9 @@ class TestGameStatus(unittest.TestCase):
 
     def test_check_for_win_hor(self):
         self.gamestatus = GameStatus()
-        self.rack = self.gamestatus.rack
-        self.over = self.gamestatus.over
-        self.rack, [[0, "red", "red", "red", "red", 0, 0], [0, "yellow", 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0]]
+        self.gamestatus.rack, [[0, "red", "red", "red", "red", 0, 0], [0, "yellow", 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0]]
         self.gamestatus.is_game_over()
-        self.assertTrue(self.over)
+        self.assertEqual(self.gamestatus.over, True)
 
     def test_check_for_win_ver(self):
         self.gamestatus = GameStatus()

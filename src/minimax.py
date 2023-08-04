@@ -1,26 +1,35 @@
 from gamestatus import GameStatus
-from maximizer import Maximizer
-from minimizer import Minimizer
+import math
 
 class Minimax:
     """Class that creates the minimax algorithm."""
     def __init__(self):
         """Class constructor, creates variables."""
         self.gamestatus = GameStatus()
-        self.maximizer = Maximizer()
-        self.minimizer = Minimizer()
-        self.depth = 6
-        self.turn = None #who's turn is it, player 1 or 2
+        # depth = 6 at start
 
-    def minimax(self, gamestatus, depth, a, b, maximizing_player: bool):
+    def minimax(self, gamestatus, depth, alpha, beta, maximizing_player: bool):
         if depth == 0 or gamestatus.is_game_over() is True:
             return  # heuristinen arvo
-        
-    def choose_move(self):
-        pass
+        if maximizing_player:
+            value = -math.inf
+            for move in gamestatus.possible_moves: # list empty right now
+                value = max(value, self.minimax(move, depth - 1, alpha, beta, False))
+                alpha = max(alpha, value)
+                if value >= beta:
+                    break
+            return value
+        else:
+            value = math.inf
+            for move in gamestatus.possible_moves: # list empty right now
+                value = min(value, self.minimax(move, depth - 1, alpha, beta, True))
+                beta = min(beta, value)
+                if value <= alpha:
+                    break
+            return value
 
     def main(self):
-        self.minimax()
+        self.minimax(self.gamestatus, 6)
 
 # for testing
 if __name__ == "__main__":
