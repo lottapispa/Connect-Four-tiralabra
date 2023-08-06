@@ -31,7 +31,9 @@ class GameLoop:
             self.ai_color = "red"
         else:
             raise ValueError("Wrong input, color needs to be red or yellow!")
-
+        #loop()
+    
+    def loop(self):
         while self.gamestatus.is_game_over() is False:
             if self.turn is True:
                 print("Player make your move: ")

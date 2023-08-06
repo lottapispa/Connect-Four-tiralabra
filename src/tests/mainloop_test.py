@@ -1,4 +1,5 @@
 import unittest
+from unittest import mock
 from mainloop import GameLoop
 from gamestatus import GameStatus
 from minimax import Minimax
@@ -8,7 +9,7 @@ class TestGameLoop(unittest.TestCase):
     """Tests class gameloop."""
 
     def setUp(self):
-        pass
+        self.game = GameLoop()
 
     def test_init(self):
         self.game = GameLoop()
@@ -23,23 +24,22 @@ class TestGameLoop(unittest.TestCase):
         self.assertEqual(self.game.ai_color, None)
         self.assertEqual(self.game.turn, None)
 
-    def main_yes(self):
+    @mock.patch("mainloop.input", create=True)
+    def test_main(self, mocked_input):
         """Tests if variable self.turn is true, when self.who_starts is yes."""
-        self.game = GameLoop()
-        self.game.who_starts = "yes"
+        mocked_input.side_effect = ["yes"]
+        self.game.main()
         self.assertTrue(self.game.turn)
-
-    def main_no(self):
-        """Tests if variable self.turn is false, when self.who_starts is no."""
-        self.game = GameLoop()
-        self.game.who_starts = "no"
+        mocked_input.side_effect = ["no"]
+        self.game.main()
         self.assertFalse(self.game.turn)
+        mocked_input.side_effect = ["yes", "no"]
+        self.game.main()
+        self.assertRaises(ValueError)
 
     def main_who_value_error(self):
         """Tests if function raises value error for wrong input word."""
-        self.game = GameLoop()
-        self.game.who_starts = "n"
-        self.assertRaises(ValueError, self.game.main())
+        pass
 
     def main_red(self):
         """Tests if variable self.ai_color is yellow, when self.players_color is red."""
@@ -64,3 +64,4 @@ class TestGameLoop(unittest.TestCase):
         self.game = GameLoop()
         self.game.gamestatus.is_game_over = False
         self.game.turn = True
+
