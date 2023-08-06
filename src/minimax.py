@@ -3,12 +3,14 @@ import math
 
 class Minimax:
     """Class that creates the minimax algorithm."""
+
     def __init__(self):
         """Class constructor, creates variables."""
         self.gamestatus = GameStatus()
         # depth = 6 at start
 
     def minimax(self, gamestatus, depth, alpha, beta, maximizing_player: bool):
+        """Minimax algorithm."""
         if depth == 0 or gamestatus.is_game_over() is True:
             return  # heuristinen arvo
         if maximizing_player:
