@@ -4,8 +4,8 @@
 | **date** | **time (h)** | **what I did** 
 | --------- | ----------- | --------- 
 | 4.8 | 6.25 | Started coding and testing class gameloop, added checks for wins and tests for them in class gamestatus, started minimax, making testing document
-| 6.8 | 2.75 | Testing, improved code quality with pylint suggestions, made the list of next possible moves and the test for it, making the testing document
-| total: | 9
+| 6.8 | 4 | Testing, improved code quality with pylint suggestions, made the list of next possible moves and the test for it, making the testing document, research into using mock for testing user inputs that didn't really get anywhere
+| total: | 10.25
 
 ### Progress
 Main gameloop and it's test class has been done. Have started minimax algorithm. Test class to class gamestatus is up to date. Testing document is made. Code quality tool pylint is in use.
