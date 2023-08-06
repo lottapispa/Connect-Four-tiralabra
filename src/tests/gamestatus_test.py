@@ -135,3 +135,9 @@ class TestGameStatus(unittest.TestCase):
         self.gamestatus.rack = [[0, 0, 0, 0, 0, 0, 0], [0, 0, "red", 0, 0, 0, 0], [0, 0, 0, "red", 0, 0, 0], [
             0, 0, 0, 0, "yellow", 0, 0], [0, 0, 0, 0, 0, "red", 0], [0, 0, "yellow", 0, 0, 0, 0]]
         self.assertFalse(self.gamestatus.check_for_win_dia())
+
+    def test_next_move(self):
+        self.gamestatus = GameStatus()
+        self.gamestatus.rack = [[0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0], [0, 0, "yellow", 0, 0, 0, 0], [0, 0, "red", 0, 0, 0, 0], [0, 0, "red", "yellow", 0, 0, 0]]
+        self.assertEqual(self.gamestatus.next_move(), [[5,0],[5,1],[2,2],[4,3],[5,4],[5,5],[5,6]])
+        self.assertEqual(self.gamestatus.possible_moves, [[5,0],[5,1],[2,2],[4,3],[5,4],[5,5],[5,6]])

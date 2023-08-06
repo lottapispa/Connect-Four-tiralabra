@@ -16,7 +16,7 @@ class Minimax:
             return  # heuristinen arvo
         if maximizing_player:
             value = -math.inf
-            for move in gamestatus.possible_moves:  # list empty right now
+            for move in gamestatus.next_move():
                 value = max(value, self.minimax(
                     move, depth - 1, alpha, beta, False))
                 alpha = max(alpha, value)
@@ -25,7 +25,7 @@ class Minimax:
             return value
         else:
             value = math.inf
-            for move in gamestatus.possible_moves:  # list empty right now
+            for move in gamestatus.next_move():  # list empty right now
                 value = min(value, self.minimax(
                     move, depth - 1, alpha, beta, True))
                 beta = min(beta, value)

@@ -6,7 +6,7 @@ class GameStatus:
         """Class constructor, creates variables."""
         self.rows = 6
         self.columns = 7
-        # The rack is an empty matrix. Each list within the main list is a row. First row is the bottom row.
+        # The rack is an empty matrix. Each list within the main list is a row. Last row is the bottom row.
         self.rack = [[0, 0, 0, 0, 0, 0, 0] for i in range(self.rows)]
         self.over = False
         self.tie = False
@@ -104,15 +104,25 @@ class GameStatus:
         return False
 
     def next_move(self):
-        """This function finds all possible locations a player can put their piece in during their turn."""
-        self.possible_moves = []
-        for row in self.rack:
-            for place in row:
-                if place != 0:
-                    # spot is already taken
-                    pass
+        """This function finds all possible locations a player can put their piece in during their turn.
+        It works by counting the last 0 (empty slot) of each column, except for bottom row."""
+        # this list will contain indexes of possible locations like this [[0,0], [0,1]]. Since indexes start from 0, rows are 0-5 and columns are 0-6.
+        #self.possible_moves = []
+        last_zero = None
+        row_count = 0
+        for column in range(0, self.columns):
+            for row in self.rack:
+                if row[column] == 0:
+                    last_zero = [row_count, column]
+                row_count += 1
+            row_count = 0
+            self.possible_moves.append(last_zero)
+        return self.possible_moves
 
 # for testing
 if __name__ == "__main__":
     game = GameStatus()
-    # game.rack, [[0, 0, "red", "yellow", "yellow", 0, 0], [0, 0, "red", "red", 0, 0, 0], [0, 0, "yellow", 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0]]
+    game.rack = [[0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0], [0, 0, "yellow", 0, 0, 0, 0], [0, 0, "red", 0, 0, 0, 0], [0, 0, "red", "yellow", 0, 0, 0]]
+    print(*game.rack, sep='\n')
+    # correct amswer [[5,0],[5,1],[2,2],[4,3],[5,4],[5,5],[5,6]]
+    print(game.next_move())
