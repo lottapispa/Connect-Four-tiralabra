@@ -25,7 +25,7 @@ class TestGameLoop(unittest.TestCase):
         self.assertEqual(self.game.turn, None)
 
     @mock.patch("mainloop.input", create=True)
-    def test_main(self, mocked_input):
+    def main(self, mocked_input):
         """Tests if variable self.turn is true, when self.who_starts is yes."""
         mocked_input.side_effect = ["yes"]
         self.game.main()
