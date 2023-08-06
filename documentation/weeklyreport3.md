@@ -14,4 +14,4 @@ Main gameloop and it's test class has been done. Have started minimax algorithm.
 Figuring out how to check the rack for wins diagonally was really hard. It was also difficult to find possible next moves, so it took a long time. I don't really understand how to do unit testing for user inputs.
 
 ### Questions
-Should I add instructions to the game itself before it starts or is it enough to have them in the github repository user guide?
+Should I add instructions to the game itself before it starts or is it enough to have them in the github repository user guide? Is class GameStatus getting too big, should I move some functions to a new class?
