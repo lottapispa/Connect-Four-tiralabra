@@ -8,7 +8,7 @@
 | total: | 8.25
 
 ### Progress
-Main gameloop and it's test class has been done. Have started minimax algorithm. Test class to class gamestatus is up to date. Testing document is made.
+Main gameloop and it's test class has been done. Have started minimax algorithm. Test class to class gamestatus is up to date. Testing document is made. Code quality tool pylint is in use.
 
 ### Problems
 Figuring out how to check the rack for wins diagonally was really hard. Also hard to find possible next moves, since you have to drop pieces to the bottom or on top of other pieces. I don't really understand how to do unit testing for user inputs.
