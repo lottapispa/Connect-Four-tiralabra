@@ -4,7 +4,7 @@
 | **date** | **time (h)** | **what I did** 
 | --------- | ----------- | --------- 
 | 4.8 | 6.25 | Started coding and testing class gameloop, added checks for wins and tests for them in class gamestatus, started minimax, making testing document
-| 6.8 | 2.75 | Testing, making testing document, improved code quality with pylint suggestions, made the list of next possible moves and the test for it.
+| 6.8 | 2.75 | Testing, improved code quality with pylint suggestions, made the list of next possible moves and the test for it, making the testing document
 | total: | 9
 
 ### Progress
