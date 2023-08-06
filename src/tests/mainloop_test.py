@@ -3,25 +3,25 @@ from mainloop import GameLoop
 from gamestatus import GameStatus
 from minimax import Minimax
 
+
 class TestGameLoop(unittest.TestCase):
     """Tests class gameloop."""
 
     def setUp(self):
         pass
 
-    def test_(self):
+    def test_init(self):
         self.game = GameLoop()
         self.game.gamestatus = GameStatus()
         self.game.minimax = Minimax()
         self.game.who_starts = None
         self.game.players_color = None
         self.game.ai_color = None
-        self.game.turn = None 
+        self.game.turn = None
         self.assertEqual(self.game.who_starts, None)
         self.assertEqual(self.game.players_color, None)
         self.assertEqual(self.game.ai_color, None)
         self.assertEqual(self.game.turn, None)
-        
 
     def main_yes(self):
         """Tests if variable self.turn is true, when self.who_starts is yes."""

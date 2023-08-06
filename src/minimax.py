@@ -1,6 +1,7 @@
 from gamestatus import GameStatus
 import math
 
+
 class Minimax:
     """Class that creates the minimax algorithm."""
 
@@ -15,16 +16,18 @@ class Minimax:
             return  # heuristinen arvo
         if maximizing_player:
             value = -math.inf
-            for move in gamestatus.possible_moves: # list empty right now
-                value = max(value, self.minimax(move, depth - 1, alpha, beta, False))
+            for move in gamestatus.possible_moves:  # list empty right now
+                value = max(value, self.minimax(
+                    move, depth - 1, alpha, beta, False))
                 alpha = max(alpha, value)
                 if value >= beta:
                     break
             return value
         else:
             value = math.inf
-            for move in gamestatus.possible_moves: # list empty right now
-                value = min(value, self.minimax(move, depth - 1, alpha, beta, True))
+            for move in gamestatus.possible_moves:  # list empty right now
+                value = min(value, self.minimax(
+                    move, depth - 1, alpha, beta, True))
                 beta = min(beta, value)
                 if value <= alpha:
                     break

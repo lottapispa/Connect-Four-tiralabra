@@ -1,6 +1,7 @@
 from gamestatus import GameStatus
 from minimax import Minimax
 
+
 class GameLoop:
     """Class that creates the main loop of the game."""
 
@@ -11,11 +12,12 @@ class GameLoop:
         self.who_starts = None
         self.players_color = None
         self.ai_color = None
-        self.turn = None # true for player's turn, false for ai's turn
+        self.turn = None  # true for player's turn, false for ai's turn
 
     def main(self):
         """Loop takes inputs from the user, starts the game and switches turns."""
-        self.who_starts = input("Do you want the first move? Type 'yes' or 'no'. ")
+        self.who_starts = input(
+            "Do you want the first move? Type 'yes' or 'no'. ")
         if self.who_starts == "yes":
             self.turn = True
         elif self.who_starts == "no":
@@ -37,22 +39,22 @@ class GameLoop:
                 column = int(input("and then choose column (1-7): "))
                 self.gamestatus.insert_piece(row, column, self.players_color)
                 status = self.gamestatus.is_game_over()
-                if self.gamestatus.tie == True:
+                if self.gamestatus.tie is True:
                     print("It's a tie!")
                     break
-                elif status == True:
+                elif status is True:
                     print("You win!")
                     break
                 self.turn = False
-            if self.turn == False:
+            if self.turn is False:
                 # call minimax
                 row, column = None
                 self.gamestatus.insert_piece(row, column, self.ai_color)
                 status = self.gamestatus.is_game_over()
-                if self.gamestatus.tie == True:
+                if self.gamestatus.tie is True:
                     print("It's a tie!")
                     break
-                elif status == True:
+                elif status is True:
                     print("You lose!")
                     break
                 self.turn = True
