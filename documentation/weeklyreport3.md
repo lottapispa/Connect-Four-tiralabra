@@ -4,8 +4,8 @@
 | **date** | **time (h)** | **what I did** 
 | --------- | ----------- | --------- 
 | 4.8 | 6.25 | Started coding and testing class gameloop, added checks for wins and tests for them in class gamestatus, started minimax, making testing document
-| 6.8 | x | Testing, making testing document
-| total: | x
+| 6.8 | 2 | Testing, making testing document, improved code quality with pylint suggestions
+| total: | 8.25
 
 ### Progress
 Main gameloop and it's test class has been done. Have started minimax algorithm. Testing document is made.
