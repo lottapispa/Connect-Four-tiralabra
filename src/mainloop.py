@@ -1,4 +1,5 @@
 from gamestatus import GameStatus
+from gamerack import GameRack
 from minimax import Minimax
 
 
@@ -8,11 +9,12 @@ class GameLoop:
     def __init__(self):
         """Class constructor, creates variables."""
         self.gamestatus = GameStatus()
+        self.gamerack = GameRack()
         self.minimax = Minimax()
         self.who_starts = None
         self.players_color = None
         self.ai_color = None
-        self.turn = None  # true for player's turn, false for ai's turn
+        self.turn = self.gamestatus.turn  # true for player's turn, false for ai's turn
 
     def main(self):
         """Loop takes inputs from the user, starts the game and switches turns."""
