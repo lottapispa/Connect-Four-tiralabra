@@ -35,6 +35,7 @@ classDiagram
         +minimax()
         +main()
     }
+```
 
 ### Complexity 
 
