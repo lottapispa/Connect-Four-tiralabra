@@ -18,22 +18,30 @@ class GameLoop:
 
     def main(self):
         """Loop takes inputs from the user, starts the game and switches turns."""
-        self.players_color = input("Choose your pawns color: 'red' or 'yellow'. ")
-        if self.players_color == "red":
-            self.ai_color = "yellow"
-        elif self.players_color == "yellow":
-            self.ai_color = "red"
-        else:
-            raise ValueError("Wrong input, color needs to be red or yellow!")
-        
-        self.who_starts = input(
+        while True:
+            self.players_color = input("Choose your pawns color: 'red' or 'yellow'. ")
+            if self.players_color == "red":
+                self.ai_color = "yellow"
+                break
+            elif self.players_color == "yellow":
+                self.ai_color = "red"
+                break
+            else:
+                print("Wrong input, color needs to be red or yellow!")
+                continue
+
+        while True:
+            self.who_starts = input(
             "Do you want the first move? Type 'yes' or 'no'. ")
-        if self.who_starts == "yes":
-            self.turn = True
-        elif self.who_starts == "no":
-            self.turn = False
-        else:
-            raise ValueError("Wrong input, answer needs to be yes or no!")
+            if self.who_starts == "yes":
+                self.turn = True
+                break
+            elif self.who_starts == "no":
+                self.turn = False
+                break
+            else:
+                print("Wrong input, answer needs to be yes or no!")
+                continue
 
         while self.gamestatus.is_game_over() is False:
             if self.turn is True:
