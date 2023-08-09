@@ -1,6 +1,6 @@
 # Testing document
 ### Unit testing
-This command gets you the test coverage report: `poetry run invoke coverage-report`. Right now, unit testing mostly covers class gamestatus. It doesn't cover class minimax as it's not functional yet. Class gameloop is also not covered well, since I had some trouble testing inputs.
+This command gets you the test coverage report: `poetry run invoke coverage-report`. Right now, unit testing mostly covers classes gamestatus and gamerack. It doesn't cover class minimax as it's not functional yet. Class gameloop is also not covered well, since I had some trouble testing inputs.
 
 ### Coverage report
 <img width="694" alt="Screenshot 2023-08-06 at 19 07 23" src="https://github.com/lottapispa/connect-four-tiralabra/assets/101987621/b2599944-3060-4f06-b5ff-0d05574c3441">
