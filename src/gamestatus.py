@@ -11,7 +11,6 @@ class GameStatus:
         self.columns = self.gamerack.columns
         self.over = False
         self.tie = False
-        self.turn = None
 
     def check_for_win_hor(self):
         """Checks for a connect four horizontally.

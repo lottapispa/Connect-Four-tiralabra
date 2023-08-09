@@ -12,9 +12,9 @@ class GameLoop:
         self.gamerack = GameRack()
         self.minimax = Minimax()
         self.who_starts = None
-        self.players_color = None
-        self.ai_color = None
-        self.turn = self.gamestatus.turn  # true for player's turn, false for ai's turn
+        self.players_color = None #self.gamerack.players_color
+        self.ai_color = None #self.gamerack.ai_color
+        self.turn = None #self.gamerack.turn  # true for player's turn, false for ai's turn
 
     def main(self):
         """Loop takes inputs from the user, starts the game and switches turns."""
