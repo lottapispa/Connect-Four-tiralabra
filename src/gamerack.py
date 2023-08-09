@@ -40,3 +40,7 @@ class GameRack:
                 row_count = 0
                 self.possible_moves.append(last_zero)
             return self.possible_moves
+
+    def print_rack(self):
+        for row in self.rack:
+            print(row)

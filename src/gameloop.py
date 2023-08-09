@@ -46,6 +46,7 @@ class GameLoop:
         while self.gamestatus.is_game_over() is False:
             if self.turn is True:
                 print("Player make your move: ")
+                self.gamerack.print_rack()
                 while True:
                     row = int(input("First choose row (1-6): "))
                     if 1 <= row <= 6:
