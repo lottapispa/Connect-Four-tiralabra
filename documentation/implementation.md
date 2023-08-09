@@ -47,7 +47,7 @@ classDiagram
 ### Complexity 
 | **file** | **time**
 | --------- | ----------- 
-| mainloop.py | 
+| gameloop.py | 
 | minimax.py |
 | gamestatus.py | 
 | gamerack.py |
