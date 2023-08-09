@@ -1,6 +1,40 @@
 # Implementation document
 
 ### Project Structure
+```mermaid
+classDiagram
+    GameLoop ..> GameStatus
+    GameLoop ..> GameRack
+    GameLoop ..> Minimax
+    GameStatus ..> Gamerack
+    class GameLoop{
+        +str who_starts
+        +str players_color
+        +str ai_color
+        +bool turn
+    }
+    class GameStatus{
+        +list gamerack
+        +int rows
+        +int columns
+        +bool over
+        +bool turn
+        +check_for_win_hor()
+        +check_for_win_ver()
+        +check_for_win_dia()
+        +is_game_over()
+    }
+    class GameRack{
+        +int rows
+        +int columns
+        +list gamerack
+        +insert_piece()
+        +next_move()
+    }
+    class Minimax{
+        +minimax()
+        +main()
+    }
 
 ### Complexity 
 
