@@ -45,6 +45,9 @@ classDiagram
 ```
 
 ### Complexity 
+| **file** | **time**
+| --------- | ----------- 
+| 
 
 ### Improvements
 Alpha-beta-pruning is not used yet.
