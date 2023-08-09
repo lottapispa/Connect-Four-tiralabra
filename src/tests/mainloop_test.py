@@ -1,6 +1,6 @@
 import unittest
 from unittest import mock
-from mainloop import GameLoop
+from gameloop import GameLoop
 from gamestatus import GameStatus
 from minimax import Minimax
 
