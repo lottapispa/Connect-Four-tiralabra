@@ -8,6 +8,7 @@ classDiagram
     GameLoop ..> Minimax
     GameLoop ..> Gamerack
     GameStatus ..> Gamerack
+    Minimax ..> GameStatus
     Minimax ..> Gamerack
     class GameLoop{
         +str who_starts
