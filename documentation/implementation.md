@@ -47,7 +47,10 @@ classDiagram
 ### Complexity 
 | **file** | **time**
 | --------- | ----------- 
-| 
+| mainloop.py | 
+| minimax.py |
+| gamestatus.py | 
+| gamerack.py |
 
 ### Improvements
 Alpha-beta-pruning is not used yet.
