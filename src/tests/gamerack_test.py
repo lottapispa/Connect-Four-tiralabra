@@ -1,4 +1,5 @@
 import unittest
+from unittest.mock import patch
 from gamerack import GameRack
 
 
@@ -63,3 +64,9 @@ class TestGameRack(unittest.TestCase):
             self.gamerack.rack = [[0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0], [0, 0, "Y", 0, 0, 0, 0], [0, 0, "R", 0, 0, 0, 0], [0, 0, "R", "Y", 0, 0, 0]]
             self.assertEqual(self.gamerack.next_move(), [[5,0],[5,1],[2,2],[4,3],[5,4],[5,5],[5,6]])
             self.assertEqual(self.gamerack.possible_moves, [[5,0],[5,1],[2,2],[4,3],[5,4],[5,5],[5,6]])
+
+    @patch('builtins.print')
+    def test_print_rack(self, mock_print):
+        self.gamerack = GameRack()
+        self.gamerack.print_rack()
+        mock_print.assert_called_with([0, 0, 0, 0, 0, 0, 0])

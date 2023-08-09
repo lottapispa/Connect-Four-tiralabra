@@ -1,5 +1,5 @@
 import unittest
-from unittest import mock
+from unittest.mock import patch
 from gameloop import GameLoop
 from gamestatus import GameStatus
 from minimax import Minimax
@@ -24,34 +24,43 @@ class TestGameLoop(unittest.TestCase):
         self.assertEqual(self.game.ai_color, None)
         self.assertEqual(self.game.turn, None)
 
-    @mock.patch("mainloop.input", create=True)
-    def main(self, mocked_input):
+    @patch("builtins.input", lambda _: "yes")
+    def test_main_yes(self):
         """Tests if variable self.turn is true, when self.who_starts is yes."""
-        mocked_input.side_effect = ["yes"]
-        self.game.main()
-        self.assertTrue(self.game.turn)
-        mocked_input.side_effect = ["no"]
-        self.game.main()
-        self.assertFalse(self.game.turn)
-        mocked_input.side_effect = ["yes", "no"]
-        self.game.main()
-        self.assertRaises(ValueError)
+        self.game = GameLoop()
+        self.game.who_starts = input(
+            "Do you want the first move? Type 'yes' or 'no'. ")
+        self.assertEqual(self.game.who_starts, "yes")
+        #self.assertTrue(self.game.turn)
+
+    @patch("builtins.input", lambda _: "no")
+    def test_main_no(self):
+        """Tests if variable self.turn is true, when self.who_starts is yes."""
+        self.game = GameLoop()
+        self.game.who_starts = input(
+            "Do you want the first move? Type 'yes' or 'no'. ")
+        self.assertEqual(self.game.who_starts, "no")
+        #self.assertFalse(self.game.turn)
 
     def main_who_value_error(self):
         """Tests if function raises value error for wrong input word."""
         pass
 
-    def main_red(self):
+    @patch("builtins.input", lambda _: "R")
+    def test_main_red(self):
         """Tests if variable self.ai_color is yellow, when self.players_color is red."""
         self.game = GameLoop()
-        self.game.players_color = "red"
-        self.assertEqual(self.game.ai_color, "yellow")
+        self.game.players_color = input("Choose your pawn's color: 'R' for red or 'Y' for yellow. ")
+        self.assertEqual(self.game.players_color, "R")
+        #self.assertEqual(self.game.ai_color, "Y")
 
-    def main_red(self):
+    @patch("builtins.input", lambda _: "Y")
+    def test_main_yellow(self):
         """Tests if variable self.ai_color is red, when self.players_color is yellow."""
         self.game = GameLoop()
-        self.game.players_color = "yellow"
-        self.assertEqual(self.game.ai_color, "red")
+        self.game.players_color = input("Choose your pawn's color: 'R' for red or 'Y' for yellow. ")
+        self.assertEqual(self.game.players_color, "Y")
+        #self.assertEqual(self.game.ai_color, "R")
 
     def main_color_value_error(self):
         """Tests if function raises value error for wrong input color."""

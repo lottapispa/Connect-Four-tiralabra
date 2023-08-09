@@ -19,7 +19,7 @@ class GameLoop:
     def main(self):
         """Loop takes inputs from the user, starts the game and switches turns."""
         while True:
-            self.players_color = input("Choose your pawn's color: 'red' or 'yellow'. ")
+            self.players_color = input("Choose your pawn's color: 'R' for red or 'Y' for yellow. ")
             if self.players_color == "R":
                 self.ai_color = "Y"
                 break
