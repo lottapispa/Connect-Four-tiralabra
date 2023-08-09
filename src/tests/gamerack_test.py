@@ -27,7 +27,7 @@ class TestGameRack(unittest.TestCase):
         self.gamerack = GameRack()
         self.rack = self.gamerack.rack
         self.assertRaises(
-            ValueError, self.gamerack.insert_piece, 7, 3, "red")
+            ValueError, self.gamerack.insert_piece, 7, 3, "R")
         self.assertEqual(self.rack, [[0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0], [
                          0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0]])
 
@@ -36,7 +36,7 @@ class TestGameRack(unittest.TestCase):
         self.gamerack = GameRack()
         self.rack = self.gamerack.rack
         self.assertRaises(
-            ValueError, self.gamerack.insert_piece, 5, 0, "red")
+            ValueError, self.gamerack.insert_piece, 5, 0, "R")
         self.assertEqual(self.rack, [[0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0], [
                          0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0]])
 
@@ -44,22 +44,22 @@ class TestGameRack(unittest.TestCase):
         """Tests if the rack changes correctly."""
         self.gamerack = GameRack()
         self.rack = self.gamerack.rack
-        self.gamerack.insert_piece(6, 4, "red")
+        self.gamerack.insert_piece(6, 4, "R")
         self.assertEqual(self.rack, [[0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0], [
-                         0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0], [0, 0, 0, "red", 0, 0, 0]])
+                         0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0], [0, 0, 0, "R", 0, 0, 0]])
 
     def test_insert_piece_wrong_input_spot_taken(self):
         """Tests if function raises value error for wrong input (spot already taken) and that the rack doesn't change."""
         self.gamerack = GameRack()
         self.rack = self.gamerack.rack
-        self.gamerack.insert_piece(6, 4, "red")
+        self.gamerack.insert_piece(6, 4, "R")
         self.assertRaises(
-            ValueError, self.gamerack.insert_piece, 6, 4, "yellow")
+            ValueError, self.gamerack.insert_piece, 6, 4, "Y")
         self.assertEqual(self.rack, [[0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0], [
-                         0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0], [0, 0, 0, "red", 0, 0, 0]])
+                         0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0], [0, 0, 0, "R", 0, 0, 0]])
 
     def test_next_move(self):
             self.gamerack = GameRack()
-            self.gamerack.rack = [[0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0], [0, 0, "yellow", 0, 0, 0, 0], [0, 0, "red", 0, 0, 0, 0], [0, 0, "red", "yellow", 0, 0, 0]]
+            self.gamerack.rack = [[0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0], [0, 0, "Y", 0, 0, 0, 0], [0, 0, "R", 0, 0, 0, 0], [0, 0, "R", "Y", 0, 0, 0]]
             self.assertEqual(self.gamerack.next_move(), [[5,0],[5,1],[2,2],[4,3],[5,4],[5,5],[5,6]])
             self.assertEqual(self.gamerack.possible_moves, [[5,0],[5,1],[2,2],[4,3],[5,4],[5,5],[5,6]])

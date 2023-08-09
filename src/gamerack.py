@@ -13,7 +13,7 @@ class GameRack:
 
     def insert_piece(self, row: int, column: int, color: str):
         """Inserts a piece to the rack."""
-        if color not in ("red", "yellow"):
+        if color not in ("R", "Y"):
             raise ValueError("Wrong input, color needs to be red or yellow!")
         if not 1 <= row <= 6:
             raise ValueError("Wrong input, rows are 1-6!")

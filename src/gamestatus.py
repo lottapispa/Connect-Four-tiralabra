@@ -55,15 +55,15 @@ class GameStatus:
         Returns: True for there is a win, False for no win."""
         for column in range(self.columns-3):
             for row in range(self.rows-3):
-                if self.rack[row][column] == "red" and self.rack[row+1][column+1] == "red" and self.rack[row+2][column+2] == "red" and self.rack[row+3][column+3] == "red":
+                if self.rack[row][column] == "R" and self.rack[row+1][column+1] == "R" and self.rack[row+2][column+2] == "R" and self.rack[row+3][column+3] == "R":
                     return True
-                if self.rack[row][column] == "yellow" and self.rack[row+1][column+1] == "yellow" and self.rack[row+2][column+2] == "yellow" and self.rack[row+3][column+3] == "yellow":
+                if self.rack[row][column] == "Y" and self.rack[row+1][column+1] == "Y" and self.rack[row+2][column+2] == "Y" and self.rack[row+3][column+3] == "Y":
                     return True
         for column in range(self.columns-3):
             for row in range(3, self.rows):
-                if self.rack[row][column] == "red" and self.rack[row-1][column+1] == "red" and self.rack[row-2][column+2] == "red" and self.rack[row-3][column+3] == "red":
+                if self.rack[row][column] == "R" and self.rack[row-1][column+1] == "R" and self.rack[row-2][column+2] == "R" and self.rack[row-3][column+3] == "R":
                     return True
-                if self.rack[row][column] == "yellow" and self.rack[row-1][column+1] == "yellow" and self.rack[row-2][column+2] == "yellow" and self.rack[row-3][column+3] == "yellow":
+                if self.rack[row][column] == "Y" and self.rack[row-1][column+1] == "Y" and self.rack[row-2][column+2] == "Y" and self.rack[row-3][column+3] == "Y":
                     return True
         return False
     

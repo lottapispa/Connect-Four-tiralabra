@@ -11,15 +11,15 @@ class TestGameStatus(unittest.TestCase):
 
     def is_game_over_tie(self):
         self.gamestatus = GameStatus()
-        self.gamestatus.rack = [["yellow", "red", "yellow", "red", "yellow", "red", "yellow"], ["red", "yellow", "red", "yellow", "red", "yellow", "red"], ["red", "yellow", "red", "yellow", "red", "yellow", "red"], [
-            "yellow", "red", "yellow", "red", "yellow", "red", "yellow"], ["yellow", "red", "yellow", "red", "yellow", "red", "yellow"], ["red", "yellow", "red", "yellow", "red", "yellow", "red"]]
+        self.gamestatus.rack = [["Y", "R", "Y", "R", "Y", "R", "Y"], ["R", "Y", "R", "Y", "R", "Y", "R"], ["R", "Y", "R", "Y", "R", "Y", "R"], [
+            "Y", "R", "Y", "R", "Y", "R", "Y"], ["Y", "R", "Y", "R", "Y", "R", "Y"], ["R", "Y", "R", "Y", "R", "Y", "R"]]
         self.gamestatus.is_game_over()
         self.assertTrue(self.gamestatus.over)
         self.assertTrue(self.gamestatus.tie)
 
     def test_is_game_over_true(self):
         self.gamestatus = GameStatus()
-        self.gamestatus.rack = [[0, "red", "red", "red", "red", 0, 0], [0, "yellow", 0, 0, 0, 0, 0], [
+        self.gamestatus.rack = [[0, "R", "R", "R", "R", 0, 0], [0, "Y", 0, 0, 0, 0, 0], [
             0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0]]
         self.gamestatus.over
         self.gamestatus.is_game_over()
@@ -34,54 +34,54 @@ class TestGameStatus(unittest.TestCase):
 
     def test_check_for_win_hor_true(self):
         self.gamestatus = GameStatus()
-        self.gamestatus.rack = [[0, "red", "red", "red", "red", 0, 0], [0, "yellow", 0, 0, 0, 0, 0], [
+        self.gamestatus.rack = [[0, "R", "R", "R", "R", 0, 0], [0, "Y", 0, 0, 0, 0, 0], [
             0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0]]
         self.assertTrue(self.gamestatus.check_for_win_hor())
 
     def test_check_for_win_hor_false(self):
         self.gamestatus = GameStatus()
-        self.gamestatus.rack = [[0, "red", "yellow", "red", "red", 0, 0], [0, "yellow", 0, 0, 0, 0, 0], [
+        self.gamestatus.rack = [[0, "R", "Y", "R", "R", 0, 0], [0, "Y", 0, 0, 0, 0, 0], [
             0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0]]
         self.assertFalse(self.gamestatus.check_for_win_hor())
 
     def test_check_for_win_ver_true(self):
         self.gamestatus = GameStatus()
-        self.gamestatus.rack = [[0, "red", 0, 0, 0, 0, 0], [0, "yellow", 0, 0, 0, 0, 0], [0, "yellow", 0, 0, 0, 0, 0], [
-            0, "yellow", 0, 0, 0, 0, 0], [0, "yellow", 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0]]
+        self.gamestatus.rack = [[0, "R", 0, 0, 0, 0, 0], [0, "Y", 0, 0, 0, 0, 0], [0, "Y", 0, 0, 0, 0, 0], [
+            0, "Y", 0, 0, 0, 0, 0], [0, "Y", 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0]]
         self.assertTrue(self.gamestatus.check_for_win_ver())
 
     def test_check_for_win_ver_false(self):
         self.gamestatus = GameStatus()
-        self.gamestatus.rack = [[0, "red", 0, 0, 0, 0, 0], [0, "yellow", 0, 0, 0, 0, 0], [
-            0, "yellow", 0, 0, 0, 0, 0], [0, "red", 0, 0, 0, 0, 0], [0, "yellow", 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0]]
+        self.gamestatus.rack = [[0, "R", 0, 0, 0, 0, 0], [0, "Y", 0, 0, 0, 0, 0], [
+            0, "Y", 0, 0, 0, 0, 0], [0, "R", 0, 0, 0, 0, 0], [0, "Y", 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0]]
         self.assertFalse(self.gamestatus.check_for_win_ver())
 
-    def test_check_for_win_dia_true_red(self):
+    def test_check_for_win_dia_true_R(self):
         self.gamestatus = GameStatus()
-        self.gamestatus.rack = [[0, 0, 0, 0, 0, 0, 0], [0, 0, "red", 0, 0, 0, 0], [0, 0, 0, "red", 0, 0, 0], [
-            0, 0, 0, 0, "red", 0, 0], [0, 0, 0, 0, 0, "red", 0], [0, 0, "yellow", 0, 0, 0, 0]]
+        self.gamestatus.rack = [[0, 0, 0, 0, 0, 0, 0], [0, 0, "R", 0, 0, 0, 0], [0, 0, 0, "R", 0, 0, 0], [
+            0, 0, 0, 0, "R", 0, 0], [0, 0, 0, 0, 0, "R", 0], [0, 0, "Y", 0, 0, 0, 0]]
         self.assertTrue(self.gamestatus.check_for_win_dia())
 
-    def test_check_for_win_dia_true_yellow(self):
+    def test_check_for_win_dia_true_Y(self):
         self.gamestatus = GameStatus()
-        self.gamestatus.rack = [["red", 0, 0, 0, 0, 0, 0], [0, 0, "yellow", 0, 0, 0, 0], ["red", 0, 0, "yellow", 0, 0, 0], [
-            0, 0, 0, 0, "yellow", 0, 0], [0, 0, 0, 0, 0, "yellow", 0], [0, 0, "red", 0, 0, 0, 0]]
+        self.gamestatus.rack = [["R", 0, 0, 0, 0, 0, 0], [0, 0, "Y", 0, 0, 0, 0], ["R", 0, 0, "Y", 0, 0, 0], [
+            0, 0, 0, 0, "Y", 0, 0], [0, 0, 0, 0, 0, "Y", 0], [0, 0, "R", 0, 0, 0, 0]]
         self.assertTrue(self.gamestatus.check_for_win_dia())
 
-    def test_check_for_win_dia_true_red_other_way(self):
+    def test_check_for_win_dia_true_R_other_way(self):
         self.gamestatus = GameStatus()
-        self.gamestatus.rack = [[0, 0, 0, "yellow", 0, 0, 0], [0, 0, 0, 0, 0, 0, 0], [0, 0, 0, "red", 0, 0, 0], [
-            0, 0, "red", 0, 0, 0, 0], [0, "red", 0, 0, 0, "yellow", 0], ["red", 0, "yellow", 0, 0, 0, 0]]
+        self.gamestatus.rack = [[0, 0, 0, "Y", 0, 0, 0], [0, 0, 0, 0, 0, 0, 0], [0, 0, 0, "R", 0, 0, 0], [
+            0, 0, "R", 0, 0, 0, 0], [0, "R", 0, 0, 0, "Y", 0], ["R", 0, "Y", 0, 0, 0, 0]]
         self.assertTrue(self.gamestatus.check_for_win_dia())
 
-    def test_check_for_win_dia_true_yellow_other_way(self):
+    def test_check_for_win_dia_true_Y_other_way(self):
         self.gamestatus = GameStatus()
-        self.gamestatus.rack = [[0, 0, 0, "red", 0, 0, 0], [0, 0, 0, 0, "yellow", 0, 0], [0, 0, 0, "yellow", 0, 0, 0], [
-            0, 0, "yellow", 0, 0, 0, 0], [0, "yellow", 0, 0, 0, "red", 0], [0, 0, "red", 0, 0, 0, 0]]
+        self.gamestatus.rack = [[0, 0, 0, "R", 0, 0, 0], [0, 0, 0, 0, "Y", 0, 0], [0, 0, 0, "Y", 0, 0, 0], [
+            0, 0, "Y", 0, 0, 0, 0], [0, "Y", 0, 0, 0, "R", 0], [0, 0, "R", 0, 0, 0, 0]]
         self.assertTrue(self.gamestatus.check_for_win_dia())
 
     def test_check_for_win_dia_false(self):
         self.gamestatus = GameStatus()
-        self.gamestatus.rack = [[0, 0, 0, 0, 0, 0, 0], [0, 0, "red", 0, 0, 0, 0], [0, 0, 0, "red", 0, 0, 0], [
-            0, 0, 0, 0, "yellow", 0, 0], [0, 0, 0, 0, 0, "red", 0], [0, 0, "yellow", 0, 0, 0, 0]]
+        self.gamestatus.rack = [[0, 0, 0, 0, 0, 0, 0], [0, 0, "R", 0, 0, 0, 0], [0, 0, 0, "R", 0, 0, 0], [
+            0, 0, 0, 0, "Y", 0, 0], [0, 0, 0, 0, 0, "R", 0], [0, 0, "Y", 0, 0, 0, 0]]
         self.assertFalse(self.gamestatus.check_for_win_dia())
