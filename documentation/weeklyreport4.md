@@ -3,7 +3,7 @@
 ### Hour Reporting
 | **date** | **time (h)** | **what I did** 
 | --------- | ----------- | --------- 
-| 9.8 | x | Improving class structure after feedback and changed testing with it, started making implementation document and weekly report 4, coding class gameloop, writing the user guide
+| 9.8 | 4 | Improving class structure after feedback and changed testing with it, started making implementation document and weekly report 4, coding class gameloop, writing the user guide, testing class gameloop
 | total: | x
 
 ### Progress
