@@ -7,7 +7,7 @@
 | total: | x
 
 ### Progress
-Mainloop was improved so if player writes invalid input, the game doesn't stop, but instead just prints error message and asks again. 
+Mainloop was improved so if player writes invalid input, the game doesn't stop, but instead just prints an error message and asks again. 
 
 ### Problems
 
