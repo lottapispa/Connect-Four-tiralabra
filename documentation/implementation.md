@@ -10,15 +10,18 @@ classDiagram
     Minimax ..> GameStatus
     Minimax ..> GameRack
     class GameLoop{
+        +reference to GameStatus()
+        +reference to GameRack()
+        +reference to Minimax()
         +str who_starts
         +str players_color
         +str ai_color
         +bool turn
     }
     class GameStatus{
-        +list gamerack
-        +int rows
-        +int columns
+        +reference to list gamerack
+        +reference to int rows
+        +reference to int columns
         +bool over
         +bool turn
         +check_for_win_hor()
@@ -34,6 +37,8 @@ classDiagram
         +next_move()
     }
     class Minimax{
+        +reference to GameStatus()
+        +reference to GameRack()
         +minimax()
         +main()
     }
