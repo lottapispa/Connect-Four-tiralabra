@@ -3,7 +3,7 @@
 ### Hour Reporting
 | **date** | **time (h)** | **what I did** 
 | --------- | ----------- | --------- 
-| 9.8 | x | Started making weekly report 4, improving class structure after feedback
+| 9.8 | x | Improving class structure after feedback and changed testing with it, started making implementation document and weekly report 4
 | total: | x
 
 ### Progress
