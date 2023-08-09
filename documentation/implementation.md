@@ -6,9 +6,9 @@ classDiagram
     GameLoop ..> GameStatus
     GameLoop ..> GameRack
     GameLoop ..> Minimax
-    GameStatus ..> Gamerack
+    GameStatus ..> GameRack
     Minimax ..> GameStatus
-    Minimax ..> Gamerack
+    Minimax ..> GameRack
     class GameLoop{
         +str who_starts
         +str players_color
