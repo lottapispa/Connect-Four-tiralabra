@@ -16,9 +16,9 @@ class GameRack:
         if color not in ("red", "yellow"):
             raise ValueError("Wrong input, color needs to be red or yellow!")
         if not 1 <= row <= 6:
-            raise ValueError("Wrong input, rows are 1-7!")
+            raise ValueError("Wrong input, rows are 1-6!")
         if not 1 <= column <= 7:
-            raise ValueError("Wrong input, columns are 1-6!")
+            raise ValueError("Wrong input, columns are 1-7!")
         # if row is 1 the index is 0, and column 1's index is 0
         if [row-1, column-1] in self.next_move():
             self.rack[row-1][column-1] = color

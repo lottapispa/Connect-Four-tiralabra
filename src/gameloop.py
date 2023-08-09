@@ -19,7 +19,7 @@ class GameLoop:
     def main(self):
         """Loop takes inputs from the user, starts the game and switches turns."""
         while True:
-            self.players_color = input("Choose your pawns color: 'red' or 'yellow'. ")
+            self.players_color = input("Choose your pawn's color: 'red' or 'yellow'. ")
             if self.players_color == "red":
                 self.ai_color = "yellow"
                 break
@@ -46,8 +46,18 @@ class GameLoop:
         while self.gamestatus.is_game_over() is False:
             if self.turn is True:
                 print("Player make your move: ")
-                row = int(input("First choose row (1-6): "))
-                column = int(input("and then choose column (1-7): "))
+                while True:
+                    row = int(input("First choose row (1-6): "))
+                    if 1 <= row <= 6:
+                        column = int(input("and then choose column (1-7): "))
+                        if 1 <= column <= 7:
+                            break
+                        else:
+                            print("Wrong input, columns are 1-7!")
+                            continue
+                    else:
+                        print("Wrong input, rows are 1-6!")
+                        continue
                 self.gamestatus.insert_piece(row, column, self.players_color)
                 status = self.gamestatus.is_game_over()
                 if self.gamestatus.tie is True:
