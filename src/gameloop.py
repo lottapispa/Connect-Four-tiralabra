@@ -1,6 +1,7 @@
 from gamestatus import GameStatus
 from gamerack import GameRack
 from minimax import Minimax
+from score import Score
 import math
 
 class GameLoop:
@@ -11,12 +12,13 @@ class GameLoop:
         self.gamerack = GameRack()
         self.gamestatus = GameStatus(self.gamerack)
         self.minimax = Minimax(self.gamerack, self.gamestatus)
+        self.score = Score(self.gamerack, self.gamerack.players_color)
         self.who_starts = None
-        self.turn = None #self.gamerack.turn  # true for player's turn, false for ai's turn
+        self.turn = None # true for player's turn, false for ai's turn
         self.depth = 6 #?
 
-    def main(self):
-        """Loop takes inputs from the user, starts the game and switches turns."""
+    def start_inputs(self):
+        """This function takes start inputs from user."""
         while True:
             self.gamerack.players_color = input("Choose your pawn's color: 'R' for red or 'Y' for yellow. ")
             if self.gamerack.players_color == "R":
@@ -42,6 +44,9 @@ class GameLoop:
                 print("Wrong input, answer needs to be yes or no!")
                 continue
 
+    def main(self):
+        """Loop starts the game and switches turns."""
+        self.start_inputs()
         while self.gamestatus.is_game_over(self.gamerack.rack) is False:
             if self.turn is True:
                 print("Player make your move: ")
@@ -59,7 +64,7 @@ class GameLoop:
                         print("Wrong input, rows are 1-6!")
                         continue
                 self.gamerack.insert_piece(self.gamerack.rack, row, column, self.gamerack.players_color)
-                status = self.gamestatus.is_game_over(self.gamerack.rack)
+                self.gamestatus.is_game_over(self.gamerack.rack)
                 if self.gamestatus.status == 0:
                     print("It's a tie!")
                     break
