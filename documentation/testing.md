@@ -9,4 +9,4 @@ Right now, unit testing mostly covers classes gamestatus and gamerack. It doesn'
 
 
 ### How to re-test
-This command shows you the tests: `poetry run invoke test` and this command gets you the test coverage report: `poetry run invoke coverage-report`. 
+This command shows you the tests: `poetry run invoke test` and this command gets you the test coverage report: `poetry run invoke coverage-report`. You can open the report from the command line.
