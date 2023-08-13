@@ -21,7 +21,8 @@ classDiagram
         +reference to int rows
         +reference to int columns
         +bool over
-        +bool turn
+        +str winner
+        +int status
         +check_for_win_hor()
         +check_for_win_ver()
         +check_for_win_dia()
@@ -35,12 +36,12 @@ classDiagram
         +str ai_color
         +insert_piece()
         +next_move()
+        +print_rack()
     }
     class Minimax{
-        +reference to GameStatus()
         +reference to GameRack()
+        +reference to GameStatus()
         +minimax()
-        +main()
     }
 ```
 
