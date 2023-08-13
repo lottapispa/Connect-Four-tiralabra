@@ -8,12 +8,10 @@ class GameLoop:
 
     def __init__(self):
         """Class constructor, creates variables."""
-        self.gamestatus = GameStatus()
         self.gamerack = GameRack()
-        self.minimax = Minimax()
+        self.gamestatus = GameStatus(self.gamerack)
+        self.minimax = Minimax(self.gamerack, self.gamestatus)
         self.who_starts = None
-        #self.gamerack.players_color = None
-        #self.gamerack.ai_color = None
         self.turn = None #self.gamerack.turn  # true for player's turn, false for ai's turn
 
     def main(self):
@@ -59,20 +57,20 @@ class GameLoop:
                     else:
                         print("Wrong input, rows are 1-6!")
                         continue
-                self.gamestatus.insert_piece(row, column, self.gamerack.players_color)
+                self.gamerack.insert_piece(row, column, self.gamerack.players_color)
                 status = self.gamestatus.is_game_over()
-                if self.gamestatus.tie is True:
+                if self.gamestatus.status == 0:
                     print("It's a tie!")
                     break
-                elif status is True:
+                elif self.gamestatus.status == -1:
                     print("You win!")
                     break
                 self.turn = False
             if self.turn is False:
                 # call minimax
-                result = self.minimax.minimax(self.gamerack.rack, depth, -math.inf, math.inf, True)
+                result = self.minimax.minimax(self.gamerack.rack, 6, -math.inf, math.inf, True)
                 row, column = result[0], result[1]
-                self.gamestatus.insert_piece(row, column, self.gamerack.ai_color)
+                self.gamerack.insert_piece(row, column, self.gamerack.ai_color)
                 status = self.gamestatus.is_game_over()
                 if self.gamestatus.tie is True:
                     print("It's a tie!")

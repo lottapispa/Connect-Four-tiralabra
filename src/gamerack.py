@@ -9,7 +9,6 @@ class GameRack:
         self.rack = [[0, 0, 0, 0, 0, 0, 0] for i in range(self.rows)]
         self.players_color = None
         self.ai_color = None
-        #self.turn = None
 
     def insert_piece(self, row: int, column: int, color: str):
         """Inserts a piece to the rack."""

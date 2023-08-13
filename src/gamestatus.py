@@ -3,9 +3,9 @@ from gamerack import GameRack
 class GameStatus:
     """Class that keeps track of the status of the game."""
 
-    def __init__(self):
+    def __init__(self, gamerack):
         """Class constructor, creates variables."""
-        self.gamerack = GameRack()
+        self.gamerack = gamerack
         self.rack = self.gamerack.rack
         self.rows = self.gamerack.rows
         self.columns = self.gamerack.columns

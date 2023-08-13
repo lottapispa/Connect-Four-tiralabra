@@ -1,20 +1,18 @@
-from gamestatus import GameStatus
-from gamerack import GameRack
 import math
 
 
 class Minimax:
     """Class that creates the minimax algorithm."""
 
-    def __init__(self):
+    def __init__(self, gamerack, gamestatus):
         """Class constructor, creates variables."""
-        self.gamestatus = GameStatus()
-        self.gamerack = GameRack()
+        self.gamerack = gamerack
+        self.gamestatus = gamestatus
         #depth = 6?
 
     def minimax(self, gamestatus, depth, alpha, beta, maximizing_player: bool):
         """Minimax algorithm."""
-        if depth == 0 or gamestatus.is_game_over() is True:
+        if depth == 0 or self.gamestatus.is_game_over() is True:
             return self.gamestatus.status # heuristinen arvo
         if maximizing_player:
             value = -math.inf
@@ -37,8 +35,3 @@ class Minimax:
 
     def main(self):
         self.minimax(self.gamestatus, 6)
-
-# for testing
-if __name__ == "__main__":
-    game = Minimax()
-    game.main()
