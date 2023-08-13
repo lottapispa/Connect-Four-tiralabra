@@ -11,7 +11,7 @@
 Mainloop was improved so if a player writes invalid input, the game doesn't stop, but instead just prints an error message and asks again. All classes have been improved specifically to work for minimax. User guide is in good condition. Performance evaluation is not done. In general I haven't progressed as much as I wanted this week, as I've been busy.
 
 ### Problems
-Thought about how the gamerack looks when printing it and realized it would look better if the colors were put into the rack as R and Y so it would stay balanced and rows wouldn't be different lengths and columns would be straight. I'm having a hard time with the score and heuristic values. I also had to change classes and testing so they would also work on test gameracks when testing different moves in minimax.
+Thought about how the gamerack looks when printing it and realized it would look better if the colors were put into the rack as R and Y so the rows would be the same length and the columns would be straight. I'm having a hard time with the score and heuristic values. I also had to change some classes and testing so they would also work on test gameracks when testing different moves in minimax.
 
 ### Questions
 Should the depth in minimax be the amount of rows (6) at the start?
