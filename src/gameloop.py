@@ -13,6 +13,7 @@ class GameLoop:
         self.minimax = Minimax(self.gamerack, self.gamestatus)
         self.who_starts = None
         self.turn = None #self.gamerack.turn  # true for player's turn, false for ai's turn
+        self.depth = 6 #?
 
     def main(self):
         """Loop takes inputs from the user, starts the game and switches turns."""
@@ -41,7 +42,7 @@ class GameLoop:
                 print("Wrong input, answer needs to be yes or no!")
                 continue
 
-        while self.gamestatus.is_game_over() is False:
+        while self.gamestatus.is_game_over(self.gamerack.rack) is False:
             if self.turn is True:
                 print("Player make your move: ")
                 self.gamerack.print_rack()
@@ -57,8 +58,8 @@ class GameLoop:
                     else:
                         print("Wrong input, rows are 1-6!")
                         continue
-                self.gamerack.insert_piece(row, column, self.gamerack.players_color)
-                status = self.gamestatus.is_game_over()
+                self.gamerack.insert_piece(self.gamerack.rack, row, column, self.gamerack.players_color)
+                status = self.gamestatus.is_game_over(self.gamerack.rack)
                 if self.gamestatus.status == 0:
                     print("It's a tie!")
                     break
@@ -68,14 +69,14 @@ class GameLoop:
                 self.turn = False
             if self.turn is False:
                 # call minimax
-                result = self.minimax.minimax(self.gamerack.rack, 6, -math.inf, math.inf, True)
+                result = self.minimax.minimax(self.gamerack.rack, self.depth, -math.inf, math.inf, True)
                 row, column = result[0], result[1]
-                self.gamerack.insert_piece(row, column, self.gamerack.ai_color)
-                status = self.gamestatus.is_game_over()
-                if self.gamestatus.tie is True:
+                self.gamerack.insert_piece(self.gamerack.rack, row, column, self.gamerack.ai_color)
+                status = self.gamestatus.is_game_over(self.gamerack.rack)
+                if self.gamestatus.status == 0:
                     print("It's a tie!")
                     break
-                elif status is True:
+                elif self.gamestatus.status == 1:
                     print("You lose!")
                     break
                 self.turn = True

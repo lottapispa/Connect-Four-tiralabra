@@ -10,7 +10,7 @@ class GameRack:
         self.players_color = None
         self.ai_color = None
 
-    def insert_piece(self, row: int, column: int, color: str):
+    def insert_piece(self, rack, row: int, column: int, color: str):
         """Inserts a piece to the rack."""
         if color not in ("R", "Y"):
             raise ValueError("Wrong input, color needs to be red or yellow!")
@@ -19,12 +19,12 @@ class GameRack:
         if not 1 <= column <= 7:
             raise ValueError("Wrong input, columns are 1-7!")
         # if row is 1 the index is 0, and column 1's index is 0
-        if [row-1, column-1] in self.next_move():
-            self.rack[row-1][column-1] = color
+        if [row-1, column-1] in self.next_move(rack):
+            rack[row-1][column-1] = color
         else:
             raise ValueError("Wrong input, you can't put your piece there!")
 
-    def next_move(self):
+    def next_move(self, rack):
             """This function finds all possible locations a player can put their piece in during their turn.
             It works by counting the last 0 (empty slot) of each column, except for bottom row."""
             # this list will contain indexes of possible locations like this [[0,0], [0,1]]. Since indexes start from 0, rows are 0-5 and columns are 0-6.
@@ -32,7 +32,7 @@ class GameRack:
             last_zero = None
             row_count = 0
             for column in range(0, self.columns):
-                for row in self.rack:
+                for row in rack:
                     if row[column] == 0:
                         last_zero = [row_count, column]
                     row_count += 1
