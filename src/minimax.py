@@ -10,26 +10,26 @@ class Minimax:
         """Class constructor, creates variables."""
         self.gamestatus = GameStatus()
         self.gamerack = GameRack()
-        # depth = 6 at start
+        #depth = 6?
 
     def minimax(self, gamestatus, depth, alpha, beta, maximizing_player: bool):
         """Minimax algorithm."""
         if depth == 0 or gamestatus.is_game_over() is True:
-            return  # heuristinen arvo
+            return self.gamestatus.status # heuristinen arvo
         if maximizing_player:
             value = -math.inf
             for move in gamestatus.gamerack.next_move():
                 value = max(value, self.minimax(
-                    move, depth - 1, alpha, beta, False))
+                    move, depth - 1, -math.inf, math.inf, False))
                 alpha = max(alpha, value)
                 if value >= beta:
                     break
             return value
         else:
             value = math.inf
-            for move in gamestatus.gamerack.next_move():  # list empty right now
+            for move in gamestatus.gamerack.next_move():
                 value = min(value, self.minimax(
-                    move, depth - 1, alpha, beta, True))
+                    move, depth - 1, -math.inf, math.inf, True))
                 beta = min(beta, value)
                 if value <= alpha:
                     break

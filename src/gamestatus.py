@@ -10,7 +10,8 @@ class GameStatus:
         self.rows = self.gamerack.rows
         self.columns = self.gamerack.columns
         self.over = False
-        self.tie = False
+        self.winner = None
+        self.status = None # 0 for tie, 1 for ai win and player loss, -1 for player win and ai loss
 
     def check_for_win_hor(self):
         """Checks for a connect four horizontally.
@@ -27,6 +28,7 @@ class GameStatus:
                 else:
                     counter = 1
                 if counter >= 4:
+                    self.winner = previous
                     return True
                 previous = i
         return False
@@ -46,6 +48,7 @@ class GameStatus:
                 else:
                     counter = 1
                 if counter >= 4:
+                    self.winner = previous
                     return True
                 previous = row[column]
         return False
@@ -56,14 +59,18 @@ class GameStatus:
         for column in range(self.columns-3):
             for row in range(self.rows-3):
                 if self.rack[row][column] == "R" and self.rack[row+1][column+1] == "R" and self.rack[row+2][column+2] == "R" and self.rack[row+3][column+3] == "R":
+                    self.winner = "R"
                     return True
                 if self.rack[row][column] == "Y" and self.rack[row+1][column+1] == "Y" and self.rack[row+2][column+2] == "Y" and self.rack[row+3][column+3] == "Y":
+                    self.winner = "Y"
                     return True
         for column in range(self.columns-3):
             for row in range(3, self.rows):
                 if self.rack[row][column] == "R" and self.rack[row-1][column+1] == "R" and self.rack[row-2][column+2] == "R" and self.rack[row-3][column+3] == "R":
+                    self.winner = "R"
                     return True
                 if self.rack[row][column] == "Y" and self.rack[row-1][column+1] == "Y" and self.rack[row-2][column+2] == "Y" and self.rack[row-3][column+3] == "Y":
+                    self.winner = "Y"
                     return True
         return False
     
@@ -78,12 +85,17 @@ class GameStatus:
         vertical = self.check_for_win_ver()
         diagonal = self.check_for_win_dia()
         if True in [horizontal, vertical, diagonal]:
+            if self.winner == self.gamerack.players_color:
+                self.status = -1
+            elif self.winner == self.gamerack.ai_color:
+                self.status = 1
             self.over = True
             return self.over
         # if there's no zeros or connect fours on the rack, the rack is full and it's a tie
-        # elif self.over is False and zeros == 0:
-        #    self.over = True
-        #    self.tie = True
-        #    return self.over
-        self.over = False
-        return self.over
+        elif self.over is False and zeros == 0:
+            self.over = True
+            self.status = 0
+            return self.over
+        else:
+            self.over = False
+            return self.over

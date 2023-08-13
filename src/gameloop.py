@@ -1,7 +1,7 @@
 from gamestatus import GameStatus
 from gamerack import GameRack
 from minimax import Minimax
-
+import math
 
 class GameLoop:
     """Class that creates the main loop of the game."""
@@ -12,19 +12,19 @@ class GameLoop:
         self.gamerack = GameRack()
         self.minimax = Minimax()
         self.who_starts = None
-        self.players_color = None #self.gamerack.players_color
-        self.ai_color = None #self.gamerack.ai_color
+        #self.gamerack.players_color = None
+        #self.gamerack.ai_color = None
         self.turn = None #self.gamerack.turn  # true for player's turn, false for ai's turn
 
     def main(self):
         """Loop takes inputs from the user, starts the game and switches turns."""
         while True:
-            self.players_color = input("Choose your pawn's color: 'R' for red or 'Y' for yellow. ")
-            if self.players_color == "R":
-                self.ai_color = "Y"
+            self.gamerack.players_color = input("Choose your pawn's color: 'R' for red or 'Y' for yellow. ")
+            if self.gamerack.players_color == "R":
+                self.gamerack.ai_color = "Y"
                 break
-            elif self.players_color == "Y":
-                self.ai_color = "R"
+            elif self.gamerack.players_color == "Y":
+                self.gamerack.ai_color = "R"
                 break
             else:
                 print("Wrong input, color needs to be red or yellow!")
@@ -59,7 +59,7 @@ class GameLoop:
                     else:
                         print("Wrong input, rows are 1-6!")
                         continue
-                self.gamestatus.insert_piece(row, column, self.players_color)
+                self.gamestatus.insert_piece(row, column, self.gamerack.players_color)
                 status = self.gamestatus.is_game_over()
                 if self.gamestatus.tie is True:
                     print("It's a tie!")
@@ -70,8 +70,9 @@ class GameLoop:
                 self.turn = False
             if self.turn is False:
                 # call minimax
-                row, column = None
-                self.gamestatus.insert_piece(row, column, self.ai_color)
+                result = self.minimax.minimax(self.gamerack.rack, depth, -math.inf, math.inf, True)
+                row, column = result[0], result[1]
+                self.gamestatus.insert_piece(row, column, self.gamerack.ai_color)
                 status = self.gamestatus.is_game_over()
                 if self.gamestatus.tie is True:
                     print("It's a tie!")
