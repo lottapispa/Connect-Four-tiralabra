@@ -14,8 +14,6 @@ classDiagram
         +reference to GameRack()
         +reference to Minimax()
         +str who_starts
-        +str players_color
-        +str ai_color
         +bool turn
     }
     class GameStatus{
@@ -33,6 +31,8 @@ classDiagram
         +int rows
         +int columns
         +list gamerack
+        +str players_color
+        +str ai_color
         +insert_piece()
         +next_move()
     }
