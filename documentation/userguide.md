@@ -4,7 +4,7 @@
 `poetry install`
 #### Initialization:
 `poetry run invoke build`
-#### Starting game: (doesn't work yet, as code is not functional)
+#### Starting game:
 `poetry run invoke start`
 #### Testing
 `poetry run invoke test`
@@ -23,5 +23,6 @@
 5 [0, 0, 0, 0, 0, 0, 0]  
 6 [0, 0, 0, 0, 0, 0, 0]  
 </pre> 
-When starting the game, the program will ask you to choose a pawn color for yourself and if you want to start the game. The gamerack will be printed before your move. When it's asking for your move, it will first ask the row and then the column.
+When starting the game, the program will ask you to choose a pawn color for yourself and if you want to start the game. The gamerack will be printed before your move. When it's asking for your move, it will first ask the row and then the column.  
+Right now program still breaks after inputs!
 
