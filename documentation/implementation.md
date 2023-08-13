@@ -15,6 +15,7 @@ classDiagram
         +reference to Minimax()
         +str who_starts
         +bool turn
+        +int depth
     }
     class GameStatus{
         +reference to list gamerack
