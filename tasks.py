@@ -22,4 +22,4 @@ def lint(ctx):
 
 @task
 def build(ctx):
-    ctx.run("poetry build", pty=True)
+    ctx.run("python3 src/build.py", pty=True)
