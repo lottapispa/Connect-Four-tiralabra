@@ -52,17 +52,35 @@ class GameLoop:
                 print("Player make your move: ")
                 self.gamerack.print_rack()
                 while True:
-                    row = int(input("First choose row (1-6): "))
-                    if 1 <= row <= 6:
-                        column = int(input("and then choose column (1-7): "))
-                        if 1 <= column <= 7:
-                            break
+                    try:
+                        row = input("First choose row (1-6): ")
+                        row = int(row)
+                        if 1 <= row <= 6:
+                            if self.gamerack.is_valid(row, "row"):
+                                break
+                            elif self.gamerack.is_valid(row, "row") is False:
+                                print("Wrong input, you can't put your piece there!")
+                                continue
+                        else:
+                            print("Wrong input, rows are 1-6!")
+                    except ValueError:
+                        print("Wrong input, rows are 1-6!")
+                while True:
+                    try:
+                        column = input("and then choose column (1-7): ")
+                        column = int(column)
+                        if 1 <= column <= 7 and self.gamerack.is_valid("column"):
+                            if self.gamerack.is_valid(column, "column"):
+                                break
+                            elif self.gamerack.is_valid(column, "column") is False:
+                                print("Wrong input, you can't put your piece there!")
+                                continue
                         else:
                             print("Wrong input, columns are 1-7!")
-                            continue
-                    else:
-                        print("Wrong input, rows are 1-6!")
-                        continue
+                    except ValueError:
+                        print("Wrong input, columns are 1-7!")
+
+                    
                 self.gamerack.insert_piece(self.gamerack.rack, row, column, self.gamerack.players_color)
                 self.gamestatus.is_game_over(self.gamerack.rack)
                 if self.gamestatus.status == 0:

@@ -39,6 +39,19 @@ class GameRack:
                 row_count = 0
                 self.possible_moves.append(last_zero)
             return self.possible_moves
+    
+    def is_valid(self, place, axis):
+        place -= 1
+        if axis == "row":
+            for i in self.next_move(self.rack):
+                if place == i[0]:
+                    return True
+            return False
+        else:
+            for i in self.next_move(self.rack):
+                if place == i[1]:
+                    return True
+            return False
 
     def print_rack(self):
         """This function prints the gamerack."""
