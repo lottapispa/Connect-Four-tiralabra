@@ -40,16 +40,17 @@ class GameRack:
                 self.possible_moves.append(last_zero)
             return self.possible_moves
     
-    def is_valid(self, place, axis):
-        place -= 1
-        if axis == "row":
+    def is_valid(self, row, column):
+        row -= 1
+        if column == None:
             for i in self.next_move(self.rack):
-                if place == i[0]:
+                if row == i[0]:
                     return True
             return False
         else:
+            column -= 1
             for i in self.next_move(self.rack):
-                if place == i[1]:
+                if [row, column] == i:
                     return True
             return False
 

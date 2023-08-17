@@ -60,10 +60,30 @@ class TestGameRack(unittest.TestCase):
                          0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0], [0, 0, 0, "R", 0, 0, 0]])
 
     def test_next_move(self):
-            self.gamerack = GameRack()
-            self.gamerack.rack = [[0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0], [0, 0, "Y", 0, 0, 0, 0], [0, 0, "R", 0, 0, 0, 0], [0, 0, "R", "Y", 0, 0, 0]]
-            self.assertEqual(self.gamerack.next_move(self.gamerack.rack,), [[5,0],[5,1],[2,2],[4,3],[5,4],[5,5],[5,6]])
-            self.assertEqual(self.gamerack.possible_moves, [[5,0],[5,1],[2,2],[4,3],[5,4],[5,5],[5,6]])
+        self.gamerack = GameRack()
+        self.gamerack.rack = [[0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0], [0, 0, "Y", 0, 0, 0, 0], [0, 0, "R", 0, 0, 0, 0], [0, 0, "R", "Y", 0, 0, 0]]
+        self.assertEqual(self.gamerack.next_move(self.gamerack.rack,), [[5,0],[5,1],[2,2],[4,3],[5,4],[5,5],[5,6]])
+        self.assertEqual(self.gamerack.possible_moves, [[5,0],[5,1],[2,2],[4,3],[5,4],[5,5],[5,6]])
+    
+    def test_is_valid_row_true(self):
+        self.gamerack = GameRack()
+        self.gamerack.rack = [[0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0]]
+        self.assertTrue(self.gamerack.is_valid(6, None))
+
+    def test_is_valid_row_false(self):
+        self.gamerack = GameRack()
+        self.gamerack.rack = [[0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0]]
+        self.assertFalse(self.gamerack.is_valid(5, None))
+
+    def test_is_valid_column_true(self):
+        self.gamerack = GameRack()
+        self.gamerack.rack = [[0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0], [0, 0, 0, "Y", 0, 0, 0]]
+        self.assertTrue(self.gamerack.is_valid(6, 7))
+
+    def test_is_valid_column_false(self):
+        self.gamerack = GameRack()
+        self.gamerack.rack = [[0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0], [0, 0, 0, "Y", 0, 0, 0]]
+        self.assertFalse(self.gamerack.is_valid(6, 4))
 
     @patch('builtins.print')
     def test_print_rack(self, mock_print):

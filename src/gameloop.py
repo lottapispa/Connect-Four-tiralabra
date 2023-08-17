@@ -16,30 +16,37 @@ class GameLoop:
         self.who_starts = None
         self.turn = None # true for player's turn, false for ai's turn
         self.depth = 6 #?
+        self.running = None
+
+    def color_input(self, text):
+        result = input(text)
+        return result
 
     def start_inputs(self):
         """This function takes start inputs from user."""
-        while True:
-            self.gamerack.players_color = input("Choose your pawn's color: 'R' for red or 'Y' for yellow. ")
+        self.running = True
+        while self.running:
+            self.gamerack.players_color = self.color_input("Choose your pawn's color: 'R' for red or 'Y' for yellow. ")
             if self.gamerack.players_color == "R":
                 self.gamerack.ai_color = "Y"
-                break
+                self.running = False
             elif self.gamerack.players_color == "Y":
                 self.gamerack.ai_color = "R"
-                break
+                self.running = False
             else:
                 print("Wrong input, color needs to be red or yellow!")
                 continue
-
-        while True:
+        
+        self.running = True
+        while self.running:
             self.who_starts = input(
             "Do you want the first move? Type 'yes' or 'no'. ")
             if self.who_starts == "yes":
                 self.turn = True
-                break
+                self.running = False
             elif self.who_starts == "no":
                 self.turn = False
-                break
+                self.running = False
             else:
                 print("Wrong input, answer needs to be yes or no!")
                 continue
@@ -56,9 +63,9 @@ class GameLoop:
                         row = input("First choose row (1-6): ")
                         row = int(row)
                         if 1 <= row <= 6:
-                            if self.gamerack.is_valid(row, "row"):
+                            if self.gamerack.is_valid(row, None):
                                 break
-                            elif self.gamerack.is_valid(row, "row") is False:
+                            elif self.gamerack.is_valid(row, None) is False:
                                 print("Wrong input, you can't put your piece there!")
                                 continue
                         else:
@@ -69,10 +76,10 @@ class GameLoop:
                     try:
                         column = input("and then choose column (1-7): ")
                         column = int(column)
-                        if 1 <= column <= 7 and self.gamerack.is_valid("column"):
-                            if self.gamerack.is_valid(column, "column"):
+                        if 1 <= column <= 7:
+                            if self.gamerack.is_valid(row, column):
                                 break
-                            elif self.gamerack.is_valid(column, "column") is False:
+                            elif self.gamerack.is_valid(row, column) is False:
                                 print("Wrong input, you can't put your piece there!")
                                 continue
                         else:
