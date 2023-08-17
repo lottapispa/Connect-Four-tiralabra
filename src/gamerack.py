@@ -14,13 +14,13 @@ class GameRack:
         """Inserts a piece to the rack."""
         if color not in ("R", "Y"):
             raise ValueError("Wrong input, color needs to be red or yellow!")
-        if not 1 <= row <= 6:
+        if not 0 <= row <= 5:
             raise ValueError("Wrong input, rows are 1-6!")
-        if not 1 <= column <= 7:
+        if not 0 <= column <= 6:
             raise ValueError("Wrong input, columns are 1-7!")
         # if row is 1 the index is 0, and column 1's index is 0
-        if [row-1, column-1] in self.next_move(rack):
-            rack[row-1][column-1] = color
+        if [row, column] in self.next_move(rack):
+            rack[row][column] = color
         else:
             raise ValueError("Wrong input, you can't put your piece there!")
 
@@ -41,14 +41,12 @@ class GameRack:
             return self.possible_moves
     
     def is_valid(self, row, column):
-        row -= 1
         if column == None:
             for i in self.next_move(self.rack):
                 if row == i[0]:
                     return True
             return False
         else:
-            column -= 1
             for i in self.next_move(self.rack):
                 if [row, column] == i:
                     return True

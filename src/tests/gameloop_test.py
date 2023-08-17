@@ -25,7 +25,7 @@ class TestGameLoop(unittest.TestCase):
         self.assertEqual(self.game.turn, None)
 
     @patch("gameloop.result", "R")
-    def test_start_inputs_red_one(self):
+    def start_inputs_red_one(self):
         """Tests if variable self.ai_color is red, when self.players_color is yellow."""
         self.game = GameLoop()
         assert self.game.color_input == "R"

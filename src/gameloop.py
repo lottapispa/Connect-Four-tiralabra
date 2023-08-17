@@ -15,18 +15,14 @@ class GameLoop:
         self.score = Score(self.gamerack, self.gamerack.players_color)
         self.who_starts = None
         self.turn = None # true for player's turn, false for ai's turn
-        self.depth = 6 #?
+        self.depth = 10 #?
         self.running = None
-
-    def color_input(self, text):
-        result = input(text)
-        return result
 
     def start_inputs(self):
         """This function takes start inputs from user."""
         self.running = True
         while self.running:
-            self.gamerack.players_color = self.color_input("Choose your pawn's color: 'R' for red or 'Y' for yellow. ")
+            self.gamerack.players_color = input("Choose your pawn's color: 'R' for red or 'Y' for yellow. ")
             if self.gamerack.players_color == "R":
                 self.gamerack.ai_color = "Y"
                 self.running = False
@@ -63,9 +59,9 @@ class GameLoop:
                         row = input("First choose row (1-6): ")
                         row = int(row)
                         if 1 <= row <= 6:
-                            if self.gamerack.is_valid(row, None):
+                            if self.gamerack.is_valid(row-1, None):
                                 break
-                            elif self.gamerack.is_valid(row, None) is False:
+                            elif self.gamerack.is_valid(row-1, None) is False:
                                 print("Wrong input, you can't put your piece there!")
                                 continue
                         else:
@@ -77,18 +73,17 @@ class GameLoop:
                         column = input("and then choose column (1-7): ")
                         column = int(column)
                         if 1 <= column <= 7:
-                            if self.gamerack.is_valid(row, column):
+                            if self.gamerack.is_valid(row-1, column-1):
                                 break
-                            elif self.gamerack.is_valid(row, column) is False:
-                                print("Wrong input, you can't put your piece there!")
+                            elif self.gamerack.is_valid(row-1, column-1) is False:
+                                print("Wrong input, the spot is taken you can't put your piece there!")
                                 continue
                         else:
                             print("Wrong input, columns are 1-7!")
                     except ValueError:
                         print("Wrong input, columns are 1-7!")
-
-                    
-                self.gamerack.insert_piece(self.gamerack.rack, row, column, self.gamerack.players_color)
+  
+                self.gamerack.insert_piece(self.gamerack.rack, row-1, column-1, self.gamerack.players_color)
                 self.gamestatus.is_game_over(self.gamerack.rack)
                 if self.gamestatus.status == 0:
                     print("It's a tie!")

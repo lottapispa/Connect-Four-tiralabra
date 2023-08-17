@@ -70,13 +70,18 @@ class GameStatus:
                     return True
         return False
     
-    def is_game_over(self, rack):
+    def is_game_over(self, rack: list):
         """If rack is full or a player connects four, variable over is True.
         Returns: boolean self.over."""
-        zeros = 0  # any(0 in i for i in self.rack)
+        zeros = None
         for row in rack:
-            z = row.count(0)
-            zeros += z
+            try:
+                if 0 in row:
+                    zeros = True
+                    break
+            except TypeError:
+                pass
+            zeros = False
         horizontal = self.check_for_win_hor(rack)
         vertical = self.check_for_win_ver(rack)
         diagonal = self.check_for_win_dia(rack)
@@ -87,7 +92,7 @@ class GameStatus:
                 self.status = 1
             return True
         # if there's no zeros or connect fours on the rack, the rack is full and it's a tie
-        elif self.winner is None and zeros == 0:
+        elif self.winner is None and zeros is False:
             self.status = 0
             return True
         else:

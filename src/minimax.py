@@ -7,7 +7,7 @@ class Minimax:
         """Class constructor, creates variables."""
         self.gamerack = gamerack
         self.gamestatus = gamestatus
-        self.depth = None #6?
+        self.depth = None #10?
 
     def minimax(self, rack, depth, alpha, beta, maximizing_player: bool):
         """Minimax algorithm."""

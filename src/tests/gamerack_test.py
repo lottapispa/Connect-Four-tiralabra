@@ -19,7 +19,7 @@ class TestGameRack(unittest.TestCase):
         """Tests if function raises value error for wrong input color and that the rack doesn't change."""
         self.gamerack = GameRack()
         self.rack = self.gamerack.rack
-        self.assertRaises(ValueError, self.gamerack.insert_piece, self.rack, 2, 3, "b")
+        self.assertRaises(ValueError, self.gamerack.insert_piece, self.rack, 5, 3, "b")
         self.assertEqual(self.rack, [[0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0], [
                          0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0]])
 
@@ -37,7 +37,7 @@ class TestGameRack(unittest.TestCase):
         self.gamerack = GameRack()
         self.rack = self.gamerack.rack
         self.assertRaises(
-            ValueError, self.gamerack.insert_piece, self.rack, 5, 0, "R")
+            ValueError, self.gamerack.insert_piece, self.rack, 5, 7, "R")
         self.assertEqual(self.rack, [[0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0], [
                          0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0]])
 
@@ -45,17 +45,16 @@ class TestGameRack(unittest.TestCase):
         """Tests if the rack changes correctly."""
         self.gamerack = GameRack()
         self.rack = self.gamerack.rack
-        self.gamerack.insert_piece(self.rack, 6, 4, "R")
-        self.assertEqual(self.rack, [[0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0], [
-                         0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0], [0, 0, 0, "R", 0, 0, 0]])
+        self.gamerack.insert_piece(self.rack, 5, 3, "R")
+        self.assertEqual(self.rack, [[0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0], [0, 0, 0, "R", 0, 0, 0]])
 
     def test_insert_piece_wrong_input_spot_taken(self):
         """Tests if function raises value error for wrong input (spot already taken) and that the rack doesn't change."""
         self.gamerack = GameRack()
         self.rack = self.gamerack.rack
-        self.gamerack.insert_piece(self.rack, 6, 4, "R")
+        self.gamerack.insert_piece(self.rack, 5, 3, "R")
         self.assertRaises(
-            ValueError, self.gamerack.insert_piece, self.rack, 6, 4, "Y")
+            ValueError, self.gamerack.insert_piece, self.rack, 5, 3, "Y")
         self.assertEqual(self.rack, [[0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0], [
                          0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0], [0, 0, 0, "R", 0, 0, 0]])
 
@@ -68,22 +67,22 @@ class TestGameRack(unittest.TestCase):
     def test_is_valid_row_true(self):
         self.gamerack = GameRack()
         self.gamerack.rack = [[0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0]]
-        self.assertTrue(self.gamerack.is_valid(6, None))
+        self.assertTrue(self.gamerack.is_valid(5, None))
 
     def test_is_valid_row_false(self):
         self.gamerack = GameRack()
         self.gamerack.rack = [[0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0]]
-        self.assertFalse(self.gamerack.is_valid(5, None))
+        self.assertFalse(self.gamerack.is_valid(4, None))
 
     def test_is_valid_column_true(self):
         self.gamerack = GameRack()
         self.gamerack.rack = [[0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0], [0, 0, 0, "Y", 0, 0, 0]]
-        self.assertTrue(self.gamerack.is_valid(6, 7))
+        self.assertTrue(self.gamerack.is_valid(5, 6))
 
     def test_is_valid_column_false(self):
         self.gamerack = GameRack()
         self.gamerack.rack = [[0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0], [0, 0, 0, "Y", 0, 0, 0]]
-        self.assertFalse(self.gamerack.is_valid(6, 4))
+        self.assertFalse(self.gamerack.is_valid(5, 3))
 
     @patch('builtins.print')
     def test_print_rack(self, mock_print):

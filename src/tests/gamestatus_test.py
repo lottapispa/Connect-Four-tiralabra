@@ -12,7 +12,7 @@ class TestGameStatus(unittest.TestCase):
         self.rows = GameStatus(self.gamerack).rows
         self.columns = GameStatus(self.gamerack).columns
 
-    def is_game_over_tie(self):
+    def test_is_game_over_tie(self):
         self.gameloop = GameLoop()
         self.gamerack = GameRack()
         self.gamestatus = GameStatus(self.gamerack)
