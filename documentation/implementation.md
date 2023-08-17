@@ -6,13 +6,15 @@ classDiagram
     GameLoop ..> GameStatus
     GameLoop ..> GameRack
     GameLoop ..> Minimax
+    GameLoop ..> Score
     GameStatus ..> GameRack
     Minimax ..> GameStatus
     Minimax ..> GameRack
+    Minimax ..> Score
     class GameLoop{
-        +reference to GameStatus()
-        +reference to GameRack()
-        +reference to Minimax()
+        +reference to GameStatus
+        +reference to GameRack
+        +reference to Minimax
         +str who_starts
         +bool turn
         +int depth
@@ -40,10 +42,16 @@ classDiagram
         +print_rack()
     }
     class Minimax{
-        +reference to GameRack()
-        +reference to GameStatus()
+        +reference to GameRack
+        +reference to GameStatus
         +minimax()
     }
+    class Score{
+        +reference to GameRack
+        +reference to GameStatus
+        +winning_move()
+        +heuristic_value()
+        +score_for_move()
 ```
 
 ### Complexity 
@@ -53,6 +61,7 @@ classDiagram
 | minimax.py |
 | gamestatus.py | 
 | gamerack.py |
+| score.py |
 
 ### Improvements
 Alpha-beta-pruning is not used yet.
