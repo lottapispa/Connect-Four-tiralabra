@@ -52,6 +52,7 @@ classDiagram
         +winning_move()
         +heuristic_value()
         +score_for_move()
+    }
 ```
 
 ### Complexity 
