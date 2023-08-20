@@ -12,6 +12,6 @@
 Class score is in progress, although didn't progress as much as I wanted to. Some testing for class gameloop finally works. Program doesn't crash because of type error during user inputs anymore.
 
 ### Problems
-Having trouble testing for wrong inputs.
+Having trouble doing unittesting for wrong user inputs.
 
 ### Questions
