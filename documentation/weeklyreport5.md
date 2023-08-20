@@ -9,7 +9,7 @@
 | total: | 9.25
 
 ### Progress
-Class score is in progress, although didn't progress as much as I wanted to. Some testing for class gameloop finally works.
+Class score is in progress, although didn't progress as much as I wanted to. Some testing for class gameloop finally works. Program doesn't crash because of type error during user inputs anymore.
 
 ### Problems
 Having trouble testing for wrong inputs.
