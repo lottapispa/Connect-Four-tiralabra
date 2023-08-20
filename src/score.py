@@ -48,4 +48,4 @@ class Score:
 
     def choose_move(self):
         """This function chooses the move that has the best score."""
-        return max(self.score_for_location())
+        return max(self.score_for_move())
