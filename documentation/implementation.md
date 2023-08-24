@@ -51,7 +51,7 @@ classDiagram
         +reference to GameStatus
         +winning_move()
         +heuristic_value()
-        +score_for_move()
+        +score_for_moves()
     }
 ```
 
