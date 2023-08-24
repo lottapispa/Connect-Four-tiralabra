@@ -1,9 +1,9 @@
 # Testing document
 ### Unit testing
-Right now, unit testing mostly covers classes gamestatus and gamerack. It doesn't cover class minimax as it's not functional yet. Class score has some unfinished functions that don't have tests yet, but the working functions are covered. Class gameloop is also not covered well, since I had some trouble testing for wrong inputs.
+Right now, unit testing mostly covers classes gamestatus and gamerack. It doesn't cover class minimax as it's not functional yet. Class score has one function whose test doesn't work yet, but most of the functions are covered. Class gameloop is also not covered well, since I had some trouble testing for wrong inputs.
 
 ### Coverage report
-<img width="683" alt="Screenshot 2023-08-20 at 23 45 25" src="https://github.com/lottapispa/connect-four-tiralabra/assets/101987621/30e17085-f33a-4ae3-ac09-eb7933950718">
+<img width="679" alt="Screenshot 2023-08-24 at 23 56 03" src="https://github.com/lottapispa/connect-four-tiralabra/assets/101987621/c285f16b-7d57-47b6-8479-6116fcf92c0c">
 
 ### Performance evaluation
 
