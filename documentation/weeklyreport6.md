@@ -3,10 +3,11 @@
 ### Hour Reporting
 | **date** | **time (h)** | **what I did** 
 | --------- | ----------- | --------- 
-| 24.8 | x | Started weekly report, coding class score, writing documentation
+| 24.8 | x | Started weekly report, coding and testing class score, writing documentation
 | total: | x
 
 ### Progress
+Core functionality is pretty much done. Testing time complexity isn't where I would like.
 
 ### Problems
 
