@@ -22,5 +22,18 @@ class TestGameLoop(unittest.TestCase):
         self.game.gamerack.rack = [[0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0], [0, "Y", "R", "R", 0, 0, 0], [0, "Y", "R", "R", "Y", 0, 0]]
         self.assertFalse(self.game.score.winning_move("Y"))
 
-    def heuristic_value(self):
-        pass
+    def test_score_for_moves_player(self):
+        self.game = GameLoop()
+        self.game.score = Score(self.game.gamerack, self.game.gamestatus)
+        self.game.gamerack.rack = [[0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0], [0, "Y", 0, 0, 0, 0, 0], [0, "Y", 0, 0, 0, 0, 0], [0, "Y", "R", "R", 0, 0, 0], [0, "Y", "R", "R", "Y", 0, 0]]
+        self.game.gamerack.players_color = "Y"
+        self.game.gamerack.ai_color = "R"
+        self.assertEqual(self.game.score.score_for_moves(self.game.gamerack.rack, self.game.gamerack.players_color), 115)
+
+    def test_score_for_moves_opp(self):
+        self.game = GameLoop()
+        self.game.score = Score(self.game.gamerack, self.game.gamestatus)
+        self.game.gamerack.rack = [[0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0], [0, "Y", "R", 0, 0, 0, 0], [0, "Y", "R", 0, 0, 0, 0], [0, "Y", "R", "R", "Y", 0, 0]]
+        self.game.gamerack.players_color = "Y"
+        self.game.gamerack.ai_color = "R"
+        self.assertEqual(self.game.score.score_for_moves(self.game.gamerack.rack, self.game.gamerack.ai_color), 7)

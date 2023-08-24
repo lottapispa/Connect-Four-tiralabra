@@ -5,7 +5,6 @@ class Score:
         """Class constructor, creates variables."""
         self.gamerack = gamerack #class
         self.gamestatus = gamestatus #class
-        moves_count = 21 # per player
 
     def winning_move(self, color):
         """This function checks if the next move will connect four and win.
@@ -20,32 +19,52 @@ class Score:
                 return winning_move
         return False
 
-    def heuristic_value(self, window, piece):
-        """This function makes rules for how to get different scores, by giving better value the quicker the win."""
-        # window is a list of length 4
+    def heuristic_value(self, line, piece):
+        """This function makes rules for how to get different scores, by giving better value the quicker the win.
+        Only called by function score_for_moves. Returns: variable score."""
+        # the line is a list of length 4
         score = 0 # for parameter piece
-        opp_piece = None
+        opp = None
         if piece == self.gamerack.players_color:
-            opp_piece = self.gamerack.ai_color
+            opp = self.gamerack.ai_color
         else:
-            opp_piece = self.gamerack.players_color
+            opp = self.gamerack.players_color
 
-        if window.count(piece) == 4:
-            score += 20
-        elif window.count(piece) == 3 and window.count(0) == 1:
+        if line.count(piece) == 4:
+            score += 100
+        elif line.count(piece) == 3 and line.count(0) == 1:
             score += 10
-        elif window.count(piece) == 2 and window.count(0) == 2:
+        elif line.count(piece) == 2 and line.count(0) == 2:
             score += 5
 
-        if window.count(opp_piece) == 3 and window.count(0) == 1:
+        if line.count(opp) == 3 and line.count(0) == 1:
             score -= 8
+        return score
 
-    def score_for_move(self):
-        """This function gives scores to all the possible moves."""
-        scores = []
-        # call heuristic_value()
-        return scores
+    def score_for_moves(self, rack, piece):
+        """This function gives scores to all the possible moves.
+        Calls function heuristic_value. Returns: variable score."""
+        # the line is a list of length 4
+        score = 0
+        # horizontally
+        for row in range(6):
+            for column in range(7-3):
+                line = [rack[row][column+i] for i in range(4)]
+                score += self.heuristic_value(line, piece)
+        # vertically
+        for column in range(7):
+            for row in range(6-3):
+                line = [rack[row+i][column] for i in range(4)]
+                score += self.heuristic_value(line, piece)
+        # diagonally
+        for row in range(6-3):
+            for column in range(7-3):
+                line = [rack[row+i][column+i] for i in range(4)]
+                score += self.heuristic_value(line, piece)
+                line = [rack[row+3-i][column+i] for i in range(4)]
+                score += self.heuristic_value(line, piece)
+        return score
 
     def choose_move(self):
         """This function chooses the move that has the best score."""
-        return max(self.score_for_move())
+        pass
