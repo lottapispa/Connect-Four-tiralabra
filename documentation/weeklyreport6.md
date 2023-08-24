@@ -3,7 +3,7 @@
 ### Hour Reporting
 | **date** | **time (h)** | **what I did** 
 | --------- | ----------- | --------- 
-| 24.8 | 3.5 | Started weekly report, coding and testing class score, writing documentation
+| 24.8 | 3.5 | Started weekly report, coding and testing class score, updating documentation
 | total: | x
 
 ### Progress
