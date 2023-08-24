@@ -46,6 +46,8 @@ class Score:
         Calls function heuristic_value. Returns: variable score."""
         # the line is a list of length 4
         score = 0
+        # how to give priority to center columns while still blocking opponents connect four?
+
         # horizontally
         for row in range(6):
             for column in range(7-3):
@@ -65,6 +67,16 @@ class Score:
                 score += self.heuristic_value(line, piece)
         return score
 
-    def choose_move(self):
-        """This function chooses the move that has the best score."""
-        pass
+    def choose_best_move(self, rack, piece):
+        """This function chooses the move that has the best score.
+        Returns: best move as list [row, column]."""
+        best_score = -1000
+        best_move = []
+        for place in self.gamerack.next_move(rack):
+            rack_copy = rack.copy()
+            self.gamerack.insert_piece(rack_copy, place[0], place[1], piece)
+            score = self.score_for_moves(rack_copy, piece)
+            if score > best_score:
+                best_score = score
+                best_move = [place[0], place[1]]
+        return best_move

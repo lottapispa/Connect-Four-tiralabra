@@ -3,6 +3,7 @@ from gamerack import GameRack
 from minimax import Minimax
 from score import Score
 import math
+import time
 
 class GameLoop:
     """Class that creates the main loop of the game."""
@@ -88,7 +89,7 @@ class GameLoop:
                 if self.gamestatus.status == 0:
                     print("It's a tie!")
                     break
-                elif self.gamestatus.status == -1:
+                elif self.gamestatus.status == -100:
                     print("You win!")
                     break
                 self.turn = False
@@ -101,7 +102,7 @@ class GameLoop:
                 if self.gamestatus.status == 0:
                     print("It's a tie!")
                     break
-                elif self.gamestatus.status == 1:
+                elif self.gamestatus.status == 100:
                     print("You lose!")
                     break
                 self.turn = True
@@ -111,4 +112,13 @@ class GameLoop:
 # for testing
 if __name__ == "__main__":
     game = GameLoop()
-    game.main()
+    #rack = [[0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0], [0, "Y", 0, 0, 0, 0, 0], [0, "Y", "R", "R", 0, 0, 0], [0, "Y", "R", "R", "Y", 0, 0]]
+    #rack1 = [[0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0], [0, "R", 0, 0, 0, 0, 0], [0, "Y", 0, 0, 0, 0, 0], [0, "Y", "R", "R", 0, 0, 0], [0, "Y", "R", "R", "Y", 0, 0]]
+    #rack2 = [[0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0], [0, "Y", 0, 0, 0, 0, 0], [0, "Y", "R", "R", 0, 0, 0], [0, "Y", "R", "R", "Y", "R", 0]]
+    #game.gamerack.ai_color = "R"
+    #game.gamerack.players_color = "Y"
+    #print(game.score.score_for_moves(rack, game.gamerack.ai_color))
+    #print(game.score.score_for_moves(rack1, game.gamerack.ai_color))
+    #print(game.score.score_for_moves(rack2, game.gamerack.ai_color))
+    #print(game.score.choose_best_move(rack, game.gamerack.ai_color))
+    #game.main()

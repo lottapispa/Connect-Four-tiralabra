@@ -7,7 +7,7 @@ class GameStatus:
         self.rows = self.gamerack.rows
         self.columns = self.gamerack.columns
         self.winner = None
-        self.status = None # 0 for tie, 1 for ai win and player loss, -1 for player win and ai loss
+        self.status = None # 0 for tie, 100 for ai win and player loss, -100 for player win and ai loss
 
     def check_for_win_hor(self, rack):
         """Checks for a connect four horizontally.
