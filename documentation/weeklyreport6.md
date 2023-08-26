@@ -4,6 +4,7 @@
 | **date** | **time (h)** | **what I did** 
 | --------- | ----------- | --------- 
 | 24.8 | 3.5 | Started weekly report, coding and testing class score, updating documentation
+| 26.8 | x | Fixed code based on last week's feedback and issue 2
 | total: | x
 
 ### Progress
