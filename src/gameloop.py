@@ -15,7 +15,6 @@ class GameLoop:
         self.score = Score(self.gamerack, self.gamerack.players_color)
         self.who_starts = None
         self.turn = None # true for player's turn, false for ai's turn
-        self.depth = 10 #?
         self.running = None
 
     def start_inputs(self):

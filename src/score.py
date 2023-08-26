@@ -1,3 +1,5 @@
+import math
+
 class Score:
     """Class that is going to analyse the state of the gamerack and give scores to possible moves."""
 
@@ -10,11 +12,11 @@ class Score:
         """This function checks if the next move will connect four and win.
         Returns: winning move [row, column] if there is one, otherwise false."""
         winning_move = None
-        for i in self.gamerack.next_move(self.gamerack.rack):
+        for move in self.gamerack.next_move(self.gamerack.rack):
             rack_copy = self.gamerack.rack.copy()
-            self.gamerack.insert_piece(rack_copy, i[0], i[1], color)
+            self.gamerack.insert_piece(rack_copy, move[0], move[1], color)
             if self.gamestatus.is_game_over(rack_copy) is True and self.gamestatus.status != 0:
-                winning_move = [i[0], i[1]]
+                winning_move = move
                 return winning_move
         return False
 
@@ -67,6 +69,8 @@ class Score:
         """This function chooses the move that has the best score.
         Returns: best move as list [row, column]."""
         # call minimax
+        self.minimax(rack_copy, 10, -math.inf, math.inf, True)
+
         best_score = -1000
         best_move = []
         for place in self.gamerack.next_move(rack):
