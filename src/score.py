@@ -1,12 +1,13 @@
 import math
 
+
 class Score:
     """Class that is going to analyse the state of the gamerack and give scores to possible moves."""
 
     def __init__(self, gamerack, gamestatus):
         """Class constructor, creates variables."""
-        self.gamerack = gamerack 
-        self.gamestatus = gamestatus 
+        self.gamerack = gamerack
+        self.gamestatus = gamestatus
 
     def winning_move(self, color):
         """This function checks if the next move will connect four and win.
@@ -69,7 +70,7 @@ class Score:
         """This function chooses the move that has the best score.
         Returns: best move as list [row, column]."""
         # call minimax
-        self.minimax(rack_copy, 10, -math.inf, math.inf, True)
+        # self.minimax(rack_copy, 10, -math.inf, math.inf, True)
 
         best_score = -1000
         best_move = []

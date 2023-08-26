@@ -23,26 +23,26 @@ class GameRack:
             raise ValueError("Wrong input, you can't put your piece there!")
 
     def next_move(self, rack):
-            """This function finds all possible locations a player can put their piece in during their turn.
-            It works by counting the last 0 (empty slot) of each column, except for bottom row."""
-            self.possible_moves = []
+        """This function finds all possible locations a player can put their piece in during their turn.
+        It works by counting the last 0 (empty slot) of each column, except for bottom row."""
+        self.possible_moves = []
+        row_count = 0
+        for column in range(0, self.columns):
+            last_zero = None
+            for row in rack:
+                if row[column] == 0:
+                    last_zero = [row_count, column]
+                row_count += 1
             row_count = 0
-            for column in range(0, self.columns):
-                last_zero = None
-                for row in rack:
-                    if row[column] == 0:
-                        last_zero = [row_count, column]
-                    row_count += 1
-                row_count = 0
-                if last_zero is not None:
-                    self.possible_moves.append(last_zero)
-            return self.possible_moves
-    
+            if last_zero is not None:
+                self.possible_moves.append(last_zero)
+        return self.possible_moves
+
     def is_valid(self, column):
-            for place in self.next_move(self.rack):
-                if place[1] == column:
-                    return place[0]
-            return False
+        for place in self.next_move(self.rack):
+            if place[1] == column:
+                return place[0]
+        return False
 
     def print_rack(self):
         """This function prints the gamerack."""

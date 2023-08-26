@@ -19,7 +19,8 @@ class TestGameRack(unittest.TestCase):
         """Tests if function raises value error for wrong input color and that the rack doesn't change."""
         self.gamerack = GameRack()
         self.rack = self.gamerack.rack
-        self.assertRaises(ValueError, self.gamerack.insert_piece, self.rack, 5, 3, "b")
+        self.assertRaises(
+            ValueError, self.gamerack.insert_piece, self.rack, 5, 3, "b")
         self.assertEqual(self.rack, [[0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0], [
                          0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0]])
 
@@ -46,7 +47,8 @@ class TestGameRack(unittest.TestCase):
         self.gamerack = GameRack()
         self.rack = self.gamerack.rack
         self.gamerack.insert_piece(self.rack, 5, 3, "R")
-        self.assertEqual(self.rack, [[0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0], [0, 0, 0, "R", 0, 0, 0]])
+        self.assertEqual(self.rack, [[0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0], [
+                         0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0], [0, 0, 0, "R", 0, 0, 0]])
 
     def test_insert_piece_wrong_input_spot_taken(self):
         """Tests if function raises value error for wrong input (spot already taken) and that the rack doesn't change."""
@@ -60,18 +62,23 @@ class TestGameRack(unittest.TestCase):
 
     def test_next_move(self):
         self.gamerack = GameRack()
-        self.gamerack.rack = [[0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0], [0, 0, "Y", 0, 0, 0, 0], [0, 0, "R", 0, 0, 0, 0], [0, 0, "R", "Y", 0, 0, 0]]
-        self.assertEqual(self.gamerack.next_move(self.gamerack.rack,), [[5,0],[5,1],[2,2],[4,3],[5,4],[5,5],[5,6]])
-        self.assertEqual(self.gamerack.possible_moves, [[5,0],[5,1],[2,2],[4,3],[5,4],[5,5],[5,6]])
-    
+        self.gamerack.rack = [[0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0], [
+            0, 0, "Y", 0, 0, 0, 0], [0, 0, "R", 0, 0, 0, 0], [0, 0, "R", "Y", 0, 0, 0]]
+        self.assertEqual(self.gamerack.next_move(self.gamerack.rack,), [
+                         [5, 0], [5, 1], [2, 2], [4, 3], [5, 4], [5, 5], [5, 6]])
+        self.assertEqual(self.gamerack.possible_moves, [
+                         [5, 0], [5, 1], [2, 2], [4, 3], [5, 4], [5, 5], [5, 6]])
+
     def test_is_valid_true(self):
         self.gamerack = GameRack()
-        self.gamerack.rack = [[0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0]]
+        self.gamerack.rack = [[0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0], [
+            0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0]]
         self.assertEqual(self.gamerack.is_valid(4), 5)
 
     def test_is_valid_false(self):
         self.gamerack = GameRack()
-        self.gamerack.rack = [["R", 0, 0, 0, 0, 0, 0], ["Y", 0, 0, 0, 0, 0, 0], ["R", 0, 0, 0, 0, 0, 0], ["R", 0, 0, 0, 0, 0, 0], ["Y", 0, 0, 0, 0, 0, 0], ["Y", 0, 0, 0, 0, 0, 0]]
+        self.gamerack.rack = [["R", 0, 0, 0, 0, 0, 0], ["Y", 0, 0, 0, 0, 0, 0], ["R", 0, 0, 0, 0, 0, 0], [
+            "R", 0, 0, 0, 0, 0, 0], ["Y", 0, 0, 0, 0, 0, 0], ["Y", 0, 0, 0, 0, 0, 0]]
         self.assertFalse(self.gamerack.is_valid(0))
 
     @patch('builtins.print')
