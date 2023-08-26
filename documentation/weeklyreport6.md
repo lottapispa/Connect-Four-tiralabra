@@ -4,14 +4,14 @@
 | **date** | **time (h)** | **what I did** 
 | --------- | ----------- | --------- 
 | 24.8 | 3.5 | Started weekly report, coding and testing class score, updating documentation
-| 26.8 | x | Fixed code based on last week's feedback and issue 2
+| 26.8 | x | Fixed code based on last week's feedback and issue 2, 
 | total: | x
 
 ### Progress
 Core functionality is almost done. Testing time complexity isn't where I would like.
 
 ### Problems
-Having trouble with function choose_best_move even though score_for_moves seems to be working.
+Having trouble figuring out how to link function choose_best_move to minimax and whether to call minimax in function choose_best_move or the other way around.
 
 ### Questions
 What kind of performance evaluation/suorituskykytesti is needed in my project?
