@@ -23,6 +23,6 @@
 5 [0, 0, 0, 0, 0, 0, 0]  
 6 [0, 0, 0, 0, 0, 0, 0]  
 </pre> 
-When starting the game, the program will ask you to choose a pawn color for yourself and if you want to start the game. The gamerack will be printed before your move. When it's asking for your move, it will first ask the row and then the column.  
+When starting the game, the program will ask you to choose a pawn color for yourself and if you want to make the first move. The gamerack will be printed before your move. Then it will ask for your move, specifically the column.  
 ##### Right now program still breaks after inputs!
 
