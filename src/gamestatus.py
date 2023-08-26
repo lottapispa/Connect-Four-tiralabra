@@ -87,9 +87,9 @@ class GameStatus:
         diagonal = self.check_for_win_dia(rack)
         if True in [horizontal, vertical, diagonal]:
             if self.winner == self.gamerack.players_color:
-                self.status = -1
+                self.status = -100
             elif self.winner == self.gamerack.ai_color:
-                self.status = 1
+                self.status = 100
             return True
         # if there's no zeros or connect fours on the rack, the rack is full and it's a tie
         elif self.winner is None and zeros is False:

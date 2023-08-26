@@ -71,26 +71,24 @@ class GameLoop:
                         print("Wrong input, columns are 1-7!")
   
                 self.gamerack.insert_piece(self.gamerack.rack, row, column-1, self.gamerack.players_color)
-                self.gamestatus.is_game_over(self.gamerack.rack)
-                if self.gamestatus.status == 0:
-                    print("It's a tie!")
-                    break
-                elif self.gamestatus.status == -100:
-                    print("You win!")
-                    break
+                if self.gamestatus.is_game_over(self.gamerack.rack):
+                    if self.gamestatus.status == 0:
+                        print("It's a tie!")
+                        break
+                    elif self.gamestatus.status == -100:
+                        print("You win!")
+                        break
                 self.turn = False
             if self.turn is False:
-                # call minimax
-                result = self.minimax.minimax(self.gamerack.rack, self.depth, -math.inf, math.inf, True)
-                row, column = result[0], result[1]
-                self.gamerack.insert_piece(self.gamerack.rack, row, column, self.gamerack.ai_color)
-                status = self.gamestatus.is_game_over(self.gamerack.rack)
-                if self.gamestatus.status == 0:
-                    print("It's a tie!")
-                    break
-                elif self.gamestatus.status == 100:
-                    print("You lose!")
-                    break
+                move = self.score.choose_best_move(self.gamerack.rack, self.gamerack.ai_color)
+                self.gamerack.insert_piece(self.gamerack.rack, move[0], move[1], self.gamerack.ai_color)
+                if self.gamestatus.is_game_over(self.gamerack.rack):
+                    if self.gamestatus.status == 0:
+                        print("It's a tie!")
+                        break
+                    elif self.gamestatus.status == 100:
+                        print("You lose!")
+                        break
                 self.turn = True
             else:
                 raise ValueError("Variable self.turn doesn't work right!")

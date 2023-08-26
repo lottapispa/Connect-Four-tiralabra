@@ -66,6 +66,7 @@ class Score:
     def choose_best_move(self, rack, piece):
         """This function chooses the move that has the best score.
         Returns: best move as list [row, column]."""
+        # call minimax
         best_score = -1000
         best_move = []
         for place in self.gamerack.next_move(rack):

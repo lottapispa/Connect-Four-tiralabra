@@ -16,17 +16,24 @@ class Minimax:
         if maximizing_player:
             value = -math.inf
             for move in self.gamerack.next_move(rack):
-                #rack_copy = self.gamerack.rack.copy()
-                value = max(value, self.minimax(move, depth - 1, -math.inf, math.inf, False))
+                rack_copy = self.gamerack.rack.copy()
+                self.gamerack.insert_piece(rack_copy, move[0], move[1], self.gamerack.ai_color)
+                new_value = self.minimax(rack_copy, depth - 1, -math.inf, math.inf, False)
+                if new_value >= value:
+                    value = new_value
                 alpha = max(alpha, value)
-                if value >= beta:
+                if alpha >= beta:
                     break
-            return value
+            return move, value
         else:
             value = math.inf
             for move in self.gamerack.next_move(rack):
-                value = min(value, self.minimax(move, depth - 1, -math.inf, math.inf, True))
+                rack_copy = self.gamerack.rack.copy()
+                self.gamerack.insert_piece(rack_copy, move[0], move[1], self.gamerack.player_color)
+                new_value = self.minimax(rack_copy, depth - 1, -math.inf, math.inf, True)
+                if new_value < value:
+                    value = new_value
                 beta = min(beta, value)
-                if value <= alpha:
+                if beta <= alpha:
                     break
-            return value
+            return move, value
