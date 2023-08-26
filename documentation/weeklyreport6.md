@@ -4,7 +4,7 @@
 | **date** | **time (h)** | **what I did** 
 | --------- | ----------- | --------- 
 | 24.8 | 3.5 | Started weekly report, coding and testing class score, updating documentation
-| 26.8 | 2 | Fixed code based on last week's feedback and issue 2, 
+| 26.8 | 3.5 | Fixed code based on last week's feedback and issue 2, changing and testing class gameloop
 | total: | x
 
 ### Progress
