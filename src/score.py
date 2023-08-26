@@ -3,13 +3,12 @@ class Score:
 
     def __init__(self, gamerack, gamestatus):
         """Class constructor, creates variables."""
-        self.gamerack = gamerack #class
-        self.gamestatus = gamestatus #class
+        self.gamerack = gamerack 
+        self.gamestatus = gamestatus 
 
     def winning_move(self, color):
         """This function checks if the next move will connect four and win.
         Returns: winning move [row, column] if there is one, otherwise false."""
-        # variable here so it resets when function is called
         winning_move = None
         for i in self.gamerack.next_move(self.gamerack.rack):
             rack_copy = self.gamerack.rack.copy()
@@ -22,8 +21,7 @@ class Score:
     def heuristic_value(self, line, piece):
         """This function makes rules for how to get different scores, by giving better value the quicker the win.
         Only called by function score_for_moves. Returns: variable score."""
-        # the line is a list of length 4
-        score = 0 # for parameter piece
+        score = 0
         opp = None
         if piece == self.gamerack.players_color:
             opp = self.gamerack.ai_color
@@ -38,27 +36,25 @@ class Score:
             score += 5
 
         if line.count(opp) == 3 and line.count(0) == 1:
-            score -= 8
+            score -= 80
         return score
 
     def score_for_moves(self, rack, piece):
         """This function gives scores to all the possible moves.
         Calls function heuristic_value. Returns: variable score."""
-        # the line is a list of length 4
         score = 0
         # how to give priority to center columns while still blocking opponents connect four?
 
-        # horizontally
         for row in range(6):
             for column in range(7-3):
                 line = [rack[row][column+i] for i in range(4)]
                 score += self.heuristic_value(line, piece)
-        # vertically
+
         for column in range(7):
             for row in range(6-3):
                 line = [rack[row+i][column] for i in range(4)]
                 score += self.heuristic_value(line, piece)
-        # diagonally
+
         for row in range(6-3):
             for column in range(7-3):
                 line = [rack[row+i][column+i] for i in range(4)]
@@ -78,5 +74,5 @@ class Score:
             score = self.score_for_moves(rack_copy, piece)
             if score > best_score:
                 best_score = score
-                best_move = [place[0], place[1]]
+                best_move = place
         return best_move

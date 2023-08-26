@@ -3,7 +3,6 @@ from gamerack import GameRack
 from minimax import Minimax
 from score import Score
 import math
-import time
 
 class GameLoop:
     """Class that creates the main loop of the game."""
@@ -53,38 +52,25 @@ class GameLoop:
         self.start_inputs()
         while self.gamestatus.is_game_over(self.gamerack.rack) is False:
             if self.turn is True:
-                print("Player make your move: ")
+                print("Player make your move, choose column (1-7): ")
                 self.gamerack.print_rack()
                 while True:
                     try:
-                        row = input("First choose row (1-6): ")
-                        row = int(row)
-                        if 1 <= row <= 6:
-                            if self.gamerack.is_valid(row-1, None):
-                                break
-                            elif self.gamerack.is_valid(row-1, None) is False:
-                                print("Wrong input, you can't put your piece there!")
-                                continue
-                        else:
-                            print("Wrong input, rows are 1-6!")
-                    except ValueError:
-                        print("Wrong input, rows are 1-6!")
-                while True:
-                    try:
-                        column = input("and then choose column (1-7): ")
+                        column = input("Player make your move, choose column (1-7): ")
                         column = int(column)
                         if 1 <= column <= 7:
-                            if self.gamerack.is_valid(row-1, column-1):
-                                break
-                            elif self.gamerack.is_valid(row-1, column-1) is False:
-                                print("Wrong input, the spot is taken you can't put your piece there!")
+                            if self.gamerack.is_valid(column-1) is False:
+                                print("Wrong input, column is full!")
                                 continue
+                            else:
+                                row = self.gamerack.is_valid(column-1)
+                                break
                         else:
                             print("Wrong input, columns are 1-7!")
                     except ValueError:
                         print("Wrong input, columns are 1-7!")
   
-                self.gamerack.insert_piece(self.gamerack.rack, row-1, column-1, self.gamerack.players_color)
+                self.gamerack.insert_piece(self.gamerack.rack, row, column-1, self.gamerack.players_color)
                 self.gamestatus.is_game_over(self.gamerack.rack)
                 if self.gamestatus.status == 0:
                     print("It's a tie!")
@@ -112,13 +98,4 @@ class GameLoop:
 # for testing
 if __name__ == "__main__":
     game = GameLoop()
-    #rack = [[0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0], [0, "Y", 0, 0, 0, 0, 0], [0, "Y", "R", "R", 0, 0, 0], [0, "Y", "R", "R", "Y", 0, 0]]
-    #rack1 = [[0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0], [0, "R", 0, 0, 0, 0, 0], [0, "Y", 0, 0, 0, 0, 0], [0, "Y", "R", "R", 0, 0, 0], [0, "Y", "R", "R", "Y", 0, 0]]
-    #rack2 = [[0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0], [0, "Y", 0, 0, 0, 0, 0], [0, "Y", "R", "R", 0, 0, 0], [0, "Y", "R", "R", "Y", "R", 0]]
-    #game.gamerack.ai_color = "R"
-    #game.gamerack.players_color = "Y"
-    #print(game.score.score_for_moves(rack, game.gamerack.ai_color))
-    #print(game.score.score_for_moves(rack1, game.gamerack.ai_color))
-    #print(game.score.score_for_moves(rack2, game.gamerack.ai_color))
-    #print(game.score.choose_best_move(rack, game.gamerack.ai_color))
-    #game.main()
+    game.main()
