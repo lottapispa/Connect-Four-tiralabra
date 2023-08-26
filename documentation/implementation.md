@@ -18,6 +18,10 @@ classDiagram
         +str who_starts
         +bool turn
         +int depth
+        +start_inputs()
+        +main()
+        +players_move()
+        +end_prints()
     }
     class GameStatus{
         +reference to list gamerack
@@ -69,6 +73,7 @@ classDiagram
 Alpha-beta-pruning is not used yet.
 
 ### Sources
+- "Tiralabra - 2023 loppukesä", viewed 24 August 2023, https://tiralabra.github.io/2023_loppukesa/index
 - "Connect Four", Wikipedia, wiki article, viewed 22 July 2023, https://en.wikipedia.org/wiki/Connect_Four
 - "Minimax" 2023, Wikipedia, wiki article, viewed 22 July 2023, https://en.wikipedia.org/wiki/Minimax
 - "Alpha-beta-pruning" 2023, Wikipedia, wiki article, viewed 22 July 2023, https://en.wikipedia.org/wiki/Alpha%E2%80%93beta_pruning
