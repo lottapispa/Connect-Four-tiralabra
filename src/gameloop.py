@@ -54,25 +54,9 @@ class GameLoop:
 
             if self.turn is True:
                 self.gamerack.print_rack()
-                while True:
-                    try:
-                        column = input(
-                            "Player make your move, choose column (1-7): ")
-                        column = int(column)
-                        if 1 <= column <= 7:
-                            if self.gamerack.is_valid(column-1) is False:
-                                print("Wrong input, column is full!")
-                                continue
-                            else:
-                                row = self.gamerack.is_valid(column-1)
-                                break
-                        else:
-                            print("Wrong input, columns are 1-7!")
-                    except ValueError:
-                        print("Wrong input, columns are 1-7!")
-
+                row, column = self.players_move()
                 self.gamerack.insert_piece(
-                    self.gamerack.rack, row, column-1, self.gamerack.players_color)
+                    self.gamerack.rack, row, column, self.gamerack.players_color)
                 if self.gamestatus.is_game_over(self.gamerack.rack):
                     self.end_prints()
                     break
@@ -90,11 +74,31 @@ class GameLoop:
                 self.turn = True
             else:
                 raise ValueError("Variable self.turn doesn't work right!")
-            
+
+    def players_move(self):
+        """Asks for player's move. Returns: row and column."""
+        while True:
+            try:
+                column = input(
+                    "Player make your move, choose column (1-7): ")
+                column = int(column)
+                if 1 <= column <= 7:
+                    if self.gamerack.is_valid(column-1) is False:
+                        print("Wrong input, column is full!")
+                        continue
+                    else:
+                        row = self.gamerack.is_valid(column-1)
+                        return row, column-1
+                else:
+                    print("Wrong input, columns are 1-7!")
+            except ValueError:
+                print("Wrong input, columns are 1-7!")
+
     def end_prints(self):
-        if self.gamestatus.status == 100:
+        """Prints status of the game to user when game ends."""
+        if self.gamestatus.status == 1000:
             print("You lose!")
-        elif self.gamestatus.status == -100:
+        elif self.gamestatus.status == -1000:
             print("You win!")
         else:
             print("It's a tie!")

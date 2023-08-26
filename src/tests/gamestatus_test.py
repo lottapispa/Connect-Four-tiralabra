@@ -35,7 +35,7 @@ class TestGameStatus(unittest.TestCase):
         self.assertTrue(self.gamestatus.is_game_over(
             self.gamestatus.gamerack.rack))
         self.gamestatus.is_game_over(self.gamestatus.gamerack.rack)
-        self.assertEqual(self.gamestatus.status, -100)
+        self.assertEqual(self.gamestatus.status, -1000)
 
     def test_is_game_over_true_ai(self):
         self.gameloop = GameLoop()
@@ -48,7 +48,7 @@ class TestGameStatus(unittest.TestCase):
         self.assertTrue(self.gamestatus.is_game_over(
             self.gamestatus.gamerack.rack))
         self.gamestatus.is_game_over(self.gamestatus.gamerack.rack)
-        self.assertEqual(self.gamestatus.status, 100)
+        self.assertEqual(self.gamestatus.status, 1000)
 
     def test_is_game_over_false(self):
         self.gameloop = GameLoop()

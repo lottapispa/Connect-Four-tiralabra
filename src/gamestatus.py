@@ -7,7 +7,7 @@ class GameStatus:
         self.rows = self.gamerack.rows
         self.columns = self.gamerack.columns
         self.winner = None
-        # 0 for tie, 100 for ai win and player loss, -100 for player win and ai loss
+        # 0 for tie, 1000 for ai win and player loss, -1000 for player win and ai loss
         self.status = None
 
     def check_for_win_hor(self, rack):
@@ -88,9 +88,9 @@ class GameStatus:
         diagonal = self.check_for_win_dia(rack)
         if True in [horizontal, vertical, diagonal]:
             if self.winner == self.gamerack.players_color:
-                self.status = -100
+                self.status = -1000
             elif self.winner == self.gamerack.ai_color:
-                self.status = 100
+                self.status = 1000
             return True
         # if there's no zeros or connect fours on the rack, the rack is full and it's a tie
         elif self.winner is None and zeros is False:

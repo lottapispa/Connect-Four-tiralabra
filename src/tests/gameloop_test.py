@@ -3,6 +3,7 @@ from unittest.mock import patch
 import io
 from unittest.mock import *
 from gameloop import GameLoop
+from gamerack import GameRack
 from gamestatus import GameStatus
 from minimax import Minimax
 
@@ -66,17 +67,31 @@ class TestGameLoop(unittest.TestCase):
         self.assertEqual([call[0] for call in self.game.start_inputs(
         ).print.call_args_list], expected_output)
 
+    @patch("builtins.input", side_effect=["5", "5"])
+    def test_players_move_correct_number(self, mock_input):
+        self.game = GameLoop()
+        self.game.players_move()
+        self.assertEqual(self.game.players_move(), (5, 4))
+
+    @patch('sys.stdout', new_callable=io.StringIO)
+    @patch("builtins.input", side_effect=["9", "5", "5"])
+    def players_move_wrong_number(self, mock_stdout, mock_input):
+        self.game = GameLoop()
+        self.game.players_move()
+        assert mock_stdout.getvalue() == "Wrong input, columns are 1-7!\n"
+        self.assertEqual(self.game.players_move(), (5, 4))
+
     @patch('sys.stdout', new_callable=io.StringIO)
     def test_end_prints_lose(self, mock_stdout):
         self.game = GameLoop()
-        self.game.gamestatus.status = 100
+        self.game.gamestatus.status = 1000
         self.game.end_prints()
         assert mock_stdout.getvalue() == "You lose!\n"
 
     @patch('sys.stdout', new_callable=io.StringIO)
     def test_end_prints_win(self, mock_stdout):
         self.game = GameLoop()
-        self.game.gamestatus.status = -100
+        self.game.gamestatus.status = -1000
         self.game.end_prints()
         assert mock_stdout.getvalue() == "You win!\n"
 
