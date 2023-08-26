@@ -11,7 +11,7 @@
 Core functionality is almost done. Testing time complexity isn't where I would like.
 
 ### Problems
-Having trouble figuring out how to link function choose_best_move to minimax and whether to call minimax in function choose_best_move or the other way around. I'm wondering how to give priority to center columns while still blocking opponents connect four in class score?
+Having trouble figuring out how to link function choose_best_move to minimax and whether to call minimax in function choose_best_move or the other way around. I'm also wondering how to give priority to center columns while still blocking opponents connect four in class score.
 
 ### Questions
 What kind of performance evaluation/suorituskykytesti is needed in my project? 
