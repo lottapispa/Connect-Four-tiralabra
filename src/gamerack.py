@@ -1,11 +1,12 @@
 class GameRack:
     """Class that creates and keeps track of the gamerack."""
 
-    def __init__(self):
+    def __init__(self, rack):
         """Class constructor, creates variables."""
         self.rows = 6
         self.columns = 7
-        self.rack = [[0, 0, 0, 0, 0, 0, 0] for i in range(self.rows)]
+        #self.rack = [[0, 0, 0, 0, 0, 0, 0] for i in range(self.rows)]
+        self.rack = rack
         self.players_color = None
         self.ai_color = None
 
@@ -22,7 +23,7 @@ class GameRack:
         else:
             raise ValueError("Wrong input, you can't put your piece there!")
 
-    def next_move(self, rack):
+    def next_move(self, rack: list):
         """This function finds all possible locations a player can put their piece in during their turn.
         It works by counting the last 0 (empty slot) of each column, except for bottom row."""
         self.possible_moves = []

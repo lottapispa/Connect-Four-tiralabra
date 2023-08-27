@@ -9,7 +9,8 @@ class GameLoop:
 
     def __init__(self):
         """Class constructor, creates variables."""
-        self.gamerack = GameRack()
+        self.rack = [[0, 0, 0, 0, 0, 0, 0] for i in range(6)]
+        self.gamerack = GameRack(self.rack)
         self.gamestatus = GameStatus(self.gamerack)
         self.score = Score(self.gamerack, self.gamestatus)
         self.minimax = Minimax(self.gamerack, self.gamestatus, self.score)
@@ -56,8 +57,8 @@ class GameLoop:
                 self.gamerack.print_rack()
                 row, column = self.players_move()
                 self.gamerack.insert_piece(
-                    self.gamerack.rack, row, column, self.gamerack.players_color)
-                if self.gamestatus.is_game_over(self.gamerack.rack):
+                    self.rack, row, column, self.gamerack.players_color)
+                if self.gamestatus.is_game_over(self.rack):
                     self.end_prints()
                     break
                 self.turn = False
@@ -66,10 +67,10 @@ class GameLoop:
             if self.turn is False:
                 # works at least until here
                 move = self.minimax.choose_best_move(
-                    self.gamerack.rack, self.gamerack.ai_color)
+                    self.rack, self.gamerack.ai_color)
                 self.gamerack.insert_piece(
-                    self.gamerack.rack, move[0], move[1], self.gamerack.ai_color)
-                if self.gamestatus.is_game_over(self.gamerack.rack):
+                    self.rack, move[0], move[1], self.gamerack.ai_color)
+                if self.gamestatus.is_game_over(self.rack):
                     self.end_prints()
                     break
                 self.turn = True

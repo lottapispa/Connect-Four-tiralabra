@@ -16,7 +16,9 @@ class GameStatus:
         counter = 1
         previous = None
         for row in rack:
+            print(row)
             for column in row:
+                print(column)
                 if column == 0:
                     previous = column
                     continue

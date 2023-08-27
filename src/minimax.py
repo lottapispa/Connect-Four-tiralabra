@@ -33,7 +33,7 @@ class Minimax:
         else:
             value = math.inf
             for move in self.gamerack.next_move(rack):
-                rack_copy = self.gamerack.rack.copy()
+                rack_copy = self.gamerack.rack
                 self.gamerack.insert_piece(
                     rack_copy, move[0], move[1], self.gamerack.players_color)
                 new_value = self.minimax(
