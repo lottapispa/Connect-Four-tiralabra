@@ -1,5 +1,6 @@
 import math
 
+
 class Minimax:
     """Class that creates the minimax algorithm."""
 
@@ -49,7 +50,7 @@ class Minimax:
         for place in self.gamerack.next_move(rack):
             rack_copy = rack.copy()
             self.gamerack.insert_piece(rack_copy, place[0], place[1], piece)
-            #score = self.score_for_moves(rack_copy, piece)
+            # score = self.score_for_moves(rack_copy, piece)
             score = self.minimax(rack_copy, 10, -math.inf, math.inf, True)
             if score > best_score:
                 best_score = score

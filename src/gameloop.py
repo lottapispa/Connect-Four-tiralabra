@@ -3,6 +3,7 @@ from gamerack import GameRack
 from minimax import Minimax
 from score import Score
 
+
 class GameLoop:
     """Class that creates the main loop of the game."""
 

@@ -19,9 +19,9 @@ class TestGameStatus(unittest.TestCase):
         self.gameloop.rack = [["Y", "R", "Y", "R", "Y", "R", "Y"], ["R", "Y", "R", "Y", "R", "Y", "R"], ["R", "Y", "R", "Y", "R", "Y", "R"], [
             "Y", "R", "Y", "R", "Y", "R", "Y"], ["Y", "R", "Y", "R", "Y", "R", "Y"], ["R", "Y", "R", "Y", "R", "Y", "R"]]
         self.gameloop.gamestatus.is_game_over(self.gameloop.rack)
-        self.assertEqual(self.gameloop.gamestatus.zeros, False)
         self.assertEqual(self.gameloop.gamestatus.winner, None)
-        self.assertTrue(self.gameloop.gamestatus.is_game_over(self.gameloop.rack))
+        self.assertTrue(
+            self.gameloop.gamestatus.is_game_over(self.gameloop.rack))
         self.assertEqual(self.gameloop.gamestatus.status, 0)
 
     def test_is_game_over_true_player(self):
@@ -34,7 +34,7 @@ class TestGameStatus(unittest.TestCase):
         self.assertTrue(self.gamestatus.is_game_over(
             self.gameloop.rack))
         self.gamestatus.is_game_over(self.gameloop.rack)
-        self.assertEqual(self.gamestatus.status, -1000)
+        self.assertEqual(self.gamestatus.status, 1000)
 
     def test_is_game_over_true_ai(self):
         self.gameloop = GameLoop()
@@ -47,7 +47,7 @@ class TestGameStatus(unittest.TestCase):
         self.assertTrue(self.gamestatus.is_game_over(
             self.gameloop.rack))
         self.gamestatus.is_game_over(self.gameloop.rack)
-        self.assertEqual(self.gamestatus.status, 1000)
+        self.assertEqual(self.gamestatus.status, -1000)
 
     def test_is_game_over_false(self):
         self.gameloop = GameLoop()

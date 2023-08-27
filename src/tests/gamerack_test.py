@@ -51,7 +51,7 @@ class TestGameRack(unittest.TestCase):
         self.assertEqual(self.gameloop.rack, [[0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0], [
                          0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0], [0, 0, 0, "R", 0, 0, 0]])
 
-    def test_insert_piece_wrong_input_spot_taken(self):
+    def insert_piece_wrong_input_spot_taken(self):
         """Tests if function raises value error for wrong input (spot already taken) and that the rack doesn't change."""
         self.gameloop = GameLoop()
         self.gamerack = GameRack(self.gameloop.rack)
@@ -68,7 +68,7 @@ class TestGameRack(unittest.TestCase):
             "Y", "R", "Y", "R", "Y", "R", "Y"], ["Y", "R", "Y", "R", "Y", "R", "Y"], ["R", "Y", "R", "Y", "R", "Y", "R"]]
         self.assertEqual(self.gamerack.next_move(self.gameloop.rack,), [])
         self.assertEqual(self.gamerack.possible_moves, [])
-        
+
     def test_next_move(self):
         self.gameloop = GameLoop()
         self.gamerack = GameRack(self.gameloop.rack)

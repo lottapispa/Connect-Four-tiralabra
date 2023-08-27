@@ -19,7 +19,8 @@ class TestGameLoop(unittest.TestCase):
         self.game = GameLoop()
         self.game.gamestatus = GameStatus(self.game.gamerack)
         self.game.score = Score(self.game.gamerack, self.game.gamestatus)
-        self.game.minimax = Minimax(self.game.gamerack, self.game.gamestatus, self.game.score)
+        self.game.minimax = Minimax(
+            self.game.gamerack, self.game.gamestatus, self.game.score)
         self.game.who_starts = None
         self.game.gamerack.players_color = None
         self.game.gamerack.ai_color = None

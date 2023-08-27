@@ -14,7 +14,8 @@ class TestGameLoop(unittest.TestCase):
         self.gameloop = GameLoop()
         self.gamerack = GameRack()
         self.gamestatus = GameStatus(self.gamerack)
-        self.minimax = Minimax(self.gamerack, self.gamestatus, self.gameloop.score)
+        self.minimax = Minimax(
+            self.gamerack, self.gamestatus, self.gameloop.score)
         self.gamestatus.gamerack = self.gamerack
 
     def minimax_zero_depth(self):
@@ -23,7 +24,7 @@ class TestGameLoop(unittest.TestCase):
         self.gameloop.minimax.gamestatus.status = 1
         self.assertEqual(self.gameloop.minimax.minimax(
             self.gamerack.rack, self.depth, -math.inf, math.inf, True), 1)
-        #self.gamestatus.status, self.score.score_for_moves(rack, self.gamerack.ai_color), self.score.score_for_moves(rack, self.gamerack.players_color)
+        # self.gamestatus.status, self.score.score_for_moves(rack, self.gamerack.ai_color), self.score.score_for_moves(rack, self.gamerack.players_color)
 
     def minimax_true(self):
         self.depth = 10
