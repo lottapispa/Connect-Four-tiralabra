@@ -9,11 +9,11 @@ class GameStatus:
         self.winner = None
         # 0 for tie, 1000 for ai win and player loss, -1000 for player win and ai loss
         self.status = None
-        self.zeros = True
 
     def check_for_win_hor(self, rack: list):
         """Checks for a connect four horizontally.
         Returns: True for there is a win, False for no win."""
+        self.winner = None
         counter = 1
         previous = None
         for row in rack:
@@ -34,6 +34,7 @@ class GameStatus:
     def check_for_win_ver(self, rack: list):
         """Checks for a connect four vertically.
         Returns: True for there is a win, False for no win."""
+        self.winner = None
         counter = 1
         previous = None
         for column in range(1, self.columns):
@@ -54,6 +55,7 @@ class GameStatus:
     def check_for_win_dia(self, rack: list):
         """Checks for a connect four diagonally.
         Returns: True for there is a win, False for no win."""
+        self.winner = None
         for column in range(self.columns-3):
             for row in range(self.rows-3):
                 if rack[row][column] == "R" and rack[row+1][column+1] == "R" and rack[row+2][column+2] == "R" and rack[row+3][column+3] == "R":
@@ -75,8 +77,6 @@ class GameStatus:
     def is_game_over(self, rack: list):
         """If rack is full or a player connects four, variable over is True.
         Returns: boolean self.over."""
-        if len(self.gamerack.next_move(rack)) == 0:
-            self.zeros = False
         horizontal = self.check_for_win_hor(rack)
         vertical = self.check_for_win_ver(rack)
         diagonal = self.check_for_win_dia(rack)
@@ -86,8 +86,7 @@ class GameStatus:
             elif self.winner == self.gamerack.ai_color:
                 self.status = 1000
             return True
-        # if there's no zeros or connect fours on the rack, the rack is full and it's a tie
-        elif self.winner is None and self.zeros is False:
+        elif len(self.gamerack.next_move(rack)) == 0 and self.winner is None:
             self.status = 0
             return True
         else:
