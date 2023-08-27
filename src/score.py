@@ -9,18 +9,6 @@ class Score:
         self.gamerack = gamerack
         self.gamestatus = gamestatus
 
-    def winning_move(self, color):
-        """This function checks if the next move will connect four and win.
-        Returns: winning move [row, column] if there is one, otherwise false."""
-        winning_move = None
-        for move in self.gamerack.next_move(self.gamerack.rack):
-            rack_copy = self.gamerack.rack.copy()
-            self.gamerack.insert_piece(rack_copy, move[0], move[1], color)
-            if self.gamestatus.is_game_over(rack_copy) is True and self.gamestatus.status != 0:
-                winning_move = move
-                return winning_move
-        return False
-
     def heuristic_value(self, line, piece):
         """This function makes rules for how to get different scores, by giving better value the quicker the win.
         Only called by function score_for_moves. Returns: variable score."""

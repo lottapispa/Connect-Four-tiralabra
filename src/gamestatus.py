@@ -10,7 +10,7 @@ class GameStatus:
         # 0 for tie, 1000 for ai win and player loss, -1000 for player win and ai loss
         self.status = None
 
-    def check_for_win_hor(self, rack):
+    def check_for_win_hor(self, rack: list):
         """Checks for a connect four horizontally.
         Returns: True for there is a win, False for no win."""
         counter = 1
@@ -30,7 +30,7 @@ class GameStatus:
                 previous = column
         return False
 
-    def check_for_win_ver(self, rack):
+    def check_for_win_ver(self, rack: list):
         """Checks for a connect four vertically.
         Returns: True for there is a win, False for no win."""
         counter = 1
@@ -50,7 +50,7 @@ class GameStatus:
                 previous = row[column]
         return False
 
-    def check_for_win_dia(self, rack):
+    def check_for_win_dia(self, rack: list):
         """Checks for a connect four diagonally.
         Returns: True for there is a win, False for no win."""
         for column in range(self.columns-3):

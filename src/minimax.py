@@ -11,8 +11,12 @@ class Minimax:
 
     def minimax(self, rack, depth, alpha, beta, maximizing_player: bool):
         """Minimax algorithm."""
-        if depth == 0 or self.gamestatus.is_game_over(rack) is True:
-            return self.gamestatus.status, self.score.score_for_moves(rack, self.gamerack.ai_color), self.score.score_for_moves(rack, self.gamerack.players_color)
+        is_game_over = self.gamestatus.is_game_over(rack)
+        if depth == 0 or is_game_over is True:
+            if is_game_over is True:
+                return self.gamestatus.status, self.gamestatus.winner
+            else:
+                return self.score.score_for_moves(rack, self.gamerack.ai_color)
         if maximizing_player:
             value = -math.inf
             for move in self.gamerack.next_move(rack):
