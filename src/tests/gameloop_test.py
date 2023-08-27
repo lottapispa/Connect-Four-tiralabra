@@ -6,6 +6,7 @@ from gameloop import GameLoop
 from gamerack import GameRack
 from gamestatus import GameStatus
 from minimax import Minimax
+from score import Score
 
 
 class TestGameLoop(unittest.TestCase):
@@ -17,7 +18,8 @@ class TestGameLoop(unittest.TestCase):
     def test_init(self):
         self.game = GameLoop()
         self.game.gamestatus = GameStatus(self.game.gamerack)
-        self.game.minimax = Minimax(self.game.gamerack, self.game.gamestatus)
+        self.game.score = Score(self.game.gamerack, self.game.gamestatus)
+        self.game.minimax = Minimax(self.game.gamerack, self.game.gamestatus, self.game.score)
         self.game.who_starts = None
         self.game.gamerack.players_color = None
         self.game.gamerack.ai_color = None

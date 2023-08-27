@@ -65,20 +65,3 @@ class Score:
                 line = [rack[row+3-i][column+i] for i in range(4)]
                 score += self.heuristic_value(line, piece)
         return score
-
-    def choose_best_move(self, rack, piece):
-        """This function chooses the move that has the best score.
-        Returns: best move as list [row, column]."""
-        # call minimax
-        # self.minimax(rack_copy, 10, -math.inf, math.inf, True)
-
-        best_score = -1000
-        best_move = []
-        for place in self.gamerack.next_move(rack):
-            rack_copy = rack.copy()
-            self.gamerack.insert_piece(rack_copy, place[0], place[1], piece)
-            score = self.score_for_moves(rack_copy, piece)
-            if score > best_score:
-                best_score = score
-                best_move = place
-        return best_move

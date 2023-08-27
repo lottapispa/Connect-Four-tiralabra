@@ -16,18 +16,18 @@ class GameStatus:
         counter = 1
         previous = None
         for row in rack:
-            for i in row:
-                if i == 0:
-                    previous = i
+            for column in row:
+                if column == 0:
+                    previous = column
                     continue
-                if previous == i:
+                if previous == column:
                     counter += 1
                 else:
                     counter = 1
                 if counter >= 4:
                     self.winner = previous
                     return True
-                previous = i
+                previous = column
         return False
 
     def check_for_win_ver(self, rack):
@@ -74,14 +74,8 @@ class GameStatus:
     def is_game_over(self, rack: list):
         """If rack is full or a player connects four, variable over is True.
         Returns: boolean self.over."""
-        zeros = None
-        for row in rack:
-            try:
-                if 0 in row:
-                    zeros = True
-                    break
-            except TypeError:
-                pass
+        zeros = True
+        if len(self.gamerack.next_move(self.gamerack.rack)) == 0:
             zeros = False
         horizontal = self.check_for_win_hor(rack)
         vertical = self.check_for_win_ver(rack)

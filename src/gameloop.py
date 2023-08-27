@@ -11,8 +11,8 @@ class GameLoop:
         """Class constructor, creates variables."""
         self.gamerack = GameRack()
         self.gamestatus = GameStatus(self.gamerack)
-        self.minimax = Minimax(self.gamerack, self.gamestatus)
-        self.score = Score(self.gamerack, self.gamerack.players_color)
+        self.score = Score(self.gamerack, self.gamestatus)
+        self.minimax = Minimax(self.gamerack, self.gamestatus, self.score)
         self.who_starts = None
         self.turn = None  # true for player's turn, false for ai's turn
         self.running = None
@@ -62,9 +62,10 @@ class GameLoop:
                     break
                 self.turn = False
 
+            # ai's move
             if self.turn is False:
                 # works at least until here
-                move = self.score.choose_best_move(
+                move = self.minimax.choose_best_move(
                     self.gamerack.rack, self.gamerack.ai_color)
                 self.gamerack.insert_piece(
                     self.gamerack.rack, move[0], move[1], self.gamerack.ai_color)
