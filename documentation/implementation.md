@@ -53,7 +53,6 @@ classDiagram
     class Score{
         +reference to GameRack
         +reference to GameStatus
-        +winning_move()
         +heuristic_value()
         +score_for_moves()
         +choose_best_move()
