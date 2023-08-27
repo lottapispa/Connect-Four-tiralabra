@@ -11,6 +11,7 @@ classDiagram
     Minimax ..> GameStatus
     Minimax ..> GameRack
     class GameLoop{
+        +list rack
         +reference to GameStatus
         +reference to GameRack
         +reference to Minimax
@@ -37,7 +38,6 @@ classDiagram
     class GameRack{
         +int rows
         +int columns
-        +list gamerack
         +str players_color
         +str ai_color
         +insert_piece()
@@ -68,7 +68,7 @@ classDiagram
 | score.py |
 
 ### Possible improvements
-I could add a game that can be played with two players instead of playing against an ai. I could also make a pygame implementation of the program. The program's time complexity would improve if I started iteration of the column from the middle.
+I could add a game that can be played with two players instead of playing against an ai. I could also make a pygame implementation of the program. The program's time complexity would improve if I started iteration of the columns from the middle.
 
 ### Sources
 - "Tiralabra - 2023 loppukesä", viewed 24 August 2023, https://tiralabra.github.io/2023_loppukesa/index
