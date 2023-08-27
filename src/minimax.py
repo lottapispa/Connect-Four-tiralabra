@@ -13,10 +13,7 @@ class Minimax:
         """Minimax algorithm."""
         is_game_over = self.gamestatus.is_game_over(rack)
         if depth == 0 or is_game_over is True:
-            if is_game_over is True:
-                return self.gamestatus.status, self.gamestatus.winner
-            else:
-                return self.score.score_for_moves(rack, self.gamerack.ai_color)
+            return self.score.score_for_moves(rack, self.gamerack.ai_color)
         if maximizing_player:
             value = -math.inf
             for move in self.gamerack.next_move(rack):
@@ -53,7 +50,7 @@ class Minimax:
             rack_copy = rack.copy()
             self.gamerack.insert_piece(rack_copy, place[0], place[1], piece)
             #score = self.score_for_moves(rack_copy, piece)
-            score = self.minimax(rack.copy, 10, -math.inf, math.inf, True)
+            score = self.minimax(rack_copy, 10, -math.inf, math.inf, True)
             if score > best_score:
                 best_score = score
                 best_move = place

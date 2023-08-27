@@ -9,6 +9,7 @@ class GameStatus:
         self.winner = None
         # 0 for tie, 1000 for ai win and player loss, -1000 for player win and ai loss
         self.status = None
+        self.zeros = True
 
     def check_for_win_hor(self, rack: list):
         """Checks for a connect four horizontally.
@@ -16,9 +17,7 @@ class GameStatus:
         counter = 1
         previous = None
         for row in rack:
-            print(row)
             for column in row:
-                print(column)
                 if column == 0:
                     previous = column
                     continue
@@ -76,9 +75,8 @@ class GameStatus:
     def is_game_over(self, rack: list):
         """If rack is full or a player connects four, variable over is True.
         Returns: boolean self.over."""
-        zeros = True
-        if len(self.gamerack.next_move(self.gamerack.rack)) == 0:
-            zeros = False
+        if len(self.gamerack.next_move(rack)) == 0:
+            self.zeros = False
         horizontal = self.check_for_win_hor(rack)
         vertical = self.check_for_win_ver(rack)
         diagonal = self.check_for_win_dia(rack)
@@ -89,7 +87,7 @@ class GameStatus:
                 self.status = 1000
             return True
         # if there's no zeros or connect fours on the rack, the rack is full and it's a tie
-        elif self.winner is None and zeros is False:
+        elif self.winner is None and self.zeros is False:
             self.status = 0
             return True
         else:

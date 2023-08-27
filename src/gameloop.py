@@ -1,4 +1,3 @@
-import math
 from gamestatus import GameStatus
 from gamerack import GameRack
 from minimax import Minimax
@@ -51,7 +50,7 @@ class GameLoop:
     def main(self):
         """Loop starts the game and switches turns."""
         self.start_inputs()
-        while self.gamestatus.is_game_over(self.gamerack.rack) is False:
+        while self.gamestatus.is_game_over(self.rack) is False:
 
             if self.turn is True:
                 self.gamerack.print_rack()

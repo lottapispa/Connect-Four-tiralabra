@@ -5,7 +5,6 @@ class GameRack:
         """Class constructor, creates variables."""
         self.rows = 6
         self.columns = 7
-        #self.rack = [[0, 0, 0, 0, 0, 0, 0] for i in range(self.rows)]
         self.rack = rack
         self.players_color = None
         self.ai_color = None
@@ -21,6 +20,7 @@ class GameRack:
         if [row, column] in self.next_move(rack):
             rack[row][column] = color
         else:
+            print(row, column)
             raise ValueError("Wrong input, you can't put your piece there!")
 
     def next_move(self, rack: list):
@@ -40,6 +40,8 @@ class GameRack:
         return self.possible_moves
 
     def is_valid(self, column):
+        """This function tests if column is valid.
+        Returns: row of that column if it's valid, otherwise false."""
         for place in self.next_move(self.rack):
             if place[1] == column:
                 return place[0]
