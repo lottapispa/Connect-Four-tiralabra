@@ -18,4 +18,4 @@ Having trouble figuring out how to link function choose_best_move to minimax and
 What kind of performance evaluation/suorituskykytesti is needed in my project? How can I test the time and space complexity of my program?
 
 ### What am I doing next
-Checking the quality of my code with pylint, performance evaluation
+Checking the quality of my code with pylint, performance evaluation, improving test coverage
