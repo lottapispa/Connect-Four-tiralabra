@@ -15,7 +15,7 @@ Core functionality is almost done. Testing isn't where I would like it to be.
 Having trouble figuring out how to link function choose_best_move to minimax and whether to call minimax in function choose_best_move or the other way around. I'm also wondering how to give priority to center columns while still blocking opponents connect four in class score.
 
 ### Questions
-Right now my program makes it look like the player wins after the first move and I don't really know what's wrong with it. What kind of performance evaluation/suorituskykytesti is needed in my project? How can I test the time and space complexity of my program?
+Right now my program makes it look like the player wins after the first move and I don't really know why it does that?. What kind of performance evaluation/suorituskykytesti is needed in my project? How can I test the time and space complexity of my program?
 
 ### What am I doing next
 Checking the quality of my code with pylint, performance evaluation, improving test coverage
