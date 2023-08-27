@@ -5,6 +5,7 @@
 | --------- | ----------- | --------- 
 | 24.8 | 3.5 | Started weekly report, coding and testing class score, updating documentation
 | 26.8 | 3.5 | Fixed code based on last week's feedback and issue 2, changing and testing class gameloop
+| 27.8 | x | Finishing minimax
 | total: | x
 
 ### Progress
