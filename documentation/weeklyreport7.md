@@ -3,7 +3,7 @@
 ### Hour Reporting
 | **date** | **time (h)** | **what I did** 
 | --------- | ----------- | --------- 
-| 28.8 | x | debugging
+| 28.8 | x | debugging, finishing documentation
 | total: | x
 
 ### Progress
