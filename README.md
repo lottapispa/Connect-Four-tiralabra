@@ -13,3 +13,4 @@
 - [Weekly report 4](https://github.com/lottapispa/connect-four-tiralabra/blob/master/documentation/weeklyreport4.md)
 - [Weekly report 5](https://github.com/lottapispa/connect-four-tiralabra/blob/master/documentation/weeklyreport5.md)
 - [Weekly report 6](https://github.com/lottapispa/connect-four-tiralabra/blob/master/documentation/weeklyreport6.md)
+- [Weekly report 7](https://github.com/lottapispa/connect-four-tiralabra/blob/master/documentation/weeklyreport7.md)
