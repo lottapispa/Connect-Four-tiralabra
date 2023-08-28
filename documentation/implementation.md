@@ -10,6 +10,7 @@ classDiagram
     GameStatus ..> GameRack
     Minimax ..> GameStatus
     Minimax ..> GameRack
+    Minimax ..> Score
     class GameLoop{
         +list rack
         +reference to GameStatus
@@ -48,13 +49,13 @@ classDiagram
         +reference to GameRack
         +reference to GameStatus
         +minimax()
+        +choose_best_move()
     }
     class Score{
         +reference to GameRack
         +reference to GameStatus
         +heuristic_value()
         +score_for_moves()
-        +choose_best_move()
     }
 ```
 
