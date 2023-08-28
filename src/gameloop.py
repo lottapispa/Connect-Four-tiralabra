@@ -98,9 +98,9 @@ class GameLoop:
     def end_prints(self):
         """Prints status of the game to user when game ends."""
         if self.gamestatus.status == 1000:
-            print("You lose!")
-        elif self.gamestatus.status == -1000:
             print("You win!")
+        elif self.gamestatus.status == -1000:
+            print("You lose!")
         else:
             print("It's a tie!")
 

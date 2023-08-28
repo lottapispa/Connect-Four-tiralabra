@@ -1,4 +1,5 @@
 import math
+import copy
 
 
 class Minimax:
@@ -18,7 +19,8 @@ class Minimax:
         if maximizing_player:
             value = -math.inf
             for move in self.gamerack.next_move(rack):
-                rack_copy = self.gamerack.rack.copy()
+                #rack_copy = rack.copy()
+                rack_copy = copy.copy(rack)
                 self.gamerack.insert_piece(
                     rack_copy, move[0], move[1], self.gamerack.ai_color)
                 new_value = self.minimax(
@@ -31,7 +33,8 @@ class Minimax:
         else:
             value = math.inf
             for move in self.gamerack.next_move(rack):
-                rack_copy = self.gamerack.rack
+                #rack_copy = rack.copy()
+                rack_copy = copy.copy(rack)
                 self.gamerack.insert_piece(
                     rack_copy, move[0], move[1], self.gamerack.players_color)
                 new_value = self.minimax(
@@ -48,9 +51,8 @@ class Minimax:
         best_score = -1000
         best_move = []
         for place in self.gamerack.next_move(rack):
-            rack_copy = rack.copy()
+            rack_copy = copy.deepcopy(rack)
             self.gamerack.insert_piece(rack_copy, place[0], place[1], piece)
-            # score = self.score_for_moves(rack_copy, piece)
             score = self.minimax(rack_copy, 10, -math.inf, math.inf, True)
             if score > best_score:
                 best_score = score
