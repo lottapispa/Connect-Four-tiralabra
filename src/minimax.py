@@ -20,8 +20,7 @@ class Minimax:
             best_value = -math.inf
             for move in self.gamerack.next_move(rack):
                 rack_copy = copy.copy(rack)
-                self.gamerack.insert_piece(
-                    rack_copy, move[0], move[1], self.gamerack.ai_color)
+                self.gamerack.insert_piece(rack_copy, move[0], move[1], self.gamerack.ai_color)
                 new_value = self.minimax(
                     rack_copy, depth - 1, -math.inf, math.inf, False)
                 best_value = max(best_value, new_value)
@@ -33,8 +32,7 @@ class Minimax:
             best_value = math.inf
             for move in self.gamerack.next_move(rack):
                 rack_copy = copy.copy(rack)
-                self.gamerack.insert_piece(
-                    rack_copy, move[0], move[1], self.gamerack.players_color)
+                self.gamerack.insert_piece(rack_copy, move[0], move[1], self.gamerack.players_color)
                 new_value = self.minimax(
                     rack_copy, depth - 1, -math.inf, math.inf, True)
                 best_value = min(best_value, new_value)
@@ -46,7 +44,7 @@ class Minimax:
     def choose_best_move(self, rack, piece):
         """This function chooses the move that has the best score.
         Returns: best move as list [row, column]."""
-        best_score = -1000
+        best_score = -math.inf
         best_move = []
         for place in self.gamerack.next_move(rack):
             rack_copy = copy.deepcopy(rack)
