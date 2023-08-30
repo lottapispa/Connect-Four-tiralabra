@@ -69,7 +69,7 @@ classDiagram
 | score.py |
 
 ### Possible improvements
-I could add a game that can be played with two players instead of playing against an ai. I could also make a pygame implementation of the program. The program's time complexity would improve if I started iteration of the columns from the middle.
+I could add a game that can be played with two players instead of playing against an ai. I could also make a pygame implementation of the program.
 
 ### Sources
 - "Tiralabra - 2023 loppukesä", viewed 24 August 2023, https://tiralabra.github.io/2023_loppukesa/index
