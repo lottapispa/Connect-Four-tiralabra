@@ -27,9 +27,9 @@ class Score:
             score += 5
 
         if line.count(opp) == 3 and line.count(0) == 1:
-            score -= 30
+            score -= 70
         elif line.count(opp) == 2 and line.count(0) == 2:
-            score -= 4
+            score -= 7
 
         return score
 

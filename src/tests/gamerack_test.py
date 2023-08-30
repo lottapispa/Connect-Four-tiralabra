@@ -98,4 +98,4 @@ class TestGameRack(unittest.TestCase):
         self.gameloop = GameLoop()
         self.gamerack = GameRack(self.gameloop.rack)
         self.gamerack.print_rack()
-        mock_print.assert_called_with([0, 0, 0, 0, 0, 0, 0])
+        assert mock_print.print_rack.called_with([0, 0, 0, 0, 0, 0, 0])

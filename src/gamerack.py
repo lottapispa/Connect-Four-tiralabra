@@ -61,4 +61,4 @@ class GameRack:
     def print_rack(self):
         """This function prints the gamerack."""
         for row in self.rack:
-            print(row)
+            print('[%s]' % ', '.join(map(str, row)))
