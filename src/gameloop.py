@@ -1,3 +1,4 @@
+import time
 from gamestatus import GameStatus
 from gamerack import GameRack
 from minimax import Minimax
@@ -64,8 +65,11 @@ class GameLoop:
                 self.turn = False
 
             if self.turn is False:
+                # start = time.time()
                 move = self.minimax.choose_best_move(
                     self.rack, self.gamerack.ai_color)
+                # end = time.time()
+                # print("AI:n siirron hakemisessa kesti:", end-start, "sekuntia.")
                 self.gamerack.insert_piece(
                     self.rack, move[0], move[1], self.gamerack.ai_color)
                 if self.gamestatus.is_game_over(self.rack):
@@ -103,6 +107,7 @@ class GameLoop:
             print("You lose!")
         else:
             print("It's a tie!")
+
 
 if __name__ == "__main__":
     game = GameLoop()

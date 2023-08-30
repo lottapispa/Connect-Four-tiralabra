@@ -1,6 +1,3 @@
-import math
-
-
 class Score:
     """Class that is going to analyse the state of the gamerack and give scores to possible moves."""
 
@@ -24,12 +21,10 @@ class Score:
         elif line.count(piece) == 3 and line.count(0) == 1:
             score += 10
         elif line.count(piece) == 2 and line.count(0) == 2:
-            score += 5
+            score += 4
 
         if line.count(opp) == 3 and line.count(0) == 1:
             score -= 70
-        elif line.count(opp) == 2 and line.count(0) == 2:
-            score -= 15
 
         return score
 
@@ -54,4 +49,8 @@ class Score:
                 score += self.heuristic_value(line, piece)
                 line = [rack[row+3-i][column+i] for i in range(4)]
                 score += self.heuristic_value(line, piece)
+
+        # center_columns = [2, 3, 4]
+        # center_piece_count = sum([rack[row][column] == piece for column in center_columns for row in range(6)])
+        # score += center_piece_count * 1.5
         return score

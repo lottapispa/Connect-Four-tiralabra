@@ -17,10 +17,7 @@ class GameRack:
             raise ValueError("Wrong input, rows are 1-6!")
         if not 0 <= column <= 6:
             raise ValueError("Wrong input, columns are 1-7!")
-        # if [row, column] in self.next_move(rack):
         rack[row][column] = color
-        # else:
-        #    raise ValueError("Wrong input, you can't put your piece there!")
 
     def next_move(self, rack: list):
         """This function finds all possible locations a player can put their piece in during their turn.
@@ -49,14 +46,6 @@ class GameRack:
                 add += 2
                 switch = True
         return self.possible_moves
-
-    def is_valid(self, column):
-        """This function tests if column is valid.
-        Returns: row of that column if it's valid, otherwise false."""
-        for place in self.next_move(self.rack):
-            if place[1] == column:
-                return place[0]
-        return False
 
     def print_rack(self):
         """This function prints the gamerack."""

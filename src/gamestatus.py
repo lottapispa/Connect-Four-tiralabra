@@ -7,7 +7,6 @@ class GameStatus:
         self.rows = self.gamerack.rows
         self.columns = self.gamerack.columns
         self.winner = None
-        # 0 for tie, 1000 for ai win and player loss, -1000 for player win and ai loss
         self.status = None
 
     def check_for_win_hor(self, rack: list):
@@ -74,19 +73,25 @@ class GameStatus:
                     return True
         return False
 
-    def is_game_over(self, rack: list):
-        """If rack is full or a player connects four, variable over is True.
-        Returns: boolean self.over."""
-        horizontal = self.check_for_win_hor(rack)
-        vertical = self.check_for_win_ver(rack)
-        diagonal = self.check_for_win_dia(rack)
-        if True in [horizontal, vertical, diagonal]:
-            if self.winner == self.gamerack.players_color:
-                self.status = -1000
-            elif self.winner == self.gamerack.ai_color:
-                self.status = 1000
+    def check_for_tie(self, rack: list):
+        """Checks for a tie. Returns: True if it's a tie, False if not."""
+        for row in rack:
+            for column in row:
+                if column == 0:
+                    return False
+        if self.winner is None:
             return True
-        elif len(self.gamerack.next_move(rack)) == 0 and self.winner is None:
+
+    def is_game_over(self, rack: list):
+        """Combines win check and tie check functions.
+        Returns: True if game is over, False if not."""
+        if self.check_for_win_hor(rack) or self.check_for_win_ver(rack) or self.check_for_win_dia(rack):
+            if self.winner == self.gamerack.players_color:
+                self.status = 1000
+            elif self.winner == self.gamerack.ai_color:
+                self.status = -1000
+            return True
+        if self.check_for_tie(rack) is True:
             self.status = 0
             return True
         else:
