@@ -82,9 +82,9 @@ class GameStatus:
         diagonal = self.check_for_win_dia(rack)
         if True in [horizontal, vertical, diagonal]:
             if self.winner == self.gamerack.players_color:
-                self.status = 1000
-            elif self.winner == self.gamerack.ai_color:
                 self.status = -1000
+            elif self.winner == self.gamerack.ai_color:
+                self.status = 1000
             return True
         elif len(self.gamerack.next_move(rack)) == 0 and self.winner is None:
             self.status = 0

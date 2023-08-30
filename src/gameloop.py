@@ -51,18 +51,18 @@ class GameLoop:
     def main(self):
         """Loop starts the game and switches turns."""
         self.start_inputs()
-        while self.gamestatus.is_game_over(self.rack) is False:
+        while True:
             if self.turn is True:
                 self.gamerack.print_rack()
                 row, column = self.players_move()
                 self.gamerack.insert_piece(
                     self.rack, row, column, self.gamerack.players_color)
                 if self.gamestatus.is_game_over(self.rack):
+                    self.gamerack.print_rack()
                     self.end_prints()
                     break
                 self.turn = False
 
-            # ai's move
             if self.turn is False:
                 move = self.minimax.choose_best_move(
                     self.rack, self.gamerack.ai_color)

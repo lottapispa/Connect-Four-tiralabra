@@ -51,7 +51,7 @@ class Minimax:
         for place in self.gamerack.next_move(rack):
             rack_copy = copy.deepcopy(rack)
             self.gamerack.insert_piece(rack_copy, place[0], place[1], piece)
-            score = self.minimax(rack_copy, 20, -math.inf, math.inf, True)
+            score = self.minimax(rack_copy, 30, -math.inf, math.inf, True)
             if score > best_score:
                 best_score = score
                 best_move = place
