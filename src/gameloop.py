@@ -104,8 +104,6 @@ class GameLoop:
         else:
             print("It's a tie!")
 
-
-# for testing
 if __name__ == "__main__":
     game = GameLoop()
     game.main()

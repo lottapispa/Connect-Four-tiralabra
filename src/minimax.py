@@ -17,31 +17,31 @@ class Minimax:
         if depth == 0 or is_game_over is True:
             return self.score.score_for_moves(rack, self.gamerack.ai_color)
         if maximizing_player:
-            value = -math.inf
+            best_value = -math.inf
             for move in self.gamerack.next_move(rack):
                 rack_copy = copy.copy(rack)
                 self.gamerack.insert_piece(
                     rack_copy, move[0], move[1], self.gamerack.ai_color)
                 new_value = self.minimax(
                     rack_copy, depth - 1, -math.inf, math.inf, False)
-                value = max(value, new_value)
-                alpha = max(alpha, new_value)
+                best_value = max(best_value, new_value)
+                alpha = max(alpha, best_value)
                 if alpha >= beta:
                     break
-            return value
+            return best_value
         else:
-            value = math.inf
+            best_value = math.inf
             for move in self.gamerack.next_move(rack):
                 rack_copy = copy.copy(rack)
                 self.gamerack.insert_piece(
                     rack_copy, move[0], move[1], self.gamerack.players_color)
                 new_value = self.minimax(
                     rack_copy, depth - 1, -math.inf, math.inf, True)
-                value = min(value, new_value)
-                beta = min(beta, new_value)
+                best_value = min(best_value, new_value)
+                beta = min(beta, best_value)
                 if beta <= alpha:
                     break
-            return value
+            return best_value
 
     def choose_best_move(self, rack, piece):
         """This function chooses the move that has the best score.
@@ -51,7 +51,7 @@ class Minimax:
         for place in self.gamerack.next_move(rack):
             rack_copy = copy.deepcopy(rack)
             self.gamerack.insert_piece(rack_copy, place[0], place[1], piece)
-            score = self.minimax(rack_copy, 30, -math.inf, math.inf, True)
+            score = self.minimax(rack_copy, 15, -math.inf, math.inf, True)
             if score > best_score:
                 best_score = score
                 best_move = place

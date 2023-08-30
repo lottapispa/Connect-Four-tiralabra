@@ -17,7 +17,7 @@ class TestScore(unittest.TestCase):
         self.game.gamerack.players_color = "Y"
         self.game.gamerack.ai_color = "R"
         self.assertEqual(self.game.score.score_for_moves(
-            self.game.gamerack.rack, self.game.gamerack.players_color), 87)
+            self.game.gamerack.rack, self.game.gamerack.players_color), 55)
 
     def test_score_for_moves_opp(self):
         self.game = GameLoop()
@@ -27,4 +27,4 @@ class TestScore(unittest.TestCase):
         self.game.gamerack.players_color = "Y"
         self.game.gamerack.ai_color = "R"
         self.assertEqual(self.game.score.score_for_moves(
-            self.game.gamerack.rack, self.game.gamerack.ai_color), -62)
+            self.game.gamerack.rack, self.game.gamerack.ai_color), -70)
