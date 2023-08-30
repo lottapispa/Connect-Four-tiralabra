@@ -75,9 +75,9 @@ class TestGameRack(unittest.TestCase):
         self.gameloop.rack = [[0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0], [
             0, 0, "Y", 0, 0, 0, 0], [0, 0, "R", 0, 0, 0, 0], [0, 0, "R", "Y", 0, 0, 0]]
         self.assertEqual(self.gamerack.next_move(self.gameloop.rack,), [
-                         [5, 0], [5, 1], [2, 2], [4, 3], [5, 4], [5, 5], [5, 6]])
+                         [4, 3], [2, 2], [5, 4], [5, 1], [5, 5], [5, 0], [5, 6]])
         self.assertEqual(self.gamerack.possible_moves, [
-                         [5, 0], [5, 1], [2, 2], [4, 3], [5, 4], [5, 5], [5, 6]])
+                         [4, 3], [2, 2], [5, 4], [5, 1], [5, 5], [5, 0], [5, 6]])
 
     def test_is_valid_true(self):
         self.gameloop = GameLoop()

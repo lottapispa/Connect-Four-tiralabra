@@ -27,7 +27,11 @@ class GameRack:
         It works by counting the last 0 (empty slot) of each column, except for bottom row."""
         self.possible_moves = []
         row_count = 0
-        for column in range(0, self.columns):
+        switch = True
+        column = 3
+        minus = 1
+        add = 2
+        while 0 <= column <= 6:
             last_zero = None
             for row in rack:
                 if row[column] == 0:
@@ -36,6 +40,14 @@ class GameRack:
             row_count = 0
             if last_zero is not None:
                 self.possible_moves.append(last_zero)
+            if switch is True:
+                column -= minus
+                minus += 2
+                switch = False
+            else:
+                column += add
+                add += 2
+                switch = True
         return self.possible_moves
 
     def is_valid(self, column):

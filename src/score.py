@@ -27,14 +27,16 @@ class Score:
             score += 5
 
         if line.count(opp) == 3 and line.count(0) == 1:
-            score -= 80
+            score -= 30
+        elif line.count(opp) == 2 and line.count(0) == 2:
+            score -= 4
+
         return score
 
     def score_for_moves(self, rack, piece):
         """This function gives scores to all the possible moves.
         Calls function heuristic_value. Returns: variable score."""
         score = 0
-        # how to give priority to center columns while still blocking opponents connect four?
 
         for row in range(6):
             for column in range(7-3):

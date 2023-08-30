@@ -19,7 +19,7 @@ class Minimax:
         if maximizing_player:
             value = -math.inf
             for move in self.gamerack.next_move(rack):
-                #rack_copy = rack.copy()
+                # rack_copy = rack.copy()
                 rack_copy = copy.copy(rack)
                 self.gamerack.insert_piece(
                     rack_copy, move[0], move[1], self.gamerack.ai_color)
@@ -33,7 +33,7 @@ class Minimax:
         else:
             value = math.inf
             for move in self.gamerack.next_move(rack):
-                #rack_copy = rack.copy()
+                # rack_copy = rack.copy()
                 rack_copy = copy.copy(rack)
                 self.gamerack.insert_piece(
                     rack_copy, move[0], move[1], self.gamerack.players_color)

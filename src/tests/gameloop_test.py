@@ -87,14 +87,14 @@ class TestGameLoop(unittest.TestCase):
     @patch('sys.stdout', new_callable=io.StringIO)
     def test_end_prints_lose(self, mock_stdout):
         self.game = GameLoop()
-        self.game.gamestatus.status = 1000
+        self.game.gamestatus.status = -1000
         self.game.end_prints()
         assert mock_stdout.getvalue() == "You lose!\n"
 
     @patch('sys.stdout', new_callable=io.StringIO)
     def test_end_prints_win(self, mock_stdout):
         self.game = GameLoop()
-        self.game.gamestatus.status = -1000
+        self.game.gamestatus.status = 1000
         self.game.end_prints()
         assert mock_stdout.getvalue() == "You win!\n"
 

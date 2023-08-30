@@ -64,12 +64,12 @@ class GameLoop:
 
             # ai's move
             if self.turn is False:
-                # works at least until here
                 move = self.minimax.choose_best_move(
                     self.rack, self.gamerack.ai_color)
                 self.gamerack.insert_piece(
                     self.rack, move[0], move[1], self.gamerack.ai_color)
                 if self.gamestatus.is_game_over(self.rack):
+                    self.gamerack.print_rack()
                     self.end_prints()
                     break
                 self.turn = True

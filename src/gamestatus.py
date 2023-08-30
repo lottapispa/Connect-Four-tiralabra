@@ -37,7 +37,7 @@ class GameStatus:
         self.winner = None
         counter = 1
         previous = None
-        for column in range(1, self.columns):
+        for column in range(0, self.columns-1):
             for row in rack:
                 if row[column] == 0:
                     previous = row[column]
