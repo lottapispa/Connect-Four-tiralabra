@@ -47,6 +47,14 @@ class GameRack:
                 switch = True
         return self.possible_moves
 
+    def is_valid(self, column):
+        """This function tests if column is valid.
+        Returns: row of that column if it's valid, otherwise False."""
+        for place in self.next_move(self.rack):
+            if place[1] == column:
+                return place[0]
+        return False
+
     def print_rack(self):
         """This function prints the gamerack."""
         for row in self.rack:
