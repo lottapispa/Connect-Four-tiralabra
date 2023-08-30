@@ -5,7 +5,7 @@
 | --------- | ----------- | --------- 
 | 28.8 | 1.5 | debugging, finishing documentation
 | 29.8 | 2 | fixing function next_move to start iteration from the middle, improving scoring
-| 30.8 | 0.5 | changing small things in code
+| 30.8 | 2 | changing small things in code, trying to fix the code
 | total: | x
 
 ### Progress
