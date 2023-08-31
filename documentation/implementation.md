@@ -60,8 +60,8 @@ classDiagram
 ```
 
 ### Time complexity 
-The time it takes to call choose_best_move in main loop.
-| **move** | **deepcopy** | **json** | **shallow copy with for loop**
+The time it takes to call choose_best_move in main loop with different ways to make a copy of the rack.
+| **move** | **deepcopy** | **json** | **shallow copy in for loop**
 | --------- | ----------- | -------- | --------------------
 | 4 | 0.486... s | 0.423... s | 0.384... s
 | 3 | 0.833... s | 0.739... s | 0.645... s
@@ -70,7 +70,7 @@ The time it takes to call choose_best_move in main loop.
 | 3 | 0.406... s | 0.358... s | 0.328... s
 | 4 | 0.776... s | 0.662... s | 0.620... s  
 
-Right now time complexity of the program is too high.
+Right now time complexity of the program is too high, but the fastest way to copy the rack seems to be iterating the rack and making shallow copies of the sublists. 
 
 ### Possible improvements
 I could add a game that can be played with two players instead of playing against an ai. I could also make a pygame implementation of the program.
