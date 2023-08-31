@@ -6,6 +6,7 @@
 | 28.8 | 1.5 | debugging, updating documentation
 | 29.8 | 2 | fixing function next_move to start iteration from the middle, improving scoring
 | 30.8 | 5.3 | changing small things in code to improve readability, debugging, testing class minimax, updating documentation
+| 31.8 | x | trying to find a more efficient way to make a deepcopy
 | total: | x
 
 ### Progress
