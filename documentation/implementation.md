@@ -61,7 +61,7 @@ classDiagram
 
 ### Time complexity 
 The time it takes to call choose_best_move in main loop with different ways to make a copy of the rack.
-| **move** | **deepcopy** | **json** | **shallow copy in for loop** | **move** | **deepcopy** | **json** | **shallow copy in for loop**
+| **move** | **deepcopy** | **json** | **copy sublists in for loop** | **move** | **deepcopy** | **json** | **copy sublists in for loop**
 | --------- | ----------- | -------- | ---------------------------- | -------- | ------------ | -------- | -------------------- 
 | 4 | 0.486... s | 0.423... s | 0.384... s | 4 | 0.483... s | 0.427... s | 0.392... s
 | 3 | 0.833... s | 0.739... s | 0.645... s | 5 | 0.739... s | 0.648... s | 0.596... s 
