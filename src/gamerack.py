@@ -47,15 +47,15 @@ class GameRack:
                 switch = True
         return self.possible_moves
 
-    def is_valid(self, column):
+    def is_valid(self, rack, column):
         """This function tests if column is valid.
         Returns: row of that column if it's valid, otherwise False."""
-        for place in self.next_move(self.rack):
+        for place in self.next_move(rack):
             if place[1] == column:
                 return place[0]
         return False
 
-    def print_rack(self):
+    def print_rack(self, rack):
         """This function prints the gamerack."""
-        for row in self.rack:
+        for row in rack:
             print('[%s]' % ', '.join(map(str, row)))
