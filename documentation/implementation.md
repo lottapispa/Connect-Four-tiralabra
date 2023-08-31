@@ -63,12 +63,12 @@ classDiagram
 The time it takes to call choose_best_move in main loop with different ways to make a copy of the rack.
 | **move** | **deepcopy** | **json** | **shallow copy in for loop** | **move** | **deepcopy** | **json** | **shallow copy in for loop**
 | --------- | ----------- | -------- | ---------------------------- | -------- | ------------ | -------- | -------------------- 
-| 4 | 0.486... s | 0.423... s | 0.384... s | 4 | 0.483... s | x | 
-| 3 | 0.833... s | 0.739... s | 0.645... s | 5 | 0.739... s | x | 
-| 2 | 0.943... s | 0.828... s | 0.756... s | 3 | 0.434... s | x | 
-| 5 | 0.742... s | 0.650... s | 0.618... s | 5 | 0.411... s | x | 
-| 3 | 0.406... s | 0.358... s | 0.328... s | 4 | 1.662... s | x | 
-| 4 | 0.776... s | 0.662... s | 0.620... s | 3 | 0.258... s | x | 
+| 4 | 0.486... s | 0.423... s | 0.384... s | 4 | 0.483... s | 0.427... s | 0.392... s
+| 3 | 0.833... s | 0.739... s | 0.645... s | 5 | 0.739... s | 0.648... s | 0.596... s 
+| 2 | 0.943... s | 0.828... s | 0.756... s | 3 | 0.434... s | 0.379... s | 0.349... s 
+| 5 | 0.742... s | 0.650... s | 0.618... s | 5 | 0.411... s | 0.364... s | 0.336... s 
+| 3 | 0.406... s | 0.358... s | 0.328... s | 4 | 1.662... s | 1.456... s | 1.334... s 
+| 4 | 0.776... s | 0.662... s | 0.620... s | 3 | 0.258... s | 0.227... s | 0.213... s  
 
 Right now time complexity of the program is too high, but the fastest way to copy the rack seems to be iterating the rack and making shallow copies of the sublists. 
 
