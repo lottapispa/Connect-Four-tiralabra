@@ -21,8 +21,7 @@ class Minimax:
         if maximizing_player:
             best_value = -math.inf
             for move in self.gamerack.next_move(rack):
-                copy = json.dumps(rack)
-                rack_copy = json.loads(copy)
+                rack_copy = self.copy_list(rack)
                 self.gamerack.insert_piece(
                     rack_copy, move[0], move[1], self.gamerack.ai_color)
                 new_value = self.minimax(
@@ -35,8 +34,7 @@ class Minimax:
         else:
             best_value = math.inf
             for move in self.gamerack.next_move(rack):
-                copy = json.dumps(rack)
-                rack_copy = json.loads(copy)
+                rack_copy = self.copy_list(rack)
                 self.gamerack.insert_piece(
                     rack_copy, move[0], move[1], self.gamerack.players_color)
                 new_value = self.minimax(
@@ -53,11 +51,16 @@ class Minimax:
         best_score = -math.inf
         best_move = []
         for place in self.gamerack.next_move(rack):
-            copy = json.dumps(rack)
-            rack_copy = json.loads(copy)
+            rack_copy = self.copy_list(rack)
             self.gamerack.insert_piece(rack_copy, place[0], place[1], piece)
             score = self.minimax(rack_copy, 5, -math.inf, math.inf, True)
             if score > best_score:
                 best_score = score
                 best_move = place
         return best_move
+
+    def copy_list(self, rack):
+        rack_copy = []
+        for row in rack:
+            rack_copy.append(row.copy())
+        return rack_copy

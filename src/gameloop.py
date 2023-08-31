@@ -54,12 +54,12 @@ class GameLoop:
         self.start_inputs()
         while True:
             if self.turn is True:
-                self.gamerack.print_rack(self.rack)
+                self.gamerack.print_rack()
                 row, column = self.players_move()
                 self.gamerack.insert_piece(
                     self.rack, row, column, self.gamerack.players_color)
                 if self.gamestatus.is_game_over(self.rack):
-                    self.gamerack.print_rack(self.rack)
+                    self.gamerack.print_rack()
                     self.end_prints()
                     break
                 self.turn = False
@@ -73,7 +73,7 @@ class GameLoop:
                 self.gamerack.insert_piece(
                     self.rack, move[0], move[1], self.gamerack.ai_color)
                 if self.gamestatus.is_game_over(self.rack):
-                    self.gamerack.print_rack(self.rack)
+                    self.gamerack.print_rack()
                     self.end_prints()
                     break
                 self.turn = True
@@ -88,11 +88,11 @@ class GameLoop:
                     "Player make your move, choose column (1-7): ")
                 column = int(column)
                 if 1 <= column <= 7:
-                    if self.gamerack.is_valid(self.rack, column-1) is False:
+                    if self.gamerack.is_valid(column-1) is False:
                         print("Wrong input, column is full!")
                         continue
                     else:
-                        row = self.gamerack.is_valid(self.rack, column-1)
+                        row = self.gamerack.is_valid(column-1)
                         return row, column-1
                 else:
                     print("Wrong input, columns are 1-7!")
