@@ -16,5 +16,7 @@ The time it takes to call choose_best_move in main loop with different ways to m
 | 3 | 0.406... s | 0.358... s | 0.328... s | 4 | 1.662... s | 1.456... s | 1.334... s 
 | 4 | 0.776... s | 0.662... s | 0.620... s | 3 | 0.258... s | 0.227... s | 0.213... s  
 
+The fastest way to copy the rack seems to be iterating the rack and making copies of the sublists and appending them to one list. 
+
 ### How to re-test
 This command shows you the tests: `poetry run invoke test` and this command gets you the test coverage report: `poetry run invoke coverage-report`. You can open the report from the command line.
