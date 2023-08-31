@@ -1,7 +1,4 @@
 import math
-import copy
-import json
-from gamerack import GameRack
 
 
 class Minimax:
