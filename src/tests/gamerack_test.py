@@ -84,14 +84,15 @@ class TestGameRack(unittest.TestCase):
         self.gamerack = GameRack(self.gameloop.rack)
         self.gameloop.rack = [[0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0], [
             0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0]]
-        self.assertEqual(self.gamerack.is_valid(4), 5)
+        self.assertEqual(self.gamerack.is_valid(self.gameloop.rack, 4), 5)
 
-    def is_valid_false(self):
+    def test_is_valid_false(self):
         self.gameloop = GameLoop()
         self.gamerack = GameRack(self.gameloop.rack)
         self.gameloop.rack = [["Y", "R", "Y", "R", "Y", "R", "Y"], ["R", "Y", "R", "Y", "R", "Y", "R"], ["R", "Y", "R", "Y", "R", "Y", "R"], [
             "Y", "R", "Y", "R", "Y", "R", "Y"], ["Y", "R", "Y", "R", "Y", "R", "Y"], ["R", "Y", "R", "Y", "R", "Y", "R"]]
-        self.assertFalse(self.gamerack.is_valid(0))
+        result = self.gamerack.is_valid(self.gameloop.rack, 1)
+        self.assertFalse(result)
 
     @patch('builtins.print')
     def test_print_rack(self, mock_print):

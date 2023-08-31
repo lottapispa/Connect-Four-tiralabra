@@ -52,23 +52,17 @@ class TestGameLoop(unittest.TestCase):
         self.assertFalse(self.game.turn)
         self.assertFalse(self.game.running)
 
-    @patch("builtins.input", side_effect=["X", "Y", "yes"])
-    def start_inputs_wrong(self, mock_input):
+    @patch("builtins.input", side_effect=["X", "Y", "7", "no"])
+    def test_start_inputs_wrong(self, mock_input):
         """Tests if ValueError is raised when input is wrong."""
         self.game = GameLoop()
-        expected_output = ["Wrong input, color needs to be red or yellow!",
-                           "Choose your pawn's color: 'R' for red or 'Y' for yellow. ", "Do you want the first move? Type 'yes' or 'no'. "]
         self.game.start_inputs()
-        self.assertEqual(mock_input.call_count, 3)
+        self.assertEqual(mock_input.call_count, 4)
         self.assertEqual(self.game.gamerack.players_color, "Y")
         self.assertEqual(self.game.gamerack.ai_color, "R")
-        self.assertEqual(self.game.who_starts, "yes")
-        self.assertTrue(self.game.turn)
+        self.assertEqual(self.game.who_starts, "no")
+        self.assertFalse(self.game.turn)
         self.assertFalse(self.game.running)
-        self.assertEqual([call[0] for call in mock_input.call_args_list], [
-                         "X", "Y", "yes"])
-        self.assertEqual([call[0] for call in self.game.start_inputs(
-        ).print.call_args_list], expected_output)
 
     @patch("builtins.input", side_effect=["5", "5"])
     def test_players_move_correct_number(self, mock_input):
@@ -76,13 +70,13 @@ class TestGameLoop(unittest.TestCase):
         self.game.players_move()
         self.assertEqual(self.game.players_move(), (5, 4))
 
-    @patch('sys.stdout', new_callable=io.StringIO)
-    @patch("builtins.input", side_effect=["9", "5", "5"])
-    def players_move_wrong_number(self, mock_stdout, mock_input):
+    @patch("builtins.input", side_effect=["Y", "9", "4", "3", "3"])
+    def test_players_move_wrong_number(self, mock_input):
         self.game = GameLoop()
+        self.game.rack = [[0, 0, 0, "Y", 0, 0, 0], [0, 0, 0, "R", 0, 0, 0], [0, 0, 0, "Y", 0, 0, 0], [
+            0, 0, 0, "R", 0, 0, 0], [0, 0, 0, "R", 0, 0, 0], [0, 0, 0, "Y", 0, 0, 0]]
         self.game.players_move()
-        assert mock_stdout.getvalue() == "Wrong input, columns are 1-7!\n"
-        self.assertEqual(self.game.players_move(), (5, 4))
+        self.assertEqual(self.game.players_move(), (5, 2))
 
     @patch('sys.stdout', new_callable=io.StringIO)
     def test_end_prints_lose(self, mock_stdout):
@@ -109,7 +103,7 @@ class TestGameLoop(unittest.TestCase):
     def main_loop(self, mock_input):
         """Tests main loop."""
         self.game = GameLoop()
-        self.game.gamerack.rack = [[0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0], [
+        self.game.rack = [[0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0], [
             0, 0, "Y", 0, 0, 0, 0], [0, 0, "R", 0, 0, 0, 0], [0, 0, "R", "Y", 0, 0, 0]]
         self.game.turn = True
         self.game.main()
