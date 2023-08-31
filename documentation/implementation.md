@@ -60,7 +60,7 @@ classDiagram
 ```
 
 ### Time complexity 
-Right now time complexity of the program is too high, but the fastest way to copy the rack seems to be iterating the rack and making copies of the sublists and appending them to one list. 
+Right now time complexity of the program is not good enough.
 
 ### Possible improvements
 I could add a game that can be played with two players instead of playing against an ai. I could also make a pygame implementation of the program.
