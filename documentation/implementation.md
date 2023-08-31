@@ -84,5 +84,4 @@ I could add a game that can be played with two players instead of playing agains
 - Kuo, J. 2020, "Artificial Intelligence at Play — Connect Four (Mini-max algorithm explained)", Analytics Vidhya, Medium, viewed 17 August 2023, https://medium.com/analytics-vidhya/artificial-intelligence-at-play-connect-four-minimax-algorithm-explained-3b5fc32e4a4f (for heuristic scoring)
 - "unittest.mock — mock object library", viewed 24 August 2023, https://docs.python.org/3/library/unittest.mock.html
 - "math — Mathematical functions", viewed 30 August 2023, https://docs.python.org/3/library/math.html
-- "copy — Shallow and deep copy operations", viewed 28 August 2023, https://docs.python.org/3/library/copy.html
 - "Python | Ways to print list without quotes", GeeksforGeeks, viewed 29 August 2023, https://www.geeksforgeeks.org/python-ways-to-print-list-without-quotes/
