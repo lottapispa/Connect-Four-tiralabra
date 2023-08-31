@@ -65,11 +65,11 @@ class GameLoop:
                 self.turn = False
 
             if self.turn is False:
-                # start = time.time()
+                start = time.time()
                 move = self.minimax.choose_best_move(
                     self.rack, self.gamerack.ai_color)
-                # end = time.time()
-                # print("AI:n siirron hakemisessa kesti:", end-start, "sekuntia.")
+                end = time.time()
+                print("AI:n siirron hakemisessa kesti:", end-start, "sekuntia.")
                 self.gamerack.insert_piece(
                     self.rack, move[0], move[1], self.gamerack.ai_color)
                 if self.gamestatus.is_game_over(self.rack):
