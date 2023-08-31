@@ -1,6 +1,6 @@
 # Testing document
 ### Unit testing
-Right now, unit testing covers classes gamestatus, gamerack, score and minimax well. Class gameloop is not covered well, since I have some trouble testing while loops.
+Right now, unit testing covers classes gamestatus, gamerack, score and minimax well. Class gameloop is not covered well enough, since I have some trouble testing while loops.
 
 ### Coverage report
 <img width="679" alt="Screenshot 2023-08-31 at 23 17 04" src="https://github.com/lottapispa/connect-four-tiralabra/assets/101987621/4d360392-e91a-4a43-8cfb-6ef833503001">
