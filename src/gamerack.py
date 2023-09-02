@@ -55,7 +55,7 @@ class GameRack:
                 return place[0]
         return False
 
-    def print_rack(self):
+    def print_rack(self, rack):
         """This function prints the gamerack."""
-        for row in self.rack:
+        for row in rack:
             print('[%s]' % ', '.join(map(str, row)))

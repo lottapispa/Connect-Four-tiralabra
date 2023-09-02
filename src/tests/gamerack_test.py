@@ -97,6 +97,8 @@ class TestGameRack(unittest.TestCase):
     @patch('builtins.print')
     def test_print_rack(self, mock_print):
         self.gameloop = GameLoop()
+        self.gameloop.rack = [[0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0], [
+            0, 0, "Y", 0, 0, 0, 0], [0, 0, "R", 0, 0, 0, 0], [0, 0, "R", "Y", 0, 0, 0]]
         self.gamerack = GameRack(self.gameloop.rack)
-        self.gamerack.print_rack()
+        self.gamerack.print_rack(self.gameloop.rack)
         assert mock_print.print_rack.called_with([0, 0, 0, 0, 0, 0, 0])

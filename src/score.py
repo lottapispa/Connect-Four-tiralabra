@@ -11,10 +11,10 @@ class Score:
         Only called by function score_for_moves. Returns: variable score."""
         score = 0
         opp = None
-        if piece == self.gamerack.players_color:
-            opp = self.gamerack.ai_color
-        else:
+        if piece == self.gamerack.ai_color:
             opp = self.gamerack.players_color
+        else:
+            opp = self.gamerack.ai_color
 
         if line.count(piece) == 4:
             score += 100
@@ -25,6 +25,8 @@ class Score:
 
         if line.count(opp) == 3 and line.count(0) == 1:
             score -= 70
+        elif line.count(opp) == 2 and line.count(0) == 2:
+            score -= 5
 
         return score
 
@@ -50,7 +52,4 @@ class Score:
                 line = [rack[row+3-i][column+i] for i in range(4)]
                 score += self.heuristic_value(line, piece)
 
-        # center_columns = [2, 3, 4]
-        # center_piece_count = sum([rack[row][column] == piece for column in center_columns for row in range(6)])
-        # score += center_piece_count * 1.5
         return score

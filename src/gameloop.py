@@ -1,4 +1,3 @@
-import time
 from gamestatus import GameStatus
 from gamerack import GameRack
 from minimax import Minimax
@@ -54,26 +53,23 @@ class GameLoop:
         self.start_inputs()
         while True:
             if self.turn is True:
-                self.gamerack.print_rack()
+                self.gamerack.print_rack(self.rack)
                 row, column = self.players_move()
                 self.gamerack.insert_piece(
                     self.rack, row, column, self.gamerack.players_color)
                 if self.gamestatus.is_game_over(self.rack):
-                    self.gamerack.print_rack()
+                    self.gamerack.print_rack(self.rack)
                     self.end_prints()
                     break
                 self.turn = False
 
             if self.turn is False:
-                start = time.time()
                 move = self.minimax.choose_best_move(
                     self.rack, self.gamerack.ai_color)
-                end = time.time()
-                print("AI:n siirron hakemisessa kesti:", end-start, "sekuntia.")
                 self.gamerack.insert_piece(
                     self.rack, move[0], move[1], self.gamerack.ai_color)
                 if self.gamestatus.is_game_over(self.rack):
-                    self.gamerack.print_rack()
+                    self.gamerack.print_rack(self.rack)
                     self.end_prints()
                     break
                 self.turn = True
@@ -101,9 +97,9 @@ class GameLoop:
 
     def end_prints(self):
         """Prints status of the game to user when game ends."""
-        if self.gamestatus.status == 1000:
+        if self.gamestatus.status == -1000:
             print("You win!")
-        elif self.gamestatus.status == -1000:
+        elif self.gamestatus.status == 1000:
             print("You lose!")
         else:
             print("It's a tie!")

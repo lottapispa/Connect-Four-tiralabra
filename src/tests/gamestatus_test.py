@@ -34,7 +34,7 @@ class TestGameStatus(unittest.TestCase):
         self.assertTrue(self.gamestatus.is_game_over(
             self.gameloop.rack))
         self.gamestatus.is_game_over(self.gameloop.rack)
-        self.assertEqual(self.gamestatus.status, 1000)
+        self.assertEqual(self.gamestatus.status, -1000)
 
     def test_is_game_over_true_ai(self):
         self.gameloop = GameLoop()
@@ -47,7 +47,7 @@ class TestGameStatus(unittest.TestCase):
         self.assertTrue(self.gamestatus.is_game_over(
             self.gameloop.rack))
         self.gamestatus.is_game_over(self.gameloop.rack)
-        self.assertEqual(self.gamestatus.status, -1000)
+        self.assertEqual(self.gamestatus.status, 1000)
 
     def test_is_game_over_false(self):
         self.gameloop = GameLoop()
@@ -60,73 +60,89 @@ class TestGameStatus(unittest.TestCase):
         self.gameloop = GameLoop()
         self.gamerack = GameRack(self.gameloop.rack)
         self.gamestatus = GameStatus(self.gamerack)
+        self.gameloop.gamerack.players_color = "R"
+        self.gameloop.gamerack.ai_color = "Y"
         self.gameloop.rack = [[0, "R", "R", "R", "R", 0, 0], [0, "Y", 0, 0, 0, 0, 0], [
             0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0]]
         self.assertTrue(self.gamestatus.check_for_win_hor(
-            self.gameloop.rack))
+            self.gameloop.rack, self.gameloop.gamerack.players_color))
 
     def test_check_for_win_hor_false(self):
         self.gameloop = GameLoop()
         self.gamerack = GameRack(self.gameloop.rack)
         self.gamestatus = GameStatus(self.gamerack)
+        self.gameloop.gamerack.players_color = "R"
+        self.gameloop.gamerack.ai_color = "Y"
         self.gameloop.rack = [[0, "R", "Y", "R", "R", 0, 0], [0, "Y", 0, 0, 0, 0, 0], [
             0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0]]
         self.assertFalse(self.gamestatus.check_for_win_hor(
-            self.gamestatus.gamerack.rack))
+            self.gamestatus.gamerack.rack, self.gameloop.gamerack.players_color))
 
     def test_check_for_win_ver_true(self):
         self.gameloop = GameLoop()
         self.gamerack = GameRack(self.gameloop.rack)
         self.gamestatus = GameStatus(self.gamerack)
+        self.gameloop.gamerack.players_color = "R"
+        self.gameloop.gamerack.ai_color = "Y"
         self.gameloop.rack = [[0, "R", 0, 0, 0, 0, 0], [0, "Y", 0, 0, 0, 0, 0], [0, "Y", 0, 0, 0, 0, 0], [
             0, "Y", 0, 0, 0, 0, 0], [0, "Y", 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0]]
         self.assertTrue(self.gamestatus.check_for_win_ver(
-            self.gameloop.rack))
+            self.gameloop.rack, self.gameloop.gamerack.ai_color))
 
     def test_check_for_win_ver_false(self):
         self.gameloop = GameLoop()
         self.gamerack = GameRack(self.gameloop.rack)
         self.gamestatus = GameStatus(self.gamerack)
+        self.gameloop.gamerack.players_color = "R"
+        self.gameloop.gamerack.ai_color = "Y"
         self.gameloop.rack = [[0, "R", 0, 0, 0, 0, 0], [0, "Y", 0, 0, 0, 0, 0], [
             0, "Y", 0, 0, 0, 0, 0], [0, "R", 0, 0, 0, 0, 0], [0, "Y", 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0]]
         self.assertFalse(self.gamestatus.check_for_win_ver(
-            self.gameloop.rack))
+            self.gameloop.rack, self.gameloop.gamerack.players_color))
 
     def test_check_for_win_dia_true_R(self):
         self.gameloop = GameLoop()
         self.gamerack = GameRack(self.gameloop.rack)
         self.gamestatus = GameStatus(self.gamerack)
+        self.gameloop.gamerack.players_color = "R"
+        self.gameloop.gamerack.ai_color = "Y"
         self.gameloop.rack = [[0, 0, 0, 0, 0, 0, 0], [0, 0, "R", 0, 0, 0, 0], [0, 0, 0, "R", 0, 0, 0], [
             0, 0, 0, 0, "R", 0, 0], [0, 0, 0, 0, 0, "R", 0], [0, 0, "Y", 0, 0, 0, 0]]
         self.assertTrue(self.gamestatus.check_for_win_dia(
-            self.gameloop.rack))
+            self.gameloop.rack, self.gameloop.gamerack.players_color))
 
     def test_check_for_win_dia_true_Y(self):
         self.gameloop = GameLoop()
         self.gamerack = GameRack(self.gameloop.rack)
         self.gamestatus = GameStatus(self.gamerack)
+        self.gameloop.gamerack.players_color = "R"
+        self.gameloop.gamerack.ai_color = "Y"
         self.gameloop.rack = [["R", 0, 0, 0, 0, 0, 0], [0, 0, "Y", 0, 0, 0, 0], ["R", 0, 0, "Y", 0, 0, 0], [
             0, 0, 0, 0, "Y", 0, 0], [0, 0, 0, 0, 0, "Y", 0], [0, 0, "R", 0, 0, 0, 0]]
         self.assertTrue(self.gamestatus.check_for_win_dia(
-            self.gameloop.rack))
+            self.gameloop.rack, self.gameloop.gamerack.ai_color))
 
     def test_check_for_win_dia_true_R_other_way(self):
         self.gameloop = GameLoop()
         self.gamerack = GameRack(self.gameloop.rack)
         self.gamestatus = GameStatus(self.gamerack)
+        self.gameloop.gamerack.players_color = "R"
+        self.gameloop.gamerack.ai_color = "Y"
         self.gameloop.rack = [[0, 0, 0, "Y", 0, 0, 0], [0, 0, 0, 0, 0, 0, 0], [0, 0, 0, "R", 0, 0, 0], [
             0, 0, "R", 0, 0, 0, 0], [0, "R", 0, 0, 0, "Y", 0], ["R", 0, "Y", 0, 0, 0, 0]]
         self.assertTrue(self.gamestatus.check_for_win_dia(
-            self.gameloop.rack))
+            self.gameloop.rack, self.gameloop.gamerack.players_color))
 
     def test_check_for_win_dia_true_Y_other_way(self):
         self.gameloop = GameLoop()
         self.gamerack = GameRack(self.gameloop.rack)
         self.gamestatus = GameStatus(self.gamerack)
+        self.gameloop.gamerack.players_color = "R"
+        self.gameloop.gamerack.ai_color = "Y"
         self.gameloop.rack = [[0, 0, 0, "R", 0, 0, 0], [0, 0, 0, 0, "Y", 0, 0], [0, 0, 0, "Y", 0, 0, 0], [
             0, 0, "Y", 0, 0, 0, 0], [0, "Y", 0, 0, 0, "R", 0], [0, 0, "R", 0, 0, 0, 0]]
         self.assertTrue(self.gamestatus.check_for_win_dia(
-            self.gameloop.rack))
+            self.gameloop.rack, self.gameloop.gamerack.ai_color))
 
     def test_check_for_win_dia_false(self):
         self.gameloop = GameLoop()
@@ -135,4 +151,4 @@ class TestGameStatus(unittest.TestCase):
         self.gameloop.rack = [[0, 0, 0, 0, 0, 0, 0], [0, 0, "R", 0, 0, 0, 0], [0, 0, 0, "R", 0, 0, 0], [
             0, 0, 0, 0, "Y", 0, 0], [0, 0, 0, 0, 0, "R", 0], [0, 0, "Y", 0, 0, 0, 0]]
         self.assertFalse(self.gamestatus.check_for_win_dia(
-            self.gameloop.rack))
+            self.gameloop.rack, self.gameloop.gamerack.players_color))
