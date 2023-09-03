@@ -59,7 +59,7 @@ classDiagram
         +score_for_moves()
     }
 ```
-##### Sequence diagram
+##### Sequence diagram  
 
 ```mermaid
 sequenceDiagram
