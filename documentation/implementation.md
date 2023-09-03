@@ -16,20 +16,20 @@ classDiagram
         +list rack
         +reference to GameStatus
         +reference to GameRack
+        +reference to Score
         +reference to Minimax
         +str who_starts
         +bool turn
-        +int depth
+        +bool running
         +start_inputs()
         +main()
         +players_move()
         +end_prints()
     }
     class GameStatus{
-        +reference to list gamerack
+        +reference to GameRack
         +reference to int rows
         +reference to int columns
-        +bool over
         +str winner
         +int status
         +check_for_win_hor()
@@ -45,11 +45,15 @@ classDiagram
         +str ai_color
         +insert_piece()
         +next_move()
+        +is_valid()
         +print_rack()
     }
     class Minimax{
         +reference to GameRack
         +reference to GameStatus
+        +reference to Score
+        +int depth
+        +float max_time
         +minimax()
         +choose_best_move()
         +copy_list()
