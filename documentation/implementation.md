@@ -68,8 +68,8 @@ sequenceDiagram
     participant Minimax()
     participant Score()
     Player ->> GameLoop(): user input
-    GameLoop() ->> Minimax()
-    Minimax() ->> Score()
+    GameLoop() ->> Minimax(): call minimax
+    Minimax() ->> Score(): give scores
 ```
   
 ### Time complexity 
