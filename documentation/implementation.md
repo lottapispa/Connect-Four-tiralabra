@@ -79,6 +79,7 @@ sequenceDiagram
     Score() -->> Minimax(): return scores
     Minimax() -->> GameLoop(): return best move
     GameLoop() ->> GameRack(): insert piece
+    GameLoop() ->> GameLoop(): next round
 ```
   
 ### Time complexity 
