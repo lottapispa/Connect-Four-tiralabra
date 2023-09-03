@@ -8,8 +8,8 @@
 | 30.8 | 5.25 | Changing small things in code to improve readability, debugging, testing class minimax, updating documentation
 | 31.8 | 4.25 | Trying to find a more efficient way to make a deepcopy, testing class gameloop, updating test documentation
 | 2.9 | 5 | Debugging, coding, implemented iterative deepening
-| 3.9 | x | Improving code, fixing pylint suggestions, working on documentation, testing class gameloop, making the release.
-| total: | x
+| 3.9 | 5 | Improving code, fixing pylint suggestions, working on documentation, testing class gameloop, making the release.
+| total: | 23
 
 ### Progress
 The program is done. Improved test coverage. Implemented iterative deepening.
