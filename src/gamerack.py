@@ -8,6 +8,7 @@ class GameRack:
         self.rack = rack
         self.players_color = None
         self.ai_color = None
+        self.possible_moves = []
 
     def insert_piece(self, rack, row: int, column: int, color: str):
         """Inserts a piece to the rack."""
@@ -20,8 +21,8 @@ class GameRack:
         rack[row][column] = color
 
     def next_move(self, rack: list):
-        """This function finds all possible locations a player can put their piece in during their turn.
-        It works by counting the last 0 (empty slot) of each column, except for bottom row."""
+        """This function finds all possible locations the ai can put its piece in during its turn.
+        It works by counting the last 0 (empty slot) of each column. Returns: a list."""
         self.possible_moves = []
         row_count = 0
         switch = True

@@ -49,12 +49,14 @@ class GameStatus:
         self.winner = None
         for column in range(self.columns-3):
             for row in range(self.rows-3):
-                if rack[row][column] == piece and rack[row+1][column+1] == piece and rack[row+2][column+2] == piece and rack[row+3][column+3] == piece:
+                if rack[row][column] == piece and rack[row+1][column+1] == piece and\
+                        rack[row+2][column+2] == piece and rack[row+3][column+3] == piece:
                     self.winner = piece
                     return True
         for column in range(self.columns-3):
             for row in range(3, self.rows):
-                if rack[row][column] == piece and rack[row-1][column+1] == piece and rack[row-2][column+2] == piece and rack[row-3][column+3] == piece:
+                if rack[row][column] == piece and rack[row-1][column+1] == piece and\
+                        rack[row-2][column+2] == piece and rack[row-3][column+3] == piece:
                     self.winner = piece
                     return True
         return False
@@ -72,14 +74,17 @@ class GameStatus:
         """Combines win check and tie check functions.
         Returns: True if game is over, False if not."""
         self.status = None
-        if self.check_for_win_hor(rack, self.gamerack.players_color) or self.check_for_win_ver(rack, self.gamerack.players_color) or self.check_for_win_dia(rack, self.gamerack.players_color):
+        if self.check_for_win_hor(rack, self.gamerack.players_color) or\
+            self.check_for_win_ver(rack, self.gamerack.players_color) or\
+                self.check_for_win_dia(rack, self.gamerack.players_color):
             self.status = -1000
             return True
-        if self.check_for_win_hor(rack, self.gamerack.ai_color) or self.check_for_win_ver(rack, self.gamerack.ai_color) or self.check_for_win_dia(rack, self.gamerack.ai_color):
+        if self.check_for_win_hor(rack, self.gamerack.ai_color) or\
+            self.check_for_win_ver(rack, self.gamerack.ai_color) or\
+                self.check_for_win_dia(rack, self.gamerack.ai_color):
             self.status = 1000
             return True
         if self.check_for_tie(rack) is True:
             self.status = 0
             return True
-        else:
-            return False
+        return False

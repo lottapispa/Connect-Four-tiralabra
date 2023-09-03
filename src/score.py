@@ -1,5 +1,6 @@
 class Score:
-    """Class that is going to analyse the state of the gamerack and give scores to possible moves."""
+    """Class that is going to analyse the state of the gamerack
+    and give scores to possible moves."""
 
     def __init__(self, gamerack, gamestatus):
         """Class constructor, creates variables."""
@@ -7,7 +8,7 @@ class Score:
         self.gamestatus = gamestatus
 
     def heuristic_value(self, line, piece):
-        """This function makes rules for how to get different scores, by giving better value the quicker the win.
+        """This function makes the rules for how to get different scores.
         Only called by function score_for_moves. Returns: variable score."""
         score = 0
         opp = None
@@ -21,12 +22,12 @@ class Score:
         elif line.count(piece) == 3 and line.count(0) == 1:
             score += 10
         elif line.count(piece) == 2 and line.count(0) == 2:
-            score += 4
+            score += 5
 
         if line.count(opp) == 3 and line.count(0) == 1:
             score -= 70
         elif line.count(opp) == 2 and line.count(0) == 2:
-            score -= 5
+            score -= 7
 
         return score
 

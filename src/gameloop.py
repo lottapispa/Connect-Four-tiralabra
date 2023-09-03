@@ -1,3 +1,5 @@
+import math
+import time
 from gamestatus import GameStatus
 from gamerack import GameRack
 from minimax import Minimax
@@ -12,8 +14,8 @@ class GameLoop:
         self.rack = [[0, 0, 0, 0, 0, 0, 0] for i in range(6)]
         self.gamerack = GameRack(self.rack)
         self.gamestatus = GameStatus(self.gamerack)
-        self.score = Score(self.gamerack, self.gamestatus)
-        self.minimax = Minimax(self.gamerack, self.gamestatus, self.score)
+        self.minimax = Minimax(self.gamerack, self.gamestatus, Score(
+            self.gamerack, self.gamestatus))
         self.who_starts = None
         self.turn = None  # true for player's turn, false for ai's turn
         self.running = None
@@ -64,8 +66,9 @@ class GameLoop:
                 self.turn = False
 
             if self.turn is False:
-                move = self.minimax.choose_best_move(
-                    self.rack, self.gamerack.ai_color)
+                self.start = time.time()
+                move, score = self.minimax.minimax(
+                    self.rack, 10, -math.inf, math.inf, True, self.start)
                 self.gamerack.insert_piece(
                     self.rack, move[0], move[1], self.gamerack.ai_color)
                 if self.gamestatus.is_game_over(self.rack):
@@ -87,11 +90,9 @@ class GameLoop:
                     if self.gamerack.is_valid(self.rack, column-1) is False:
                         print("Wrong input, column is full!")
                         continue
-                    else:
-                        row = self.gamerack.is_valid(self.rack, column-1)
-                        return row, column-1
-                else:
-                    print("Wrong input, columns are 1-7!")
+                    row = self.gamerack.is_valid(self.rack, column-1)
+                    return row, column-1
+                print("Wrong input, columns are 1-7!")
             except ValueError:
                 print("Wrong input, columns are 1-7!")
 

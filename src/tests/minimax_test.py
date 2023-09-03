@@ -1,44 +1,44 @@
 import unittest
 import math
-from minimax import Minimax
-from gamestatus import GameStatus
-from gamerack import GameRack
+import time
 from gameloop import GameLoop
-from score import Score
 
 
 class TestMinimax(unittest.TestCase):
-    """Tests class minimax."""
+    """Tests class Minimax."""
 
     def setUp(self):
-        self.gameloop = GameLoop()
+        self.game = GameLoop()
 
-    def test_choose_best_move(self):
-        """Tests class Minimax."""
+    def test_minimax(self):
+        """Tests function minimax."""
         self.game = GameLoop()
         self.game.rack = [[0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0], [
             0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0], [0, "Y", "R", "Y", 0, 0, 0]]
         self.game.gamerack.players_color = "Y"
         self.game.gamerack.ai_color = "R"
-        self.assertEqual(self.game.minimax.choose_best_move(
-            self.game.rack, self.game.gamerack.ai_color), [4, 3])
+        start = time.time()
+        self.assertEqual(self.game.minimax.minimax(
+            self.game.rack, 10, -math.inf, math.inf, True, start), ([4, 2], 5))
 
-    def test_choose_best_move_block_three(self):
-        """Tests class Minimax."""
+    def test_minimax_block_three(self):
+        """Tests function minimax."""
         self.game = GameLoop()
         self.game.rack = [[0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0], [
             0, 0, 0, 0, 0, 0, 0], [0, 0, 0, "R", "R", 0, 0], [0, "Y", 0, "Y", "Y", 0, 0]]
         self.game.gamerack.players_color = "Y"
         self.game.gamerack.ai_color = "R"
-        self.assertEqual(self.game.minimax.choose_best_move(
-            self.game.rack, self.game.gamerack.ai_color), [5, 2])
+        start = time.time()
+        self.assertEqual(self.game.minimax.minimax(
+            self.game.rack, 10, -math.inf, math.inf, True, start), ([5, 2], 13))
 
-    def test_choose_best_move_win(self):
-        """Tests class Minimax."""
+    def test_minimax_win(self):
+        """Tests function minimax."""
         self.game = GameLoop()
         self.game.rack = [[0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0], [
             0, 0, 0, 0, 0, 0, 0], [0, 0, "Y", "R", "R", "R", 0], [0, "Y", "Y", "Y", "R", "Y", "Y"]]
         self.game.gamerack.players_color = "Y"
         self.game.gamerack.ai_color = "R"
-        self.assertEqual(self.game.minimax.choose_best_move(
-            self.game.rack, self.game.gamerack.ai_color), [4, 6])
+        start = time.time()
+        self.assertEqual(self.game.minimax.minimax(
+            self.game.rack, 10, -math.inf, math.inf, True, start), ([4, 6], 19))
