@@ -1,7 +1,7 @@
 # Implementation document
 
 ### Project Structure
-##### Class diagram
+#### Class diagram
 ```mermaid
 classDiagram
     GameLoop ..> GameStatus
@@ -59,7 +59,7 @@ classDiagram
         +score_for_moves()
     }
 ```
-##### Sequence diagram  
+#### Sequence diagram of program stucture  
 
 ```mermaid
 sequenceDiagram
