@@ -76,8 +76,8 @@ sequenceDiagram
     Player ->> GameLoop(): user input
     GameLoop() ->> GameRack(): insert piece
     GameLoop() ->> Minimax(): call minimax
-    Minimax() ->> Score(): call score
-    Score() -->> Minimax(): return score
+    Minimax() ->> Score(): get scores for moves
+    Score() -->> Minimax(): return scores
     Minimax() -->> GameLoop(): return best move
     GameLoop() ->> GameRack(): insert piece
 ```
