@@ -12,6 +12,7 @@ classDiagram
     Minimax ..> GameStatus
     Minimax ..> GameRack
     Minimax ..> Score
+    Score ..> GameStatus
     class GameLoop{
         +list rack
         +reference to GameStatus
