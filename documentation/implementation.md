@@ -83,7 +83,7 @@ sequenceDiagram
 ```
   
 ### Time complexity 
-Right now time complexity of the program is not good enough.
+
 
 ### Possible improvements
 I could add a game that can be played with two players instead of playing against an ai. I could also make a pygame implementation of the program.
