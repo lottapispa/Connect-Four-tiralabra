@@ -54,7 +54,6 @@ classDiagram
         +reference to Score
         +float max_time
         +minimax()
-        +choose_best_move()
         +copy_list()
     }
     class Score{
