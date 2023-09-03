@@ -1,6 +1,7 @@
 # Implementation document
 
 ### Project Structure
+##### Class diagram
 ```mermaid
 classDiagram
     GameLoop ..> GameStatus
@@ -57,6 +58,17 @@ classDiagram
         +heuristic_value()
         +score_for_moves()
     }
+```
+##### Sequence diagram
+```mermaid
+sequenceDiagram
+    actor Player
+    participant GameLoop()
+    participant Minimax()
+    participant Score()
+    Player ->> GameLoop(): user input
+    GameLoop() ->> Minimax()
+    Minimax() ->> Score()
 ```
 
 ### Time complexity 
