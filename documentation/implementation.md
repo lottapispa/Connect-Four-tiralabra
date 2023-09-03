@@ -71,7 +71,7 @@ sequenceDiagram
     GameLoop() ->> Minimax()
     Minimax() ->> Score()
 ```
-
+  
 ### Time complexity 
 Right now time complexity of the program is not good enough.
 
