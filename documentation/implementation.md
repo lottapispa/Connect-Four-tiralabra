@@ -60,6 +60,7 @@ classDiagram
     }
 ```
 ##### Sequence diagram
+
 ```mermaid
 sequenceDiagram
     actor Player
