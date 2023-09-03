@@ -17,7 +17,6 @@ classDiagram
         +list rack
         +reference to GameStatus
         +reference to GameRack
-        +reference to Score
         +reference to Minimax
         +str who_starts
         +bool turn
@@ -53,7 +52,6 @@ classDiagram
         +reference to GameRack
         +reference to GameStatus
         +reference to Score
-        +int depth
         +float max_time
         +minimax()
         +choose_best_move()
