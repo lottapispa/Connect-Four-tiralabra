@@ -35,6 +35,7 @@ classDiagram
         +check_for_win_hor()
         +check_for_win_ver()
         +check_for_win_dia()
+        +check_for_tie()
         +is_game_over()
     }
     class GameRack{
@@ -51,6 +52,7 @@ classDiagram
         +reference to GameStatus
         +minimax()
         +choose_best_move()
+        +copy_list()
     }
     class Score{
         +reference to GameRack
