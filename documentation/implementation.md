@@ -67,9 +67,12 @@ sequenceDiagram
     participant GameLoop()
     participant Minimax()
     participant Score()
+    participant GameRack()
     Player ->> GameLoop(): user input
+    GameLoop() ->> GameRack(): insert piece
     GameLoop() ->> Minimax(): call minimax
     Minimax() ->> Score(): give scores
+    GameLoop() ->> GameRack(): insert piece
 ```
   
 ### Time complexity 
