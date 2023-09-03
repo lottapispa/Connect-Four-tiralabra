@@ -99,12 +99,10 @@ class TestGameLoop(unittest.TestCase):
         self.game.end_prints()
         assert mock_stdout.getvalue() == "It's a tie!\n"
 
-    @patch("builtins.input", side_effect=["6", "4"])
-    def main_loop(self, mock_input):
+    @patch('sys.stdout', new_callable=io.StringIO)
+    @patch("builtins.input", side_effect=["Y", "yes", "4", "4", "4", "5", "5"])
+    def test_main_loop(self, mock_stdout, mock_input):
         """Tests main loop."""
         self.game = GameLoop()
-        self.game.rack = [[0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0], [
-            0, 0, "Y", 0, 0, 0, 0], [0, 0, "R", 0, 0, 0, 0], [0, 0, "R", "Y", 0, 0, 0]]
-        self.game.turn = True
         self.game.main()
-        # TestGameLoop.test_start_inputs_red()
+        self.assertFalse(self.game.turn)
