@@ -83,10 +83,10 @@ sequenceDiagram
 ```
   
 ### Time complexity 
-
+Alpha-beta-pruning was implemented to improve the time complexity of minimax. The depth I use when calling minimax is 10. I also implemented iterative deepening with a maximum time of 0.5 seconds so the user doesn't have to wait too long. This way, minimax will return the best move with a smaller depth if getting the best move in depth 10 is too slow. 
 
 ### Possible improvements
-I could add a game that can be played with two players instead of playing against an ai. I could also make a pygame implementation of the program.
+I could add a game that can be played with two players instead of playing against an ai. I could also make a pygame implementation of the program. A transposition table could also improve the time complexity. 
 
 ### Sources
 - "Tiralabra - 2023 loppukesä", viewed 24 August 2023, https://tiralabra.github.io/2023_loppukesa/index
