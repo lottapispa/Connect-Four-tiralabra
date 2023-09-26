@@ -1,5 +1,4 @@
 import math
-import time
 from gamestatus import GameStatus
 from gamerack import GameRack
 from minimax import Minimax
@@ -66,9 +65,8 @@ class GameLoop:
                 self.turn = False
 
             if self.turn is False:
-                self.start = time.time()
                 move, score = self.minimax.minimax(
-                    self.rack, 10, -math.inf, math.inf, True, self.start)
+                    self.rack, 8, -math.inf, math.inf, True)
                 self.gamerack.insert_piece(
                     self.rack, move[0], move[1], self.gamerack.ai_color)
                 if self.gamestatus.is_game_over(self.rack):
